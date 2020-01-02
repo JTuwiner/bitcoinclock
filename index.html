@@ -20,7 +20,7 @@ pagename: clock
             var til_halving = 630000 - height;
             append_html += "<b>Blocks Until Halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             
-            var block_time = 10.1541666667;
+            var block_time = 9.8125;
             var minutes_til_halving = til_halving * block_time;
             var days_til_halving = minutes_til_halving / (24 * 60);
             var days_remainder = days_til_halving - Math.floor(days_til_halving);
@@ -180,7 +180,7 @@ pagename: clock
 
 <p>Blocks, however, have been mined at less than 10 minute intervals for almost all of Bitcoin's history.</p>
 
-<p>Our calculator uses data from BTC.com to get the average block time for the past two months. It then uses this block time (currently 10.1542 minutes between blocks) to estimate the halving date.</p>
+<p>Our calculator uses data from BTC.com to get the average block time for the past two months. It then uses this block time (currently 9.8125 minutes between blocks) to estimate the halving date.</p>
 
 <p>While most of the other sites estimate the halving for late-May, the more likely outcome is an early-May reward halving.</p>
 
