@@ -20,7 +20,7 @@ pagename: clock
 
             
             var til_halving = 630000 - height;
-            append_html += "<b>Blocks Until Halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            append_html += "<b>Blocks Until Halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
             
             var block_time = 9.8125;
             var minutes_til_halving = til_halving * block_time;
