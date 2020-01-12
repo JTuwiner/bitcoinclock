@@ -20,7 +20,7 @@ pagename: clock
 
             
             var til_halving = 630000 - height;
-            append_html += "<b>Blocks Until Halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            append_html += "<b>Blöcke bis zur Halbierung:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
             
             var block_time = 9.8125;
             var minutes_til_halving = til_halving * block_time;
@@ -55,17 +55,17 @@ pagename: clock
 					var month_name = "March";
 				}
 
-				$('#date_eta').append(day + "." + month_name + " " + year);
+				$('#date_eta').append(day + ". " + month_name + " " + year);
 				
-				let hours_label = "hours ";
+				let hours_label = "Stunden ";
 				
 				if (Math.floor(days_remainder * 24) == 1) {
-					hours_label = "hour";
+					hours_label = "Stunden";
 				}
 				
 				$("#hours_label").append(hours_label);
 								
-				let minutes_label = "minutes";
+				let minutes_label = "Minuten";
 				
 				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
 					minutes_label = "minute";
