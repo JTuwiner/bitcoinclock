@@ -20,7 +20,7 @@ pagename: clock
 
             
             var til_halving = 630000 - height;
-            append_html += "<b>Bloques hasta el halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            append_html += "<b>Blocks Until Halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             
             var block_time = 9.8125;
             var minutes_til_halving = til_halving * block_time;
@@ -40,33 +40,35 @@ pagename: clock
                 var month = d.getMonth() + 1;
 				var day = d.getUTCDate();
 				var year = d.getUTCFullYear();
+				
+				console.log(month);
 								
 				if (month === 4) {
-					var month_name = "abril";
+					var month_name = "April";
 				}
 				
 				else if (month === 5) {
-					var month_name = "mayo";
+					var month_name = "May";
 				}
 				
 				else if (month === 3) {
-					var month_name = "marzo";
+					var month_name = "March";
 				}
 
-				$('#date_eta').append(day + " de " + month_name + " de " + year);
+				$('#date_eta').append(month_name + " " + day + ", " + year);
 				
-				let hours_label = "horas";
+				let hours_label = "hours";
 				
 				if (Math.floor(days_remainder * 24) == 1) {
-					hours_label = "hora";
+					hours_label = "hour";
 				}
 				
 				$("#hours_label").append(hours_label);
 								
-				let minutes_label = "minutos";
+				let minutes_label = "minutes";
 				
 				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
-					minutes_label = "minuto";
+					minutes_label = "minute";
 				}
 				
 				$("#minutes_label").append(minutes_label);
