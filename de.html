@@ -1,0 +1,225 @@
+---
+layout: default
+seo_title: "Bitcoin-Halbierungscountdown 2020 & Datum ETA (Bitcoin-Uhr)"
+title: "Bitcoin-Uhr: Bitcoin-Halbierungscountdown 2020"
+permalink: "/de/"
+lang: de
+pagename: clock
+---
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script>
+    var height;
+    jQuery(document).ready(function($){
+        $.getJSON("https://www.satochi.co/latest-block", function( data ) {
+            var height = data;
+            var total_number = 12.5 * (height - 472500) + 16406250;
+            var append_html = "<span></span>";
+
+            
+            var til_halving = 630000 - height;
+            append_html += "<b>Bloques hasta el halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            
+            var block_time = 9.8125;
+            var minutes_til_halving = til_halving * block_time;
+            var days_til_halving = minutes_til_halving / (24 * 60);
+            var days_remainder = days_til_halving - Math.floor(days_til_halving);
+            var minutes = days_remainder - Math.floor(days_remainder);
+            var percent_done = (((height % 210000) / 210000) * 360);
+                        
+            $(".minutes").css("transform", "rotate(" + percent_done +"deg)");
+              
+              $('#days_calc').append(Math.floor(days_til_halving));
+               $('#hours_calc').append(Math.floor(days_remainder * 24));
+                $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                
+                var d = new Date( Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000); 
+                
+                var month = d.getMonth() + 1;
+				var day = d.getUTCDate();
+				var year = d.getUTCFullYear();
+								
+				if (month === 4) {
+					var month_name = "abril";
+				}
+				
+				else if (month === 5) {
+					var month_name = "mayo";
+				}
+				
+				else if (month === 3) {
+					var month_name = "marzo";
+				}
+
+				$('#date_eta').append(day + " de " + month_name + " de " + year);
+				
+				let hours_label = "horas";
+				
+				if (Math.floor(days_remainder * 24) == 1) {
+					hours_label = "hora";
+				}
+				
+				$("#hours_label").append(hours_label);
+								
+				let minutes_label = "minutos";
+				
+				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
+					minutes_label = "minuto";
+				}
+				
+				$("#minutes_label").append(minutes_label);
+
+
+            $("#calc-content-div").append(append_html);
+        });
+    });
+</script>
+
+<p style="text-align: center; color: black;"><b>Blockhalbierung ETA:</b> <span style="font-weight: bold;" id="days_calc"></span> Tage, <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span><span style="font-weight: bold;" id="minutes_calc"></span><span id="minutes_label"></span></p>
+
+<p style="text-align: center; color: black;"><b>Datum ETA:</b> <span id="date_eta"></span></p>
+
+<div class="clock simple">
+  <div class="minutes-container">
+    <div class="minutes"></div>
+  </div>
+</div>
+
+
+<div id="calc-content-div" style="text-align: center;"></div>
+
+<h2 id="what-is-the-bitcoin-halving">Was ist die Bitcoin-Halbierung?</h2>
+<p>Neue Bitcoins werden vom Bitcoin-Netzwerk alle 10 Minuten ausgegeben. In den ersten vier Jahren nach dem Bestehen 
+von Bitcoin betrug die Anzahl der alle 10 Minuten neu ausgegebenen Bitcoins 50. Alle vier Jahre wird diese Zahl halbiert. 
+Der Tag, an dem die Menge halbiert wird, wird als &quot;Halbierung&quot; bezeichnet.</p> 
+
+<p>Im Jahr 2012 sank die Anzahl der alle 10 Minuten neu ausgegebenen Bitcoins von 50 Bitcoins auf 25. 
+Im Jahr 2016 sank sie von 25 auf 12,5. Bei der Halbierung 2020 wird sie jetzt von 12,5 auf 6,25 sinken.</p> 
+
+<h2 id="what-is-the-significance-of-the-reward-halving">Welche Bedeutung hat die Pr&auml;mienhalbierung?</h2>
+<p>Die Halbierung verringert die Anzahl der neu erzeugten Bitcoins pro Block. Das bedeutet, dass das Angebot an neuen 
+Bitcoins geringer ist.</p>
+<p>In normalen M&auml;rkten f&uuml;hrt ein geringeres Angebot bei gleichbleibender Nachfrage in der Regel zu h&ouml;heren
+Preisen. Da die Halbierung das Angebot an neuen Bitcoins reduziert und die Nachfrage in der Regel konstant bleibt, geht die 
+Halbierung in der Regel einigen der gr&ouml;&szlig;ten Bitcoin-Runs voraus.</p>
+
+<p>In der folgenden Abbildung verdeutlichen die vertikalen gr&uuml;nen Linien die beiden vorherigen Halbierungen 
+(<a href="https://en.bitcoin.it/wiki/Controlled_supply">28.11.2012 und 9.7.2016</a>). 
+Wie Sie sehen k&ouml;önnen, ist der Preis nach jeder Halbierung deutlich gestiegen.</p>
+
+<img src="/halvingdates.png" style="width: 100%;margin: 0 auto;">
+
+<h2 id="bitcoin-halving-chart">Bitcoin-Halbierungsdiagramm</h2>
+<p>In der folgenden Abbildung sehen Sie die Inflationsrate von Bitcoin in jedem Zeitraum.</p>
+
+<img src="/inflation.png" style="width: 100%;margin: 0 auto;">
+
+<p>Jede Halbierung senkt die Inflationsrate von Bitcoin. Die orange Linie ist die Inflationsrate von 
+Bitcoin in einem bestimmten Zeitraum, w&auml;hrend die blaue Linie die Gesamtzahl der ausgegebenen Bitcoins darstellt.</p>
+
+<h2 id="bitcoin-halving-schedule">Bitcoin-Halbierungsplan</h2>
+<p>Die Bitcoin-Halbierung wird in Blockh&ouml;he und nicht nach Datum geplant.</p>
+
+<p>Die Halbierung erfolgt alle 210.000 Bl&ouml;cke. Die Halbierung 2020 wird bei Block 630.000 erfolgen. Die Halbierung 2024 erfolgt bei Block 840.000.</p>
+
+<h2 id="what-happens-to-miners-during-halvings">Was passiert mit den Minern w&auml;hrend der Halbierungen?</h2>
+<p>Viele <a href="https://techcrunch.com/2016/07/09/the-reward-for-mining-bitcoin-was-just-cut-in-half/">spekulieren immer</a>, dass die Miner 
+nach der Halbierung den Betrieb einstellen werden. Die Realit&auml;t ist, dass die meisten Miner sehr klug sind und die Halbierungen mit einpreisen, 
+so dass sie am Ende keine Miner stilllegen.</p>
+
+<h2 id="when-is-the-next-bitcoin-halving-after-the-2020-halving">Wann ist die n&auml;chste Bitcoin-Halbierung nach der Halbierung 2020?</h2>
+<p>Die Halbierung 2024 wird wahrscheinlich zwischen M&auml;rz und Juni 2024 stattfinden.</p>
+
+<h2 id="bitcoin-halving-history">Historie der Bitcoin-Halbierungen</h2>
+
+<p>Dieser Abschnitt wirft einen Blick auf die beiden letzten Halbierungen.</p>
+
+<h2 id="2012-halving">Halbierung 2012</h2>
+
+<p>Die <a href="https://en.bitcoin.it/wiki/Halving_day_2012">Blockhalbierung 2012</a> war die erste Halbierung. Sie wurde von SlushPool erzeugt, 
+von jemandem, der einen Radeon HD 5800 Miner benutzte.</p>
+
+<ul>
+	<li><b>Neue BTC pro Block vorher:</b> 50 BTC pro Block</li>
+	<li><b>Neue BTC pro Block nachher:</b> 25 BTC pro Block</li>
+	<li><b>Preis am Halbierungstag:</b> $12,35</li>
+	<li><b>Preis 150 Tage sp&auml;ter:</b> $127,00</li>
+</ul>
+
+<h2 id="2016-halving">Halbierung 2016</h2>
+
+<p>Die Halbierung 2016 war die zweite jemals durchgef&uuml;hrte.</p>
+
+<ul>
+<li><b>Neue BTC pro Block vorher:</b> 25 BTC pro Block</li>
+<li><b>Neue BTC pro Block nachher:</b> 12,5 BTC pro Block</li>
+<li><b>Preis am Halbierungstag:</b> $650,63</li>
+<li><b>Preis 150 Tage sp&auml;ter:</b> $758,81</li>
+</ul>
+
+<h2 id="current-bitcoin-block-reward">Aktuelle Bitcoin-Blocksubventionierung</h2>
+<p>Die aktuelle Bitcoin-Blocksubvention betr&auml;gt 12,5 Bitcoins pro Block. Wenn im Jahr 2020 Block 630.000 erreicht wird, sinkt die Subvention auf 
+6,25 Bitcoins (BTC) pro Block.</p>
+
+<h2 id="bitcoin-halving-parties">Bitcoin-Halbierungsteilnehmer</h2>
+<p>Tausende von Bitcoinern auf der ganzen Welt feierten die Halbierung 2016. Es <a href="http://blog.thehalvening.com/bitcoin-halving-parties-2016/">gab Partys</a> 
+in unz&auml;hligen Gro&szlig;st&auml;dten wie Buenos Aires, Melbourne, Montreal, Paris, Athen, Dublin und Dutzenden anderer St&auml;dte.</p>
+
+<p>Hier ist ein Video von der Halbierungsparty 2016 in Tel Aviv:</p>
+
+<iframe style="height: auto; max-width: 100%;" src="https://www.youtube.com/embed/T0IR8X-Qnqs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<p>Wenn Partys bekannt gegeben werden, werden wir sie hier mitverfolgen!</p>
+
+<h2 id="21-million">Wann werden alle 21 Millionen Bitcoins erzeugt sein?</h2>
+<p>Alle 21 Millionen Bitcoins (BTC) werden bis 2140 erzeugt sein. Aber mehr als 98% werden bis 2030 gewonnen.</p>
+
+<h2 id="is-there-a-litecoin-block-reward-halving-countdown">Gibt es einen Countdown f&uuml;r die Litecoin-Blockpr&auml;mienhalbierung?</h2>
+<p>Ja, schauen Sie <a href="http://litecoinblockhalf.com/">auf dieser Seite</a> nach. Litecoin wird derzeit voraussichtlich ein Jahr vor Bitcoin, 
+etwa im August 2019, die Halbierung erreichen. Die Litecoin-Pr&auml;mie pro Block sinkt von 25 LTC pro Block auf 12,5 LTC pro Block. 
+Die Blockpr&auml;mie von Litecoin halbiert sich alle 840.000 Bl&ouml;cke.</p>
+
+<h2 id="is-there-an-ethereum-block-reward-halving-countdown">Gibt es einen Countdown f&uuml;r die Ethereum-Blockpr&auml;mienhalbierung?</h2>
+<p>Die Blockpr&auml;mie von Ethereum halbiert sich nicht wie die von Bitcoin, daher gibt es keinen Countdown.</p>
+
+<h2 id="what-is-the-bitcoin-clock">Was ist die Bitcoin-Uhr?</h2>
+<p>Die Bitcoin-Uhr gibt es seit 2011. Im Jahr 2018 lie&szlig; der Eigent&uuml;mer die Domain auslaufen. Wir haben die Website umgestaltet und 
+sie zurück zu ihrer urspr&uuml;ngliche Vision gebracht.</p>
+
+<h2 id="is-the-reward-halving-necessary">Ist die Halbierung notwendig?</h2>
+<p>Die Halbierung ist notwendig. Auf diese Weise wird das Bitcoin-Angebot gesteuert. Nach Ablauf der Blocksubvention werden den Minern 
+Transaktionsgeb&uuml;hren f&uuml;r die Sicherung des Netzwerks gezahlt.</p>
+
+<h2 id="why-our-estimates-are-the-most-accurate">Warum unsere Sch&auml;tzungen die genauesten sind</h2>
+<p>Die meisten der anderen Halbierungsdatumssch&auml;tzungen verwenden 10-Minuten-Bl&ouml;cke, um das gesch&auml;tzte Halbierungsdatum zu berechnen.</p>
+
+<p>Tats&auml;chlich wurden die Bl&ouml;cke jedoch fast in der gesamten Geschichte von Bitcoin in Abst&auml;nden von weniger als 10 Minuten gewonnen.</p>
+
+<p>Unser Kalkulator verwendet Daten von <a href="https://data.bitcoinity.org/bitcoin/block_time/5y?f=m10&r=month&t=l">Bitcoinity</a> um die durchschnittliche Blockzeit 
+der letzten 6 Monate zu ermitteln. Mit dieser Blockzeit (derzeit 9,9266 Minuten zwischen den Bl&ouml;cken) wird dann das Halbierungsdatum gesch&auml;tzt.</p>
+
+<p>W&auml;hrend die meisten anderen Sch&auml;tzungen die Halbierung f&uuml;r Ende Mai prognostizieren, ist es wahrscheinlicher, dass die Halbierung Anfang Mai stattfinden wird.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#what-is-the-bitcoin-halving" id="markdown-toc-what-is-the-bitcoin-halving">Was ist die Bitcoin-Halbierung?</a></li>
+  <li><a href="#what-is-the-significance-of-the-reward-halving" id="markdown-toc-what-is-the-significance-of-the-reward-halving">Welche Bedeutung hat die Pr&auml;mienhalbierung?</a></li>
+  <li><a href="#bitcoin-halving-chart" id="markdown-toc-bitcoin-halving-chart">Bitcoin-Halbierungsdiagramm</a></li>
+  <li><a href="#bitcoin-halving-schedule" id="markdown-toc-bitcoin-halving-schedule">Bitcoin-Halbierungsplan</a></li>
+  <li><a href="#what-happens-to-miners-during-halvings" id="markdown-toc-what-happens-to-miners-during-halvings">Was passiert mit den Minern w&auml;hrend der Halbierungen?</a></li>
+  <li><a href="#when-is-the-next-bitcoin-halving-after-the-2020-halving" id="markdown-toc-when-is-the-next-bitcoin-halving-after-the-2020-halving">Wann ist die n&auml;chste Bitcoin-Halbierung nach der Halbierung 2020?</a></li>
+  <li><a href="#bitcoin-halving-history" id="markdown-toc-bitcoin-halving-history">Historie der Bitcoin-Halbierungen</a>    <ul>
+      <li><a href="#2012-halving" id="markdown-toc-2012-halving">Halbierung 2012</a></li>
+      <li><a href="#2016-halving" id="markdown-toc-2016-halving">Halbierung 2016</a></li>
+    </ul>
+  </li>
+  <li><a href="#current-bitcoin-block-reward" id="markdown-toc-current-bitcoin-block-reward">Aktuelle Bitcoin-Blocksubventionierung</a></li>
+  <li><a href="#bitcoin-halving-parties" id="markdown-toc-bitcoin-halving-parties">Bitcoin-Halbierungsteilnehmer</a></li>
+    <li><a href="#21-million" id="21-million">Wann werden alle 21 Millionen Bitcoins erzeugt sein?</a></li>
+  <li><a href="#is-there-a-litecoin-block-reward-halving-countdown" id="markdown-toc-is-there-a-litecoin-block-reward-halving-countdown">Gibt es einen Countdown f&uuml;r die Litecoin-Blockpr&auml;mienhalbierung?</a></li>
+  <li><a href="#is-there-an-ethereum-block-reward-halving-countdown" id="markdown-toc-is-there-an-ethereum-block-reward-halving-countdown">Gibt es einen Countdown f&uuml;r die Ethereum-Blockpr&auml;mienhalbierung?</a></li>
+  <li><a href="#what-is-the-bitcoin-clock" id="markdown-toc-what-is-the-bitcoin-clock">Was ist die Bitcoin-Uhr?</a></li>
+  <li><a href="#is-the-reward-halving-necessary" id="markdown-toc-is-the-reward-halving-necessary">Ist die Halbierung notwendig?</a></li>
+  <li><a href="#why-our-estimates-are-the-most-accurate" id="markdown-toc-why-our-estimates-are-the-most-accurate">Warum unsere Sch&auml;tzungen die genauesten sind</a></li>
+</ul>
