@@ -1,0 +1,212 @@
+---
+layout: default
+seo_title: "Aftelling tot de Bitcoin-halvering in 2020 & geschatte tijd en datum"
+title: "Bitcoin-klok: Aftelling tot de Bitcoin-halvering in 2020"
+permalink: "/nl/"
+lang: nl
+pagename: clock
+---
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+<script>
+    var height;
+    jQuery(document).ready(function($){
+        $.getJSON("https://www.satochi.co/latest-block", function( data ) {
+            var height = data;
+            var total_number = 12.5 * (height - 472500) + 16406250;
+            var append_html = "<span></span>";
+
+            
+            var til_halving = 630000 - height;
+            append_html += "<b>Blocks Until Halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            
+            var block_time = 9.8125;
+            var minutes_til_halving = til_halving * block_time;
+            var days_til_halving = minutes_til_halving / (24 * 60);
+            var days_remainder = days_til_halving - Math.floor(days_til_halving);
+            var minutes = days_remainder - Math.floor(days_remainder);
+            var percent_done = (((height % 210000) / 210000) * 360);
+                        
+            $(".minutes").css("transform", "rotate(" + percent_done +"deg)");
+              
+              $('#days_calc').append(Math.floor(days_til_halving));
+               $('#hours_calc').append(Math.floor(days_remainder * 24));
+                $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                
+                var d = new Date( Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000); 
+                
+                var month = d.getMonth() + 1;
+				var day = d.getUTCDate();
+				var year = d.getUTCFullYear();
+				
+				console.log(month);
+								
+				if (month === 4) {
+					var month_name = "April";
+				}
+				
+				else if (month === 5) {
+					var month_name = "May";
+				}
+				
+				else if (month === 3) {
+					var month_name = "March";
+				}
+
+				$('#date_eta').append(month_name + " " + day + ", " + year);
+				
+				let hours_label = "hours";
+				
+				if (Math.floor(days_remainder * 24) == 1) {
+					hours_label = "hour";
+				}
+				
+				$("#hours_label").append(hours_label);
+								
+				let minutes_label = "minutes";
+				
+				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
+					minutes_label = "minute";
+				}
+				
+				$("#minutes_label").append(minutes_label);
+
+
+            $("#calc-content-div").append(append_html);
+        });
+    });
+</script>
+
+
+<p style="text-align: center; color: black;"><b>Block Halving ETA:</b> <span style="font-weight: bold;" id="days_calc"></span> days, <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span>, <span style="font-weight: bold;" id="minutes_calc"></span> <span id="minutes_label"></span></p>
+
+<p style="text-align: center; color: black;"><b>Date ETA:</b> <span id="date_eta"></span></p>
+
+<div class="clock simple">
+  <div class="minutes-container">
+    <div class="minutes"></div>
+  </div>
+</div>
+
+
+<div id="calc-content-div" style="text-align: center;"></div>
+
+<h2 id="what-is-the-bitcoin-halving">What is the Bitcoin Halving?</h2>
+<p>New bitcoins are issued by the Bitcoin network every 10 minutes. For the first four years of Bitcoin's existence, the amount of new bitcoins issued every 10 minutes was 50. Every four years, this number is cut in half. The day the amount halves is called a "halving".</p> 
+
+<p>In 2012, the amount of new bitcoins issued every 10 minutes dropped from 50 bitcoins to 25. In 2016, it dropped from 25 to 12.5. Now, in the 2020 halving, it will drop from 12.5 to 6.25.</p> 
+
+<h2 id="what-is-the-significance-of-the-reward-halving">What is the Significance of the Bitcoin Block Halving?</h2>
+<p>The halving decreases the amount of new bitcoins generated per block. This means the supply of new bitcoins is lower.</p>
+<p>In normal markets, lower supply with steady demand usually leads to higher prices. Since the halving reduces the supply of new bitcoins, and demand usually remains steady, the halving has usually preceded some of Bitcoin's largest runs. </p>
+
+<p>In the image below, the vertical green lines indicate the previous two halvings (<a href="https://en.bitcoin.it/wiki/Controlled_supply">2012-11-28 and 2016-7-9</a>). Note how the price has jumped significantly after each halving.</p>
+
+<img src="/halvingdates.png" style="width: 100%;margin: 0 auto;">
+
+<h2 id="bitcoin-halving-chart">Bitcoin Halving Chart</h2>
+<p>In the image below, you can see Bitcoin's inflation rate during each period. </p>
+
+<img src="/inflation.png" style="width: 100%;margin: 0 auto;">
+
+<p>Each halving lowers Bitcoin's inflation rate. The orange line is Bitcoin's inflation rate during a given period, while the blue line is the total number of bitcoins issued.</p>
+
+<h2 id="bitcoin-halving-schedule">Bitcoin Halving Schedule</h2>
+<p>The Bitcoin halving is scheduled in block height, not date.</p>
+
+<p>The halving happens every 210,000 blocks. The 2020 halving will happen on block 630,000. The 2024 halving will happen at block 840,000.</p>
+
+<h2 id="what-happens-to-miners-during-halvings">What Happens to Miners During Halvings?</h2>
+<p>Many <a href="https://techcrunch.com/2016/07/09/the-reward-for-mining-bitcoin-was-just-cut-in-half/">always speculate</a> that miners will shut down after the halving. The reality is most miners are very smart and price in the halving, so they don't end up shutting down any miners.</p>
+
+<h2 id="when-is-the-next-bitcoin-halving-after-the-2020-halving">When is the 2024 Bitcoin Halving?</h2>
+<p>The 2024 halving will likely occur between March 2024 and June 2024. </p>
+
+<h2 id="bitcoin-halving-history">Bitcoin Halving History</h2>
+
+<p>This section will take a look at the previous two halvings.</p>
+
+<h2 id="2012-halving">2012 Halving</h2>
+
+<p>The <a href="https://en.bitcoin.it/wiki/Halving_day_2012">2012 block halving</a> was the first halving. It was mined by SlushPool by someone using a Radeon HD 5800 miner.</p>
+
+<ul>
+<li><b>New BTC Per Block Before:</b> 50 BTC per block</li>
+<li><b>New BTC Per Block After:</b> 25 BTC per block</li>
+<li><b>Price on Halving Day:</b> $12.35</li>
+<li><b>Price 150 Days Later:</b> $127.00</li>
+</ul>
+
+<h2 id="2016-halving">2016 Halving</h2>
+
+<p>The 2016 was the second one ever.</p>
+
+<ul>
+<li><b>New BTC Per Block Before:</b> 25 BTC per block</li>
+<li><b>New BTC Per Block After:</b> 12.5 BTC per block</li>
+<li><b>Price on Halving Day:</b> $650.63</li>
+<li><b>Price 150 Days Later:</b> $758.81</li>
+</ul>
+
+<h2 id="current-bitcoin-block-reward">Current Bitcoin Block Subsidy</h2>
+<p>The current Bitcoin block subsidy is 12.5 bitcoins per block. When block 630,000 is hit in 2020, the subsidy will drop to 6.25 bitcoins (BTC) per block.</p>
+
+<h2 id="bitcoin-halving-parties">Bitcoin Halving Parties</h2>
+<p>Thousands of Bitcoiners across the world celebrated the 2016 halving. There <a href="http://blog.thehalvening.com/bitcoin-halving-parties-2016/">were parties</a> in tons of major cities like Buenos Aires, Melbourne, Montreal, Paris, Athens, Dublin and dozens of other cities.</p>
+
+<p>Here is a video from the 2016 <a href="https://billfodl.com/blogs/fodl-blog/what-does-hodl-mean">HODL</a> halving party in Tel Aviv:</p>
+
+<iframe style="height: auto; max-width: 100%;" src="https://www.youtube.com/embed/T0IR8X-Qnqs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<p>When party events are posted, we'll keep track of them here!</p>
+
+<h2 id="21-million">When Will All 21 Million Bitcoins be Mined?</h2>
+<p>All 21 million bitcoins (BTC) will be mined by 2140. But more than 98% will be mined by 2030.</p>
+
+<h2 id="is-there-a-litecoin-block-reward-halving-countdown">Is There a Litecoin Block Reward Halving Countdown?</h2>
+<p>Yes, check <a href="http://litecoinblockhalf.com/">this site</a>. Litecoin is currently projected to have its halving a year before Bitcoin, in around August 2019. The Litecoin reward per block will decrease from 25 LTC per block to 12.5 LTC per block. Litecoin's block reward halves every 840,000 blocks.</p>
+
+<h2 id="is-there-an-ethereum-block-reward-halving-countdown">Is There an Ethereum Block Reward Halving Countdown? </h2>
+<p>Ethereum's block reward does not halve like Bitcoin's, so there is no countdown.</p>
+
+<h2 id="what-is-the-bitcoin-clock">What is the Bitcoin Clock?</h2>
+<p>The Bitcoin clock has been around since 2011. In 2018, the owner let the domain expire. We revamped the site and restored it to its original vision.</p>
+
+<h2 id="is-the-reward-halving-necessary">Is the Halving Necessary?</h2>
+<p>The halving is necessary. This is how <a href="https://financepond.com/credit-cards/buy-bitcoin/">Bitcoin</a> controls its supply. Once the block subsidy expires, transaction fees will pay miners for securing the network.</p>
+
+<h2 id="why-our-estimates-are-the-most-accurate">Why Our Estimates Are the Most Accurate</h2>
+<p>Most of the other halving date estimators use 10 minute blocks to calculate the estimated halving date. </p>
+
+<p>Blocks, however, have been mined at less than 10 minute intervals for almost all of Bitcoin's history.</p>
+
+<p>Our calculator uses data from BTC.com to get the average block time for the past two months. It then uses this block time (currently 9.8125 minutes between blocks) to estimate the halving date.</p>
+
+<p>While most of the other sites estimate the halving for late-May, the more likely outcome is an early-May reward halving.</p>
+
+<h2>What is the Current Bitcoin Block Reward?</h2>
+<p>Currently, there are 12.5 new bitcoins issued per block.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#what-is-the-bitcoin-halving" id="markdown-toc-what-is-the-bitcoin-halving">What is the Bitcoin Halving?</a></li>
+  <li><a href="#what-is-the-significance-of-the-reward-halving" id="markdown-toc-what-is-the-significance-of-the-reward-halving">What is the Significance of the Reward Halving?</a></li>
+  <li><a href="#bitcoin-halving-chart" id="markdown-toc-bitcoin-halving-chart">Bitcoin Halving Chart</a></li>
+  <li><a href="#bitcoin-halving-schedule" id="markdown-toc-bitcoin-halving-schedule">Bitcoin Halving Schedule</a></li>
+  <li><a href="#what-happens-to-miners-during-halvings" id="markdown-toc-what-happens-to-miners-during-halvings">What Happens to Miners During Halvings?</a></li>
+  <li><a href="#when-is-the-next-bitcoin-halving-after-the-2020-halving" id="markdown-toc-when-is-the-next-bitcoin-halving-after-the-2020-halving">When is the Next Bitcoin Halving?</a></li>
+  <li><a href="#bitcoin-halving-history" id="markdown-toc-bitcoin-halving-history">Bitcoin Halving History</a>    <ul>
+      <li><a href="#2012-halving" id="markdown-toc-2012-halving">2012 Halving</a></li>
+      <li><a href="#2016-halving" id="markdown-toc-2016-halving">2016 Halving</a></li>
+    </ul>
+  </li>
+  <li><a href="#current-bitcoin-block-reward" id="markdown-toc-current-bitcoin-block-reward">Current Bitcoin Block Reward</a></li>
+  <li><a href="#bitcoin-halving-parties" id="markdown-toc-bitcoin-halving-parties">Bitcoin Halving Parties</a></li>
+    <li><a href="#21-million" id="21-million">When Will all 21 Million Bitcoin be Mined?</a></li>
+  <li><a href="#is-there-a-litecoin-block-reward-halving-countdown" id="markdown-toc-is-there-a-litecoin-block-reward-halving-countdown">Is There a Litecoin Block Reward Halving Countdown?</a></li>
+  <li><a href="#is-there-an-ethereum-block-reward-halving-countdown" id="markdown-toc-is-there-an-ethereum-block-reward-halving-countdown">Is There an Ethereum Block Reward Halving Countdown?</a></li>
+  <li><a href="#what-is-the-bitcoin-clock" id="markdown-toc-what-is-the-bitcoin-clock">What is the Bitcoin Clock?</a></li>
+  <li><a href="#is-the-reward-halving-necessary" id="markdown-toc-is-the-reward-halving-necessary">Is the Reward Halving Necessary?</a></li>
+  <li><a href="#why-our-estimates-are-the-most-accurate" id="markdown-toc-why-our-estimates-are-the-most-accurate">Why Our Estimates Are the Most Accurate</a></li>
+</ul>
