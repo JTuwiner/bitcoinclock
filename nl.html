@@ -55,7 +55,7 @@ pagename: clock
 					var month_name = "March";
 				}
 
-				$('#date_eta').append(month_name + " " + day + ", " + year);
+				$('#date_eta').append(day + " " + month_name + " " + year);
 				
 				let hours_label = "uur";
 				
@@ -65,7 +65,7 @@ pagename: clock
 				
 				$("#hours_label").append(hours_label);
 								
-				let minutes_label = "minutes";
+				let minutes_label = "minuten";
 				
 				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
 					minutes_label = "minute";
