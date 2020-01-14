@@ -20,7 +20,7 @@ pagename: clock
 
             
             var til_halving = 630000 - height;
-            append_html += "<b>Blocks Until Halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            append_html += "<b>Aantal blokken tot de halvering:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             
             var block_time = 9.8125;
             var minutes_til_halving = til_halving * block_time;
@@ -44,11 +44,11 @@ pagename: clock
 				console.log(month);
 								
 				if (month === 4) {
-					var month_name = "April";
+					var month_name = "april";
 				}
 				
 				else if (month === 5) {
-					var month_name = "May";
+					var month_name = "mei";
 				}
 				
 				else if (month === 3) {
@@ -57,10 +57,10 @@ pagename: clock
 
 				$('#date_eta').append(month_name + " " + day + ", " + year);
 				
-				let hours_label = "hours";
+				let hours_label = "uur";
 				
 				if (Math.floor(days_remainder * 24) == 1) {
-					hours_label = "hour";
+					hours_label = "uur";
 				}
 				
 				$("#hours_label").append(hours_label);
