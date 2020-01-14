@@ -20,7 +20,7 @@ lang: it
 
             
             var til_halving = 630000 - height;
-            append_html += "<b>Blocks until halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            append_html += "<b>Blocchi fino all'halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
             
             var block_time = 9.8125;
             var minutes_til_halving = til_halving * block_time;
@@ -79,7 +79,7 @@ lang: it
     });
 </script>
 
-<p style="text-align: center; color: black;"><b>Block Halving ETA:</b> <span style="font-weight: bold;" id="days_calc"></span> giorni, <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span>, <span style="font-weight: bold;" id="minutes_calc"></span> <span id="minutes_label"></span></p> <p style="text-align: center; color: black;"><b>Data ETA:</b> <span id="date_eta"></span></p> <div class="clock simple">
+<p style="text-align: center; color: black;"><b>Halving dei blocchi ETA:</b> <span style="font-weight: bold;" id="days_calc"></span> giorni, <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span>, <span style="font-weight: bold;" id="minutes_calc"></span> <span id="minutes_label"></span></p> <p style="text-align: center; color: black;"><b>Dati ETA:</b> <span id="date_eta"></span></p> <div class="clock simple">
   <div class="minutes-container">
     <div class="minutes"></div>
   </div>
