@@ -21,7 +21,7 @@ pagename: clock
             var til_halving = 630000 - height;
             append_html += "<b>Bloques hasta el halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
             
-            var block_time = 9.8125;
+            var block_time = 9.69166666667;
             var minutes_til_halving = til_halving * block_time;
             var days_til_halving = minutes_til_halving / (24 * 60);
             var days_remainder = days_til_halving - Math.floor(days_til_halving);
@@ -179,7 +179,7 @@ pagename: clock
 
 <p>Los bloques, sin embargo, han sido minados en menos de intervalos de 10 minutos durante casi toda la historia del Bitcoin.</p>
 
-<p>Nuestra calculadora usa datos de <a href="https://data.bitcoinity.org/bitcoin/block_time/5y?f=m10&r=month&t=l">Bitcoinity</a> para obtener el tiempo promedio por bloque de los últimos 6 meses. Luego usa este tiempo por bloque (actualmente 9,8125 minutos entre bloque y bloque) para pronosticar la fecha del halving.</p>
+<p>Nuestra calculadora usa datos de <a href="https://data.bitcoinity.org/bitcoin/block_time/5y?f=m10&r=month&t=l">Bitcoinity</a> para obtener el tiempo promedio por bloque de los últimos 6 meses. Luego usa este tiempo por bloque (actualmente 9,69166666667 minutos entre bloque y bloque) para pronosticar la fecha del halving.</p>
 
 <p>Mientras que la mayoría de los otros sitios estiman que el halving suceda a finales de mayo, el resultado más probable es que haya un halving a principios de mayo.</p>
 
