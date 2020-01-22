@@ -1,0 +1,210 @@
+---
+layout: default
+seo_title: "Зворотний відлік до халвінгу Біткоїна у 2020 році (Біткоїн-годинник)"
+title: "Біткоїн-годинник: Зворотний відлік до халвінгу Біткоїна"
+lang: uk
+pagename: clock
+permalink: "/uk/"
+---
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="./configBlockTime.js"></script>
+
+<script>
+    var height;
+    jQuery(document).ready(function($){
+        $.getJSON("https://www.satochi.co/latest-block", function( data ) {
+            var height = data;
+            var total_number = 12.5 * (height - 472500) + 16406250;
+            var append_html = "<span></span>";
+
+            
+            var til_halving = 630000 - height;
+            append_html += "<b>Блоків до халвінгу:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            
+            // var block_time = 9.69166666667;
+            var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
+            var days_til_halving = minutes_til_halving / (24 * 60);
+            var days_remainder = days_til_halving - Math.floor(days_til_halving);
+            var minutes = days_remainder - Math.floor(days_remainder);
+            var percent_done = (((height % 210000) / 210000) * 360);
+                        
+            $(".minutes").css("transform", "rotate(" + percent_done +"deg)");
+              
+              $('#days_calc').append(Math.floor(days_til_halving));
+               $('#hours_calc').append(Math.floor(days_remainder * 24));
+                $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                
+                var d = new Date( Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000); 
+                
+                var month = d.getMonth() + 1;
+				var day = d.getUTCDate();
+				var year = d.getUTCFullYear();
+				
+				console.log(month);
+								
+				if (month === 4) {
+					var month_name = "April";
+				}
+				
+				else if (month === 5) {
+					var month_name = "Травень";
+				}
+				
+				else if (month === 3) {
+					var month_name = "March";
+				}
+
+				$('#date_eta').append(month_name + " " + day + ", " + year);
+				
+				let hours_label = "годин";
+				
+				if (Math.floor(days_remainder * 24) == 1) {
+					hours_label = "година";
+				}
+				
+				$("#hours_label").append(hours_label);
+								
+				let minutes_label = "хвилин";
+				
+				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
+					minutes_label = "хвилина";
+				}
+				
+				$("#minutes_label").append(minutes_label);
+
+
+            $("#calc-content-div").append(append_html);
+        });
+    });
+</script>
+
+
+<p style="text-align: center; color: black;"><b>Приблизний час до халвінгу Біткоїна:</b> <span style="font-weight: bold;" id="days_calc"></span> днів, <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span>, <span style="font-weight: bold;" id="minutes_calc"></span> <span id="minutes_label"></span></p>
+
+<p style="text-align: center; color: black;"><b>Приблизна дата:</b> <span id="date_eta"></span></p>
+
+<div class="clock simple">
+  <div class="minutes-container">
+    <div class="minutes"></div>
+  </div>
+</div>
+
+<div id="calc-content-div" style="text-align: center;"></div>
+
+<h2 id="what-is-the-bitcoin-halving">Що таке халвінг Біткоїна?</h2>
+<p>Нові BTC випускаються у мережу Біткоїна приблизно що 10 хвилин – такий механізм було закладено в уайтпейпер криптовалюти її творцем Сатоші Накамото. У перші чотири роки існування Біткоїну що 10 хвилин випускалось по 50 нових монет. Згідно із закладеною моделлю дефіцитного характеру монети, що 4 роки ця кількість скорочується удвічі. День, коли відбувається скорочення удвічі винагороди майнерів за видобуток нових монет, називається днем &quot;халвінгу&quot;.</p>
+
+<p>У 2012 році кількість нових біткоїнів зменшилась із 50 до 25. У 2016 році ця цифра зменшилась із 25 до 12,5 BTC що 10 хвилин. Наступна процедура халвінгу очікується у 2020 році. Після цього розмір винагороди майнерів за кожен новий блок зменшиться із 12,5 до 6,25 BTC.</p>
+
+<h2 id="what-is-the-significance-of-the-reward-halving">У чому зміст халвінгу винагороди Біткоїна?</h2>
+<p>Процедура халвінгу призводить до зменшення кількості нових біткоїнів, що виплачуються за завершення кожного нового блоку у блокчейні. Це означає, що пропозиція нових біткоїнів зменшиться.</p>
+<p>На традиційних фінансових ринках зменшення пропозиції при стійкому попиті зазвичай призводить до підвищення ціни. Оскільки халвінг так само зменшує кількість нових біткоїнів, а попит при цьому залишається без змін, ця процедура також призводить до збільшення ціни Біткоїна. Історично Біткоїн досягав нових цінових максимумів якраз перед черговим халвінгом або після нього. </p>
+
+<p>На рисунку нижче вертикальні зелені лінії вказують на два попередніх уполовинювання (<a href="https://en.bitcoin.it/wiki/Controlled_supply">28.11.2012 і 9.7.2016</a>). Зверніть увагу на те, як після кожного з них підстрибувала ціна монети.</p>
+
+<img src="/halvingdates.png" style="width: 100%;margin: 0 auto;">
+
+<h2 id="bitcoin-halving-chart">Графік халвінгу Біткоїна</h2>
+<p>А на цьому графіку можна чітко бачити показники інфляції Біткоїна протягом кожної із цих подій. </p>
+
+<img src="/inflation.png" style="width: 100%;margin: 0 auto;"> 
+
+<p>Кожен халвінг знижує інфляцію Біткоїна. Помаранчева лінія — це рівень інфляції Біткоїна за певний період, а синя лінія — загальна кількість випущених біткоїнів.</p>
+
+<h2 id="bitcoin-halving-schedule">Розклад халвінгу Біткоїна</h2>
+<p>При цьому слід пам’ятати, що чергове скорочення нагороди заплановане не за датою та часом, а за кількістю блоків.</p>
+
+<p>Відбувається це що 210 тисяч блоків. У 2020 році халвінг відбудеться на блоці за номером 630 000. А у 2024 році – на блоці 840 000.</p>
+
+<h2 id="what-happens-to-miners-during-halvings">Що відбувається з майнерами під час халвінгу?</h2>
+<p>Багато хто <a href="https://techcrunch.com/2016/07/09/the-reward-for-mining-bitcoin-was-just-cut-in-half/">вважає</a>, що із кожним халвінгом кількість майнерів суттєво зменшується. Проте насправді майнери досить розумні, і зростання ціни Біткоїна їм, ймовірніше, вигідне. Тому менше їх ставати не повинно.</p>
+
+<h2 id="when-is-the-next-bitcoin-halving-after-the-2020-halving">Коли відбудеться халвінг Біткоїна у 2024 році?</h2>
+<p>У 2024 році уполовинювання винагороди випадає на період з березня по червень.</p>
+
+<h2 id="bitcoin-halving-history">Історія халвінгу Біткоїна</h2>
+
+<p>У цьому розділі ми розглянемо дві попередні події.</p>
+
+<h2 id="2012-halving">Халвінг 2012 року</h2>
+
+<p><a href="https://en.bitcoin.it/wiki/Halving_day_2012">У 2012 році відбувся перший халвінг Біткоїна.</a> Відповідний блок було видобуто кимось із майнерів у майнінг-пулі SlushPool за допомогою відеокарти Radeon HD 5800.</p>
+
+<ul>
+<li><b>Нових BTC до халвінгу:</b> 50 BTC на блок</li>
+<li><b>Нових BTC після халвінгу:</b> 25 BTC на блок</li>
+<li><b>Ціна у день халвінгу:</b> $12,35</li>
+<li><b>Ціна через 150 днів:</b> $127,00</li>
+</ul>
+
+<h2 id="2016-halving">Халвінг 2016 року</h2>
+
+<p>У 2016 році відбувся другий в історії халвінг.</p>
+
+<ul>
+<li><b>Нових BTC до халвінгу:</b> 25 BTC на блок</li>
+<li><b>Нових BTC після халвінгу:</b> 12,5 BTC на блок</li>
+<li><b>Ціна у день халвінгу:</b> $650,63</li>
+<li><b>Ціна через 150 днів:</b> $758,81</li>
+</ul>
+
+<h2 id="current-bitcoin-block-reward">Кількість нових біткоїнів у кожному блоці цієї миті</h2>
+<p>На сьогодні за кожен завершений блок у мережу випускається 12,5 нових біткоїнів. Коли у 2020 році буде завершено блок за номером 630 000, емісія скоротиться до 6,25 біткоїна (BTC) за блок.</p>
+
+<h2 id="bitcoin-halving-parties">Вечірки з нагоди халвінгу Біткоїна</h2>
+<p>Тисячі біткоїн-ентузіастів у всьому світі відсвяткували скорочення емісії у 2016 році. Напередодні халвінгу у багатьох великих містах, таких як Буенос-Айрес, Мельбурн, Монреаль, Париж, Афіни, Дублін та десятки інших, <a href="http://blog.thehalvening.com/bitcoin-halving-parties-2016/">відбувались вечірки</a>.</p>
+
+<p>Ось відео із вечірки &#171;<a href="https://billfodl.com/blogs/fodl-blog/what-does-hodl-mean">HODL</a>&#187; 2016 року у Тель-Авіві:</p>
+
+<iframe style="height: auto; max-width: 100%;" src="https://www.youtube.com/embed/T0IR8X-Qnqs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen=""></iframe>
+
+<p>Надалі ми будемо стежити за усіма запланованими вечірками в усьому світі та розповідати про них тут!</p> 
+
+<h2 id="21-million">Коли буде видобуто 21 мільйон біткоїнів?</h2>
+<p>Ймовірно, увесь 21 мільйон біткоїнів буде видобуто приблизно у 2140 році. Проте вже до 2030 року буде видобуто понад 98%.</p> 
+
+<h2 id="is-there-a-litecoin-block-reward-halving-countdown">Чи є у інтернеті зворотний відлік до халвінгу винагороди Лайткоїна? </h2> 
+<p>Так, його можна подивитись на <a href="http://litecoinblockhalf.com/">цьому сайті</a>. До речі, попередній халвінг Лайткоїна відбувся у серпні 2019 року. Тепер наступного доведеться чекати майже 4 роки. У минулому році винагорода за завершені блоки у блокчейні Лайткоїна зменшилась із 25 до 12,5 LTC. Винагорода за блок у мережі Лайткоїна зменшується що 840 000 блоків.</p>
+
+<h2 id="is-there-an-ethereum-block-reward-halving-countdown">Чи є у інтернеті зворотний відлік до халвінгу винагороди Етеріума?</h2>
+<p>Винагорода за блок у мережі Етеріума не уполовинюється. Відповідно, зворотного відліку у інтернеті немає.</p>
+
+<h2 id="what-is-the-bitcoin-clock">Що таке Біткоїн-годинник?</h2>
+<p>Біткоїн-годинник було запущено ще в 2011 році. В 2018 році власник домену випадково не встиг вчасно оплатити рахунок за доменне ім’я. Ми вирішили відродити сайт та представити його у початковому вигляді.</p>
+
+<h2 id="is-the-reward-halving-necessary">Чому халвінг Біткоїна – це важливо?</h2>
+<p>Зменшення винагороди удвічі критично необхідне. Воно дозволяє контролювати емісію <a href="https://financepond.com/credit-cards/buy-bitcoin/">Біткоїна</a>. Після закінчення емісії за завершення блоків майнери будуть отримувати винагороду за забезпечення безпеки мережі. Вона буде нараховуватись завдяки транзакційним комісіям.</p>
+
+<h2 id="why-our-estimates-are-the-most-accurate">Чому наша оцінка найточніша?</h2>
+<p>Зазвичай інші оцінні сервіси покладаються на 10-хвилинний часовий інтервал при підрахунку завершених блоків. </p> 
+
+<p>Тут варто зауважити, що блоки дійсно практично протягом усієї історії Біткоїна завершувались за 10 хвилин.</p>
+
+<p>У нашому калькуляторі використовуються дані BTC.com. Таким чином, у нашому розпорядженні є середній час завершення блоків на основі даних за останні два місяці. Це значення (яке цієї миті складає 9,8125 хвилини) використовується для підрахунку орієнтовної дати халвінгу Біткоїна.</p>
+
+<p>Хоча більшість інших сайтів обіцяє халвінг наприкінці травня, найімовірніше, що він відбудеться вже на початку місяця.</p>
+
+<h2>Яка поточна винагорода за блоки Біткоїна?</h2>
+<p>Зараз за кожен завершений блок у мережі Біткоїна майнери отримують винагороду у розмірі 12,5 BTC.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#what-is-the-bitcoin-halving" id="markdown-toc-what-is-the-bitcoin-halving">Що таке халвінг Біткоїна?</a></li>
+  <li><a href="#what-is-the-significance-of-the-reward-halving" id="markdown-toc-what-is-the-significance-of-the-reward-halving">У чому зміст халвінгу винагороди за майнінг Біткоїна?</a></li>
+  <li><a href="#bitcoin-halving-chart" id="markdown-toc-bitcoin-halving-chart">Графік халвінгу Біткоїна</a></li>
+  <li><a href="#bitcoin-halving-schedule" id="markdown-toc-bitcoin-halving-schedule">Розклад халвінгу Біткоїна</a></li>
+  <li><a href="#what-happens-to-miners-during-halvings" id="markdown-toc-what-happens-to-miners-during-halvings">Що відбувається з майнерами під час халвінгу?</a></li>
+  <li><a href="#when-is-the-next-bitcoin-halving-after-the-2020-halving" id="markdown-toc-when-is-the-next-bitcoin-halving-after-the-2020-halving">Коли відбудеться наступний халвінг Біткоїна?</a></li>
+  <li><a href="#bitcoin-halving-history" id="markdown-toc-bitcoin-halving-history">Історія халвінгу Біткоїна</a>    <ul>
+      <li><a href="#2012-halving" id="markdown-toc-2012-halving">Халвінг 2012 року</a></li>
+      <li><a href="#2016-halving" id="markdown-toc-2016-halving">Халвінг 2016 року</a></li>
+    </ul>
+  </li>
+  <li><a href="#current-bitcoin-block-reward" id="markdown-toc-current-bitcoin-block-reward">Поточна винагорода за кожен блок Біткоїна</a></li>
+  <li><a href="#bitcoin-halving-parties" id="markdown-toc-bitcoin-halving-parties">Вечірки з нагоди халвінгу Біткоїна</a></li>
+    <li><a href="#21-million" id="21-million">Коли буде видобуто 21 мільйон біткоїнів?</a></li>
+  <li><a href="#is-there-a-litecoin-block-reward-halving-countdown" id="markdown-toc-is-there-a-litecoin-block-reward-halving-countdown">Чи є у інтернеті зворотний відлік до халвінгу винагороди Лайткоїна? </a></li>
+  <li><a href="#is-there-an-ethereum-block-reward-halving-countdown" id="markdown-toc-is-there-an-ethereum-block-reward-halving-countdown">Чи є у інтернеті зворотний відлік до халвінгу винагороди Етеріума? </a></li>
+  <li><a href="#what-is-the-bitcoin-clock" id="markdown-toc-what-is-the-bitcoin-clock">Що таке Біткоїн-годинник?</a></li>
+  <li><a href="#is-the-reward-halving-necessary" id="markdown-toc-is-the-reward-halving-necessary">Чому халвінг винагороди Біткоїна – це важливо?</a></li>
+  <li><a href="#why-our-estimates-are-the-most-accurate" id="markdown-toc-why-our-estimates-are-the-most-accurate">Чому наша оцінка найточніша?</a></li>
+</ul>
