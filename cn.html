@@ -1,0 +1,216 @@
+---
+layout: default
+seo_title: "Bitcoin Halving 2020 Countdown & Date ETA (Bitcoin Clock)"
+title: "Bitcoin Clock: 2020 Bitcoin Halving Countdown"
+lang: cn
+permalink: "/cn/"
+pagename: clock
+---
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://www.bitcoinclock.com/configBlockTime.js"></script>
+
+<script>
+    var height;
+    jQuery(document).ready(function($){
+        $.getJSON("https://www.satochi.co/latest-block", function( data ) {
+            var height = data;
+            var total_number = 12.5 * (height - 472500) + 16406250;
+            var append_html = "<span></span>";
+
+            
+            var til_halving = 630000 - height;
+            append_html += "<b>Blocks Until Halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            
+            // var block_time = 9.69166666667;
+            var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
+            var days_til_halving = minutes_til_halving / (24 * 60);
+            var days_remainder = days_til_halving - Math.floor(days_til_halving);
+            var minutes = days_remainder - Math.floor(days_remainder);
+            var percent_done = (((height % 210000) / 210000) * 360);
+                        
+            $(".minutes").css("transform", "rotate(" + percent_done +"deg)");
+              
+              $('#days_calc').append(Math.floor(days_til_halving));
+               $('#hours_calc').append(Math.floor(days_remainder * 24));
+                $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                
+                var d = new Date( Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000); 
+                
+                var month = d.getMonth() + 1;
+				var day = d.getUTCDate();
+				var year = d.getUTCFullYear();
+				
+				console.log(month);
+								
+				if (month === 4) {
+					var month_name = "April";
+				}
+				
+				else if (month === 5) {
+					var month_name = "May";
+				}
+				
+				else if (month === 3) {
+					var month_name = "March";
+				}
+
+				$('#date_eta').append(month_name + " " + day + ", " + year);
+				
+				let hours_label = "hours";
+				
+				if (Math.floor(days_remainder * 24) == 1) {
+					hours_label = "hour";
+				}
+				
+				$("#hours_label").append(hours_label);
+								
+				let minutes_label = "minutes";
+				
+				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
+					minutes_label = "minute";
+				}
+				
+				$("#minutes_label").append(minutes_label);
+
+
+            $("#calc-content-div").append(append_html);
+        });
+    });
+</script>
+
+
+<p style="text-align: center; color: black;"><b>Block Halving ETA:</b> <span style="font-weight: bold;" id="days_calc"></span> days, <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span>, <span style="font-weight: bold;" id="minutes_calc"></span> <span id="minutes_label"></span></p>
+
+<p style="text-align: center; color: black;"><b>Date ETA:</b> <span id="date_eta"></span></p>
+
+<div class="clock simple">
+  <div class="minutes-container">
+    <div class="minutes"></div>
+  </div>
+</div>
+
+
+<div id="calc-content-div" style="text-align: center;"></div>
+
+<h2 id="what-is-the-bitcoin-halving">什么是比特币产量减半?</h2>
+<p>比特币网络每10分钟产生一个新的比特币。 比特币存在的前四年，每10分钟新产生的比特币数量是50个。每四年，这个数字会减半。数额减半的那一天叫做“减半”。</p> 
+
+
+<p>2012年，每10分钟新产生的比特币数量从50个减少到25个。2016年，数量从25下降到12.5。现在，到2020年减半日，它将从12.5降到6.25。</p>
+
+<h2 id="what-is-the-significance-of-the-reward-halving">比特币区块减半的意义何在？</h2>
+<p>减半会减少每个区块产生的新比特币数量。这意味着新比特币的供应量较低。</p>
+
+<p>在正常市场中，需求稳定而供给减少，通常导致价格上涨。由于减半减少了新比特币的供应，而需求仍然保持稳定，因此减半通常先于比特币的大涨。
+<p>在下面的这幅图, 垂直的绿线示意了前两个减半日期(<a href="https://en.bitcoin.it/wiki/Controlled_supply">2012-11-28 和 2016-7-9</a>)。 请注意，在每次减半之后，价格是如何大幅上涨的。</p>
+
+<img src="/halvingdates.png" style="width: 100%;margin: 0 auto;">
+
+<h2 id="bitcoin-halving-chart">比特币减半图表</h2>
+<p>在下图中，您可以看到比特币在每个时期的通胀率。 </p>
+
+<img src="/inflation.png" style="width: 100%;margin: 0 auto;">
+
+<p>每次减半都会降低比特币的通胀率。橙色线是比特币在特定时期内的通货膨胀率，而蓝色线是比特币产生的总数。</p>
+
+<h2 id="bitcoin-halving-schedule">比特币减半时间表</h2>
+<p>比特币减半计划是在区块高度上，而不是日期。</p>
+
+<p>每21万个区块减半一次。2020年将在区块630,000上减半。2024年减半将发生区块840,000。</p>
+
+<h2 id="what-happens-to-miners-during-halvings">减半期间矿商会怎样？</h2>
+
+<p>许多人 <a href="https://techcrunch.com/2016/07/09/the-reward-for-mining-bitcoin-was-just-cut-in-half/">总是在猜测</a> 矿商会在减半后关闭矿场。 现实情况是大多数的矿商都非常聪明，因此他们最终不会关闭任何矿场。</p>
+
+<h2 id="when-is-the-next-bitcoin-halving-after-the-2020-halving">2024年的比特币何时减半？</h2>
+<p>2024年的减半可能会在2024年3月至2024年6月之间发生。</p>
+
+<h2 id="bitcoin-halving-history">比特币减半历史</h2>
+
+<p>本节将介绍前两个减半部分。</p>
+
+<h2 id="2012-halving">2012 减半</h2>
+
+<p><a href="https://en.bitcoin.it/wiki/Halving_day_2012">2012 年的区块减半</a> 是第一次减半。它是由某些人使用Radeon HD 5800显卡在SlushPool矿池开采的。</p>
+
+<ul>
+<li><b>减半前每个区块的比特币数量:</b> 每个区块50个比特币</li>
+<li><b>减半后每个区块的比特币数量:</b> 每个区块25个比特币</li>
+<li><b>减半日的比特币价格:</b> 12.35美元</li>
+<li><b>减半日150天后的比特币价格:</b> 127.00美元</li>
+</ul>
+
+<h2 id="2016-halving">2016 减半</h2>
+
+<p>2016年是第二次减半</p>
+
+<ul>
+<li><b>减半前每个区块的比特币数量:</b> 每个区块25个比特币</li>
+<li><b>减半后每个区块的比特币数量:</b> 每个区块12.5个比特币</li>
+<li><b>减半日的比特币价格:</b> 650.63美元</li>
+<li><b>减半日150天后的比特币价格:</b> 758.81美元</li>
+</ul>
+
+<h2 id="current-bitcoin-block-reward">当前的比特币区块奖励</h2>
+<p>当前的比特币块奖励是每区块12.5个比特币。 2020年达到区块编号630,000时，奖励将降至每个区块6.25比特币（BTC）。</p>
+
+<h2 id="bitcoin-halving-parties">比特币减半的聚会</h2>
+
+<p>世界各地成千上万的比特币持有者庆贺了2016年的减半。 这些 <a href="http://blog.thehalvening.com/bitcoin-halving-parties-2016/">聚会</a>在布宜诺斯艾利斯，墨尔本，蒙特利尔，巴黎，雅典，都柏林等数十个主要城市的举行。</p>
+
+
+<p>这是2016年 <a href="https://billfodl.com/blogs/fodl-blog/what-does-hodl-mean">HODL</a> 减半聚会上的视频:</p>
+
+<iframe style="height: auto; max-width: 100%;" src="https://www.youtube.com/embed/T0IR8X-Qnqs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+ 
+<p>当聚会活动发布时，我们将在这里跟踪它们！</p>
+
+<h2 id="21-million">什么时候2100万比特币将被全部开采？</h2>
+<p>到2140年，全部2100万比特币（BTC）将被开采。到2030年，将开采超过98％的比特币。</p>
+
+<h2 id="is-there-a-litecoin-block-reward-halving-countdown">是否有莱特币区块奖励减半倒计时？</h2>
+<p>是的，请检查 <a href="http://litecoinblockhalf.com/">这个网站</a>。莱特币计划比比特币早一年减半, 大概是在2019年8月钱后。每个莱特币的奖励从每个区块25个LTC降至每个区块12.5个个LTC。莱特币的区块奖励是840,000个区块就减半。</p>
+
+<h2 id="is-there-an-ethereum-block-reward-halving-countdown">是否有以太坊的奖励减半倒计时？ </h2>
+<p>以太坊的区块奖励不像比特币那样，因此没有倒数计时。</p>
+
+<h2 id="what-is-the-bitcoin-clock">比特币的减半时钟网址是什么？</h2>
+<p>比特币的减半时钟网址从2011年就开始了。2018年，域名所有者让域名过期了。我们对网站进行了改造，使之恢复到原来的样子。</p>
+
+<h2 id="is-the-reward-halving-necessary">减半奖励有必要吗？</h2>
+<p>减半是由必要的。 这是 <a href="https://financepond.com/credit-cards/buy-bitcoin/">比特币</a> 控制它的供应量的方式。 一旦这个区块奖励到期, 交易费将支付给矿工用以保护网络。</p>
+
+<h2 id="why-our-estimates-are-the-most-accurate">为什么我们的估算值最准确</h2>
+<p>因为其他大多数减半日期预估都使用10分钟的区块来预估减半日期。 </p>
+
+<p>然而，几乎所有比特币的历史都以不到10分钟的间隔周期开采着。</p>
+ 
+
+<p>我们的计算器使用的数据来自BTC.com，获取的是过去两个月的平均区块时间。然后，使用该区块时间 (当前每个区块之间是 9.69166666667 分钟) 去计算减半日期</p>
+
+<p>尽管大多数其他站点估计五月下旬减半，但更可能的结果是五月初，奖励就会减半。</p>
+
+<h2>当前的比特币区块奖励是什么？</h2>
+<p>目前，每个区块产生了12.5个新的比特币。</p>
+
+<ul id="markdown-toc">
+  <li><a href="#what-is-the-bitcoin-halving" id="markdown-toc-what-is-the-bitcoin-halving">什么是比特币产量减半?</a></li>
+  <li><a href="#what-is-the-significance-of-the-reward-halving" id="markdown-toc-what-is-the-significance-of-the-reward-halving">奖金减半的意义是什么?</a></li>
+  <li><a href="#bitcoin-halving-chart" id="markdown-toc-bitcoin-halving-chart">比特币产量减半图表</a></li>
+  <li><a href="#bitcoin-halving-schedule" id="markdown-toc-bitcoin-halving-schedule">比特币产量减半时间表</a></li>
+  <li><a href="#what-happens-to-miners-during-halvings" id="markdown-toc-what-happens-to-miners-during-halvings">减半期间矿商会怎样？</a></li>
+  <li><a href="#when-is-the-next-bitcoin-halving-after-the-2020-halving" id="markdown-toc-when-is-the-next-bitcoin-halving-after-the-2020-halving">下一次比特币减半是什么时间？</a></li>
+  <li><a href="#bitcoin-halving-history" id="markdown-toc-bitcoin-halving-history">比特币减半历史</a>    <ul>
+      <li><a href="#2012-halving" id="markdown-toc-2012-halving">2012 的减半</a></li>
+      <li><a href="#2016-halving" id="markdown-toc-2016-halving">2016 的减半</a></li>
+    </ul>
+  </li>
+  <li><a href="#current-bitcoin-block-reward" id="markdown-toc-current-bitcoin-block-reward">当前比特币区块奖励</a></li>
+  <li><a href="#bitcoin-halving-parties" id="markdown-toc-bitcoin-halving-parties">比特币减半聚会</a></li>
+    <li><a href="#21-million" id="21-million">什么时候2100万比特币将被全部开采？</a></li>
+  <li><a href="#is-there-a-litecoin-block-reward-halving-countdown" id="markdown-toc-is-there-a-litecoin-block-reward-halving-countdown">是否有莱特币区块奖励减半倒计时？</a></li>
+  <li><a href="#is-there-an-ethereum-block-reward-halving-countdown" id="markdown-toc-is-there-an-ethereum-block-reward-halving-countdown">是否有以太坊的奖励减半倒计时？</a></li>
+  <li><a href="#what-is-the-bitcoin-clock" id="markdown-toc-what-is-the-bitcoin-clock">比特币的减半时钟网址是什么？</a></li>
+  <li><a href="#is-the-reward-halving-necessary" id="markdown-toc-is-the-reward-halving-necessary">减半奖励有必要吗？</a></li>
+  <li><a href="#why-our-estimates-are-the-most-accurate" id="markdown-toc-why-our-estimates-are-the-most-accurate">为什么我们的估算值最准确</a></li>
+</ul>
