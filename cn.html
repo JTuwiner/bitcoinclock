@@ -54,7 +54,7 @@ pagename: clock
 					var month_name = "March";
 				}
 
-				$('#date_eta').append(year + "年," month_name + ", " + day + "日");
+				$('#date_eta').append(year + "年" + month_name + " " + day + ", ");
 				
 				let hours_label = "小时";
 				
@@ -79,7 +79,7 @@ pagename: clock
 </script>
 
 
-<p style="text-align: center; color: black;"><b>区块减半到达时间:</b> 天 <span style="font-weight: bold;" id="days_calc"></span>, <span id="hours_label"></span> <span style="font-weight: bold;" id="hours_calc"></span>, <span id="minutes_label"></span> <span style="font-weight: bold;" id="minutes_calc"></span></p>
+<p style="text-align: center; color: black;"><b>区块减半到达时间:</b> <span style="font-weight: bold;" id="days_calc"></span> 日期, <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span>, <span style="font-weight: bold;" id="minutes_calc"></span> <span id="minutes_label"></span></p>
 
 <p style="text-align: center; color: black;"><b>预计到达时间:</b> <span id="date_eta"></span></p>
 
