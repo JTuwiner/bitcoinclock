@@ -1,7 +1,7 @@
 ---
 layout: default
-seo_title: "Bitcoin Halving 2020 Countdown & Date ETA (Bitcoin Clock)"
-title: "Bitcoin Clock: 2020 Bitcoin Halving Countdown"
+seo_title: "比特币减半2020年倒计时和到达日期（比特币时钟)"
+title: "比特币时钟：2020年比特币减半倒计时"
 lang: cn
 permalink: "/cn/"
 pagename: clock
@@ -19,7 +19,7 @@ pagename: clock
 
             
             var til_halving = 630000 - height;
-            append_html += "<b>Blocks Until Halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            append_html += "<b>减半前区块:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
             
             // var block_time = 9.69166666667;
             var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
@@ -47,7 +47,7 @@ pagename: clock
 				}
 				
 				else if (month === 5) {
-					var month_name = "May";
+					var month_name = "五月";
 				}
 				
 				else if (month === 3) {
@@ -56,7 +56,7 @@ pagename: clock
 
 				$('#date_eta').append(month_name + " " + day + ", " + year);
 				
-				let hours_label = "hours";
+				let hours_label = "小时";
 				
 				if (Math.floor(days_remainder * 24) == 1) {
 					hours_label = "hour";
@@ -64,7 +64,7 @@ pagename: clock
 				
 				$("#hours_label").append(hours_label);
 								
-				let minutes_label = "minutes";
+				let minutes_label = "分钟";
 				
 				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
 					minutes_label = "minute";
@@ -79,9 +79,9 @@ pagename: clock
 </script>
 
 
-<p style="text-align: center; color: black;"><b>Block Halving ETA:</b> <span style="font-weight: bold;" id="days_calc"></span> days, <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span>, <span style="font-weight: bold;" id="minutes_calc"></span> <span id="minutes_label"></span></p>
+<p style="text-align: center; color: black;"><b>区块减半到达时间:</b> <span style="font-weight: bold;" id="days_calc"></span> 日期, <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span>, <span style="font-weight: bold;" id="minutes_calc"></span> <span id="minutes_label"></span></p>
 
-<p style="text-align: center; color: black;"><b>Date ETA:</b> <span id="date_eta"></span></p>
+<p style="text-align: center; color: black;"><b>预计到达时间:</b> <span id="date_eta"></span></p>
 
 <div class="clock simple">
   <div class="minutes-container">
