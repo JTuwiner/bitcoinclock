@@ -1,0 +1,212 @@
+---
+layout: default
+seo_title: "Bitcoin-Halbierungscountdown 2020 & Datum ETA (Bitcoin-Uhr)"
+title: "Bitcoin-Uhr: Bitcoin-Halbierungscountdown 2020"
+permalink: "/id/"
+lang: id
+pagename: clock
+---
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://www.bitcoinclock.com/configBlockTime.js"></script>
+
+<script>
+    var height;
+    jQuery(document).ready(function($){
+        $.getJSON("https://www.satochi.co/latest-block", function( data ) {
+            var height = data;
+            var total_number = 12.5 * (height - 472500) + 16406250;
+            var append_html = "<span></span>";
+
+            
+            var til_halving = 630000 - height;
+            append_html += "<b>Blok Sampai Dengan Halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            
+            // var block_time = 9.69166666667;
+            var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
+            var days_til_halving = minutes_til_halving / (24 * 60);
+            var days_remainder = days_til_halving - Math.floor(days_til_halving);
+            var minutes = days_remainder - Math.floor(days_remainder);
+            var percent_done = (((height % 210000) / 210000) * 360);
+                        
+            $(".minutes").css("transform", "rotate(" + percent_done +"deg)");
+              
+              $('#days_calc').append(Math.floor(days_til_halving));
+               $('#hours_calc').append(Math.floor(days_remainder * 24));
+                $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                
+                var d = new Date( Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000); 
+                
+                var month = d.getMonth() + 1;
+				var day = d.getUTCDate();
+				var year = d.getUTCFullYear();
+				
+				console.log(month);
+								
+				if (month === 4) {
+					var month_name = "April";
+				}
+				
+				else if (month === 5) {
+					var month_name = "May";
+				}
+				
+				else if (month === 3) {
+					var month_name = "March";
+				}
+
+				$('#date_eta').append(month_name + " " + day + ", " + year);
+				
+				let hours_label = "hours";
+				
+				if (Math.floor(days_remainder * 24) == 1) {
+					hours_label = "hour";
+				}
+				
+				$("#hours_label").append(hours_label);
+								
+				let minutes_label = "minutes";
+				
+				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
+					minutes_label = "minute";
+				}
+				
+				$("#minutes_label").append(minutes_label);
+
+
+            $("#calc-content-div").append(append_html);
+        });
+    });
+</script>
+
+
+<p style="text-align: center; color: black;"><b>Perkiraan Waktu Halving Blok:</b> <span style="font-weight: bold;" id="days_calc"></span> hari, <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span>, <span style="font-weight: bold;" id="minutes_calc"></span> <span id="minutes_label"></span></p>
+
+<p style="text-align: center; color: black;"><b>Perkiraan Waktu Tanggal:</b> <span id="date_eta"></span></p>
+
+<div class="clock simple">
+  <div class="minutes-container">
+    <div class="minutes"></div>
+  </div>
+</div>
+
+
+<div id="calc-content-div" style="text-align: center;"></div>
+
+<h2 id="what-is-the-bitcoin-halving">Apa itu Halving Bitcoin?</h2>
+<p>Bitcoin-bitcoin baru dikeluarkan oleh jaringan Bitcoin setiap 10 menit. Selama empat tahun pertama keberadaan Bitcoin, jumlah bitcoin yang diterbitkan setiap 10 menit adalah 50. Setiap empat tahun, jumlah ini dikurangi setengahnya. Hari saat dimana jumlah tersebut dikurangi setengahnya disebut "halving".</p> 
+
+<p>Pada tahun 2012, jumlah bitcoin baru yang diterbitkan setiap 10 menit turun dari 50 bitcoin ke 25 bitcoin. Pada tahun 2016, turun dari 25 ke 12,5. Saat ini, halving di tahun 2020, jumlah tersebut akan turun dari 12,5 ke 6,25 bitcoin.</p> 
+
+<h2 id="what-is-the-significance-of-the-reward-halving">Apa Arti dari Halving Blok Bitcoin?</h2>
+<p>Halving mengurangi jumlah bitcoin yang dihasilkan per blok. Ini berarti pasokan bitcoin baru menjadi menurun.</p>
+<p>Pada pasar normal, menurunnya pasokan dengan permintaan yang tetap biasanya menghasilkan kenaikan harga. Karena halving mengurangi pasokan Bitcoin-bitcoin baru, dan permintaan biasanya tetap stabil, halving biasanya mempelopori pergerakan terbesar Bitcoin.</p>
+
+<p>Pada gambar dibawah ini, garis hijau vertikal menunjukkan dua halving sebelumnya (<a href="https://en.bitcoin.it/wiki/Controlled_supply">2012-11-28 and 2016-7-9</a>). Perhatikan bagaimana harga melonjak secara signifikan setelah tiap halving.</p>
+
+<img src="/halvingdates.png" style="width: 100%;margin: 0 auto;">
+
+<h2 id="bitcoin-halving-chart">Graffik Halving Bitcoin</h2>
+<p>Pada gambar dibawah ini, dapat Anda lihat nilai inflasi Bitcoin selama tiap periode. </p>
+
+<img src="/inflation.png" style="width: 100%;margin: 0 auto;">
+
+<p>Setiap halving menurunkan nilai inflasi Bitcoin. Garis yang berwarna oranye adalah nilai inflasi Bitcoin selama periode yang diberikan, sedangkan garis biru adalah jumlah total Bitcoin yang diterbitkan.</p>
+
+<h2 id="bitcoin-halving-schedule">Jadwal Halving Bitcoin</h2>
+<p>Halving Bitcoin dijadwalkan pada ketinggian blok, bukan pada tanggal.</p>
+
+<p>Halving terjadi setiap 210.000 blok. Halving di tahun 2020 akan terjadi pada blok 630.000. Halving di tahun 2024 akan terjadi pada blok 840.000.</p>
+
+<h2 id="what-happens-to-miners-during-halvings">Apa yang Terjadi pada Miner Selama Halving?</h2>
+<p>Banyak yang <a href="https://techcrunch.com/2016/07/09/the-reward-for-mining-bitcoin-was-just-cut-in-half/">selalu berspekulasi</a> bahwa miner akan padam setelah halving. Kenyataannya adalah sebagian besar miner sangat cerdas dan harga pada pada saat halving mengakibatkan mereka tidak berakhir dengan menutup miner mana pun.</p>
+
+<h2 id="when-is-the-next-bitcoin-halving-after-the-2020-halving">Kapan Terjadinya Halving Bitcoin di Tahun 2024?</h2>
+<p>Halving di tahun 2024 akan terjadi antara bulan Maret 2024 dan Juni 2024. </p>
+
+<h2 id="bitcoin-halving-history">Riwayat Halving Bitcoin</h2>
+
+<p>Bagian ini akan melihat dua halving sebelumnya.</p>
+
+<h2 id="2012-halving">Halving Tahun 2012</h2>
+
+<p><a href="https://en.bitcoin.it/wiki/Halving_day_2012">Halving blok tahun 2012</a> adalah halving pertama. Di-mine melalui SlushPool oleh seseorang yang menggunakan miner Radeon HD 5800.</p>
+
+<ul>
+<li><b>BTC Baru Per Blok Sebelumnya:</b> 50 BTC per blok</li>
+<li><b>BTC Baru Per Blok Setelahnya:</b> 25 BTC per blok</li>
+<li><b>Harga pada Hari Halving:</b> $12.35</li>
+<li><b>Harga Setelah 150 Hari Kemudian:</b> $127.00</li>
+</ul>
+
+<h2 id="2016-halving">Halving Tahun 2016</h2>
+
+<p>Halving Tahun 2016 adalah halving yang kedua.</p>
+
+<ul>
+<li><b>BTC Baru Per Blok Sebelumnya:</b> 25 BTC per blok</li>
+<li><b>BTC Baru Per Blok Setelahnya:</b> 12.5 BTC per blok</li>
+<li><b>Harga pada Hari Halving:</b> $650.63</li>
+<li><b>Harga Setelah 150 Hari Kemudian:</b> $758.81</li>
+</ul>
+
+<h2 id="current-bitcoin-block-reward">Subsidi Blok Bitcoin Saat Ini</h2>
+<p>Subsidi blok Bitcoin saat ini adalah 12,5 bitcoin per blok. Saat 630.000 blok tercapai pada tahun 2020, subsidi tersebut akan jatuh ke 6,25 bitcoin (BTC) per blok.</p>
+
+<h2 id="bitcoin-halving-parties">Pesta-pesta Halving Bitcoin</h2>
+<p>Ribuan Bitcoiner seluruh dunia merayakan halving tahun 2016. Disana <a href="http://blog.thehalvening.com/bitcoin-halving-parties-2016/">mereka berpesta</a> di kota-kota besar seperti Buenos Aires, Melbourne, Montreal, Paris, Athena, Dublin, dan banyak kota-kota lainnya.</p>
+
+<p>Ini adalah videa dari pesta<a href="https://billfodl.com/blogs/fodl-blog/what-does-hodl-mean">HODL</a> tahun 2016 di Tel Aviv:</p>
+
+<iframe style="height: auto; max-width: 100%;" src="https://www.youtube.com/embed/T0IR8X-Qnqs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<p>Saat event pesta diumumkan, Kami akan mengikutinya disini!</p>
+
+<h2 id="21-million">Kapan Seluruh 21 juta Bitcoin Akan Di-Mine?</h2>
+<p>Seluruh 21 juta bitcoin (BTC) akan di-mine pada tahun 2140. Tetapi lebih dari 98% akan di-mine pada saat tahun 2030.</p>
+
+<h2 id="is-there-a-litecoin-block-reward-halving-countdown">Apakah Ada Perhitungan Mundur Halving Reward Blok Litecoin?</h2>
+<p>Ya, cek <a href="http://litecoinblockhalf.com/">situs ini</a>. Litecoin saat ini diproyeksikan untuk mengalami halving satu tahun sebelum Bitcoin, sekitar Agustus 2019. Reward Litecoin per blok akan berkurang dari 25 LTC per blok ke 12,5 LTC per blok. Reward blok Litecoin berkurang setengahnya setiap 840.000 blok.</p>
+
+<h2 id="is-there-an-ethereum-block-reward-halving-countdown">Adakah Perhitungan Mundur Halving Reward blok Ethereum? </h2>
+<p>Reward blok Ethereum tidak mengalami halving seperti Bitcoin, jadi tidak ada perhitungan mundur.</p>
+
+<h2 id="what-is-the-bitcoin-clock">Apa yang Disebut Jam Bitcoin?</h2>
+<p>Jam Bitcoin ada sejak tahun 2011. Pada tahun 2018, pemiliknya membiarkan domainnya habis masa berlakunya. Kami mengubah situsnya dan mengembalikannya ke visi aslinya.</p>
+
+<h2 id="is-the-reward-halving-necessary">Apakah Halving Itu Perlu?</h2>
+<p>Halving itu diperlukan. Ini adalah cara <a href="https://financepond.com/credit-cards/buy-bitcoin/">Bitcoin</a> mengendalikan pasokannya. Saat subsidi blok tidak berlaku lagi, biaya transaksi akan membayar miner untuk mengamankan jaringannya.</p>
+
+<h2 id="why-our-estimates-are-the-most-accurate">Mengapa Estimasi Kami Adalah yang Paling Akurat</h2>
+<p>Sebagian besar estimator tanggal halving menggunakan 10 menit blok untuk menghitung estimasi tanggal halving. </p>
+
+<p>Namun, Blok telah di-mine pada interval kurang dari 10 menit untuk hampir semua riwayat Bitcoin.</p>
+
+<p>Kalkulator Kami menggunakan data dari BTC.com untuk mendapatkan waktu blok rata-rata pada dua bulan sebelumnya. Ia selanjutnya menggunakan waktu blok ini (saat ini 9.69166666667 menit antara blok) untuk memperkirakan tanggal halving.</p>
+
+<p>Saat sebagian besar situs lain memperkirakan halving pada akhir bulan Mei, hasil yang lebih mungkin adalah halving reward pada awal bulan Mei.</p>
+
+<h2>Bagaimana Reward Blok Bitcoin saat ini?</h2>
+<p>Saat ini, ada 12,5 bitcoin baru diterbitkan per blok.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#what-is-the-bitcoin-halving" id="markdown-toc-what-is-the-bitcoin-halving">Apa Itu Halving Bitcoin?</a></li>
+  <li><a href="#what-is-the-significance-of-the-reward-halving" id="markdown-toc-what-is-the-significance-of-the-reward-halving">Apa Arti dari Halving Reward?</a></li>
+  <li><a href="#bitcoin-halving-chart" id="markdown-toc-bitcoin-halving-chart">Grafik Halving Bitcoin</a></li>
+  <li><a href="#bitcoin-halving-schedule" id="markdown-toc-bitcoin-halving-schedule">Jadwal Halving Bitcoin</a></li>
+  <li><a href="#what-happens-to-miners-during-halvings" id="markdown-toc-what-happens-to-miners-during-halvings">Apa yang Terjadi pada Miner saat Halving?</a></li>
+  <li><a href="#when-is-the-next-bitcoin-halving-after-the-2020-halving" id="markdown-toc-when-is-the-next-bitcoin-halving-after-the-2020-halving">Kapan Halving Bitcoin Berikutnya?</a></li>
+  <li><a href="#bitcoin-halving-history" id="markdown-toc-bitcoin-halving-history">Riwayat Halving Bitcoin</a>    <ul>
+      <li><a href="#2012-halving" id="markdown-toc-2012-halving">Halving Tahun 2012</a></li>
+      <li><a href="#2016-halving" id="markdown-toc-2016-halving">Halving Tahun 2016</a></li>
+    </ul>
+  </li>
+  <li><a href="#current-bitcoin-block-reward" id="markdown-toc-current-bitcoin-block-reward">Reward Blok Bitcoin Saat Ini</a></li>
+  <li><a href="#bitcoin-halving-parties" id="markdown-toc-bitcoin-halving-parties">Pesta-pesta Halving Bitcoin</a></li>
+    <li><a href="#21-million" id="21-million">Kapan Seluruh 21 Juta Bitcoin akan Di-Mine?</a></li>
+  <li><a href="#is-there-a-litecoin-block-reward-halving-countdown" id="markdown-toc-is-there-a-litecoin-block-reward-halving-countdown">Adakah Perhitungan Mundur Halving Reward Blok Litecoin?</a></li>
+  <li><a href="#is-there-an-ethereum-block-reward-halving-countdown" id="markdown-toc-is-there-an-ethereum-block-reward-halving-countdown">Adakah Perhitungan Mundur Halving Reward Blok Ethereum?</a></li>
+  <li><a href="#what-is-the-bitcoin-clock" id="markdown-toc-what-is-the-bitcoin-clock">Apa itu Jam Bitcoin?</a></li>
+  <li><a href="#is-the-reward-halving-necessary" id="markdown-toc-is-the-reward-halving-necessary">Apakah Halving Reward Itu Perlu?</a></li>
+  <li><a href="#why-our-estimates-are-the-most-accurate" id="markdown-toc-why-our-estimates-are-the-most-accurate">Mengapa Estimasi Kami adalah yang Paling Akurat</a></li>
+</ul>
