@@ -20,7 +20,7 @@ pagename: clock
 
             
             var til_halving = 630000 - height;
-            append_html += "<b>Blok Sampai Dengan Halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            append_html += "<b>Blok Sampai Dengan Halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
             
             // var block_time = 9.69166666667;
             var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
@@ -55,7 +55,7 @@ pagename: clock
 					var month_name = "March";
 				}
 
-				$('#date_eta').append(month_name + " " + day + ", " + year);
+				$('#date_eta').append(day + month_name + year);
 				
 				let hours_label = "Jam";
 				
