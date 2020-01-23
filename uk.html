@@ -5,6 +5,7 @@ title: "Біткоїн-годинник: Зворотний відлік до х
 lang: uk
 pagename: clock
 permalink: "/uk/"
+spaceclock: yes
 ---
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://www.bitcoinclock.com/configBlockTime.js"></script>
@@ -19,7 +20,7 @@ permalink: "/uk/"
 
             
             var til_halving = 630000 - height;
-            append_html += "<b>Блоків до халвінгу:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            append_html += "<b>Блоків до халвінгу:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
             
             // var block_time = 9.69166666667;
             var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
