@@ -30,6 +30,10 @@
   }
 }
 
+.dotclock .clock {
+	background: #fff url(/dotclock.png) no-repeat center !important;
+}
+
 @media (max-width: 550px) { 
   #main .clock {
   	width: 100%;
