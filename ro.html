@@ -1,0 +1,212 @@
+---
+layout: default
+seo_title: "Bitcoin Halving 2020 Countdown & Date ETA (Bitcoin Clock)"
+title: "Bitcoin Clock: 2020 Bitcoin Halving Countdown"
+lang: ro
+pagename: clock
+permalink: "/ro/"
+dotclock: yes
+---
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://www.bitcoinclock.com/configBlockTime.js"></script>
+
+<script>
+    var height;
+    jQuery(document).ready(function($){
+        $.getJSON("https://www.satochi.co/latest-block", function( data ) {
+            var height = data;
+            var total_number = 12.5 * (height - 472500) + 16406250;
+            var append_html = "<span></span>";
+
+            
+            var til_halving = 630000 - height;
+            append_html += "<b>Blocuri până la înjumătățire:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            
+            // var block_time = 9.69166666667;
+            var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
+            var days_til_halving = minutes_til_halving / (24 * 60);
+            var days_remainder = days_til_halving - Math.floor(days_til_halving);
+            var minutes = days_remainder - Math.floor(days_remainder);
+            var percent_done = (((height % 210000) / 210000) * 360);
+                        
+            $(".minutes").css("transform", "rotate(" + percent_done +"deg)");
+              
+              $('#days_calc').append(Math.floor(days_til_halving));
+               $('#hours_calc').append(Math.floor(days_remainder * 24));
+                $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                
+                var d = new Date( Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000); 
+                
+                var month = d.getMonth() + 1;
+				var day = d.getUTCDate();
+				var year = d.getUTCFullYear();
+				
+				console.log(month);
+								
+				if (month === 4) {
+					var month_name = "April";
+				}
+				
+				else if (month === 5) {
+					var month_name = "mai";
+				}
+				
+				else if (month === 3) {
+					var month_name = "March";
+				}
+
+				$('#date_eta').append(month_name + " " + day + ", " + year);
+				
+				let hours_label = "ore";
+				
+				if (Math.floor(days_remainder * 24) == 1) {
+					hours_label = "hour";
+				}
+				
+				$("#hours_label").append(hours_label);
+								
+				let minutes_label = "minute";
+				
+				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
+					minutes_label = "minute";
+				}
+				
+				$("#minutes_label").append(minutes_label);
+
+
+            $("#calc-content-div").append(append_html);
+        });
+    });
+</script>
+
+
+<p style="text-align: center; color: black;"><b>Timp estimat până la înjumătățirea blocurilor:</b> <span style="font-weight: bold;" id="days_calc"></span> zile, <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span>, <span style="font-weight: bold;" id="minutes_calc"></span> <span id="minutes_label"></span></p>
+
+<p style="text-align: center; color: black;"><b>Data estimată:</b> <span id="date_eta"></span></p>
+
+<div class="clock simple">
+  <div class="minutes-container">
+    <div class="minutes"></div>
+  </div>
+</div>
+
+
+<div id="calc-content-div" style="text-align: center;"></div>
+
+<h2 id="what-is-the-bitcoin-halving">Ce este Înjumătățirea Bitcoin?</h2>
+<p>Noi monede Bitcoin sunt emise de către rețeaua Bitcoin la fiecare 10 minute. În primii patru ani de existență ai monedei Bitcoin, cantitatea de monede Bitcoin nou emise la fiecare 10 minute era de 50. La fiecare patru ani, acest număr este înjumătățit. Ziua în care cantitatea se înjumătățește se numește o "înjumătățire".</p> 
+
+<p>În 2012, cantitatea de monede Bitcoin nou emise la fiecare 10 minute a scăzut de la 50 monede Bitcoin la 25. În 2016, a scăzut de la 25 la 12.5. Acum, în timpul înjumătățirii din 2020, va scădea de la 12.5 la 6.25.</p> 
+
+<h2 id="what-is-the-significance-of-the-reward-halving">Care este Semnificația Înjumătățirii Blocurilor Bitcoin?</h2>
+<p>Înjumătățirea scade cantitatea de monede Bitcoin generate pentru fiecare bloc. Asta înseamnă că furnizarea de monede Bitcoin noi este mai scăzută.</p>
+<p>Pe piețele obișnuite, oferta mai redusă cu o cerere constantă determină, de obicei, prețuri mai mari. Din moment ce înjumătățirea reduce oferta de monede Bitcoin noi, iar cererea rămâne, de obicei, constantă, înjumătățirea a precedat de regulă unele dintre cele mai mari creșteri ale monedei Bitcoin.</p>
+
+<p>În imaginea de mai jos, liniile verticale de culoare verde indică celelalte două înjumătățiri trecute. (<a href="https://en.bitcoin.it/wiki/Controlled_supply">2012-11-28 and 2016-7-9</a>). Observați cum prețul a crescut semnificativ după fiecare înjumătățire.</p>
+
+<img src="/halvingdates.png" style="width: 100%;margin: 0 auto;">
+
+<h2 id="bitcoin-halving-chart">Diagrama Înjumătățirii Bitcoin</h2>
+<p>În imaginea de mai jos puteți vedea rata de inflație a monedei Bitcoin în timpul fiecărei perioade. </p>
+
+<img src="/inflation.png" style="width: 100%;margin: 0 auto;">
+
+<p>Fiecare înjumătățire scade rata de inflație a monedei Bitcoin. Linia portocalie este rata de inflație a monedei Bitcoin pe parcursul unei perioade determinate, în timp ce linia albastră reprezintă numărul total de monede Bitcoin emise.</p>
+
+<h2 id="bitcoin-halving-schedule">Programul Înjumătățirii Bitcoin</h2>
+<p>Înjumătățirea Bitcoin este programată în raport cu înălțimea blocurilor, și nu în raport cu o dată.</p>
+
+<p>Înjumătățirea are loc la fiecare 210,000 de blocuri. Înjumătățirea din 2020 va avea loc la blocul 630,000. Înjumătățirea din 2024 va avea loc la blocul 840,000.</p>
+
+<h2 id="what-happens-to-miners-during-halvings">Ce Se Întâmplă cu Minerii În Timpul Înjumătățirilor?</h2>
+<p>Mulți <a href="https://techcrunch.com/2016/07/09/the-reward-for-mining-bitcoin-was-just-cut-in-half/">speculează mereu</a> că minerii își vor înceta activitatea după înjumătățire. În realitate, majoritatea minerilor sunt foarte inteligenți și acoperă costurile înjumătățirii, astfel încât aceștia nu sfârșesc oprind activitatea niciunui miner. </p>
+
+<h2 id="when-is-the-next-bitcoin-halving-after-the-2020-halving">Când va avea loc Înjumătățirea Bitcoin din 2024?</h2>
+<p>Înjumătățirea din 2024 va avea cel mai probabil loc între martie 2024 și iunie 2024. </p>
+
+<h2 id="bitcoin-halving-history">Istoria Înjumătățirii Bitcoin</h2>
+
+<p>Această secțiune va arunca o privire asupra celor două înjumătățiri precedente.</p>
+
+<h2 id="2012-halving">Înjumătățirea din 2012</h2>
+
+<p><a href="https://en.bitcoin.it/wiki/Halving_day_2012">Înjumătățirea blocurilor din 2012</a> a fost prima înjumătățire. A fost minată prin SlushPool de către cineva care a folosit un Radeon HD 5800.</p>
+
+<ul>
+<li><b>BTC Noi Per Bloc Înainte:</b> 50 BTC per bloc</li>
+<li><b>BTC Noi Per Bloc După:</b> 25 BTC per bloc</li>
+<li><b>Preț în Ziua Înjumătățirii:</b> $12.35</li>
+<li><b>Preț 150 de Zile Mai Târziu:</b> $127.00</li>
+</ul>
+
+<h2 id="2016-halving">Înjumătățirea din 2016</h2>
+
+<p>Cea din 2016 a fost a doua din toate timpurile.</p>
+
+<ul>
+<li><b>BTC Noi Per Bloc Înainte:</b> 25 BTC per bloc</li>
+<li><b>BTC Noi Per Bloc După:</b> 12.5 BTC per bloc</li>
+<li><b>Preț în Ziua Înjumătățirii:</b> $650.63</li>
+<li><b>Preț 150 de Zile Mai Târziu:</b> $758.81</li>
+</ul>
+
+<h2 id="current-bitcoin-block-reward">Subvenția curentă pentru Blocurile Bitcoin</h2>
+<p>Subvenția curentă pentru blocurile Bitcoin este de 12.5 monede Bitcoin pentru fiecare bloc. Când se va ajunge la blocul 630,000 în 2020, subvenția va scădea la 6.25 monede Bitcoin (BTC) pentru fiecare bloc.</p>
+
+<h2 id="bitcoin-halving-parties">Participanții la Înjumătățirea Bitcoin</h2>
+<p>Mii de utilizatori Bitcoin din jurul lumii au sărbătorit înjumătățirea din 2016. Au fost <a href="http://blog.thehalvening.com/bitcoin-halving-parties-2016/">utilizatori</a> într-o mulțime de orașe mari precum Buenos Aires, Melbourne, Montreal, Paris, Athens, Dublin, cât și în zeci de alte orașe.</p>
+
+<p>Aici este un video din 2016 <a href="https://billfodl.com/blogs/fodl-blog/what-does-hodl-mean">cu utilizatorii HODL</a> la petrecerea de înjumătățire din Tel Aviv:</p>
+
+<iframe style="height: auto; max-width: 100%;" src="https://www.youtube.com/embed/T0IR8X-Qnqs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<p>Când se vor posta evenimente de sărbătorire, le vom ține evidența aici!</p>
+
+<h2 id="21-million">Când Vor Fi Minate Toate Cele 21 de Milioane de Monede Bitcoin?</h2>
+<p>Toate cele 21 de milioane de monede Bitcoin (BTC) vor fi minate până în 2140. Dar peste 98% dintre ele vor fi minate până în 2030.</p>
+
+<h2 id="is-there-a-litecoin-block-reward-halving-countdown">Există o Numărătoare Inversă pentru Înjumătățirea Recompenselor pentru Blocurile Litecoin?</h2>
+<p>Da, verificați <a href="http://litecoinblockhalf.com/">acest website</a>. În momentul de față, se așteaptă ca Litecoin să aibă propria înjumătățire cu un an înainte de Bitcoin, în jurul lunii august 2019. Recompensa Litecoin per bloc va scădea de la 25 LTC per bloc la 12.5 LTC per bloc. Recompensa pentru blocurile Litecoin se înjumătățește la fiecare 840,000 de blocuri.</p>
+
+<h2 id="is-there-an-ethereum-block-reward-halving-countdown">Există o Numărătoare Inversă pentru Înjumătățirea Recompenselor pentru Blocurile Ethereum? </h2>
+<p>Recompensele pentru blocurile de monede Ethereum nu se înjumătățesc precum în cazul celor Bitcoin, astfel încât nu există o numărătoare inversă.</p>
+
+<h2 id="what-is-the-bitcoin-clock">Ce este Ceasul Bitcoin?</h2>
+<p>Ceasul Bitcoin există din 2011. În 2018, proprietarul a lăsat domeniul să expire. Noi am restructurat site-ul și l-am refăcut conform imaginii sale inițiale.</p>
+
+<h2 id="is-the-reward-halving-necessary">Este Înjumătățirea Necesară?</h2>
+<p>Înjumătățirea este necesară. În acest mod <a href="https://financepond.com/credit-cards/buy-bitcoin/">Bitcoin</a> controlează oferta. Odată ce recompensa pentru blocuri expiră, taxele tranzacțiilor vor plăti minerii pentru securizarea rețelei.</p>
+
+<h2 id="why-our-estimates-are-the-most-accurate">De Ce Sunt Estimările Noastre Cele Mai Precise.</h2>
+<p>Majoritatea dintre ceilalți estimatori de date cu privire la înjumătățire folosesc blocuri de 10 minute pentru a calcula data aproximativă a înjumătățirii. </p>
+
+<p>Blocurile, totuși, au fost minate la intervale mai mici de 10 minute aproape tot timpul în întreaga istorie a monedei Bitcoin.</p>
+
+<p>Calculatorul nostru utilizează date de pe BTC.com pentru a obține timpul mediu pentru blocuri din ultimele două luni. Apoi, el folosește acest timp pentru blocuri (în momentul actual 9.69166666667 de minute între blocuri) pentru a estima data înjumătățirii.</p>
+
+<p>În timp ce majoritatea dintre celelalte site-uri estimează înjumătățirea pentru finalul lui mai, rezultatul mai probabil este acela al unei înjumătățiri a recompenselor la începutul lunii mai.</p>
+
+<h2>Care este Recompensa Curentă pentru Blocuri?</h2>
+<p>În momentul de față există 12.5 monede Bitcoin nou emise per bloc.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#what-is-the-bitcoin-halving" id="markdown-toc-what-is-the-bitcoin-halving">Ce este Înjumătățirea Bitcoin?</a></li>
+  <li><a href="#what-is-the-significance-of-the-reward-halving" id="markdown-toc-what-is-the-significance-of-the-reward-halving">Care este Semnificația Înjumătățirii Recompensei?</a></li>
+  <li><a href="#bitcoin-halving-chart" id="markdown-toc-bitcoin-halving-chart">Diagrama Înjumătățirii Bitcoin</a></li>
+  <li><a href="#bitcoin-halving-schedule" id="markdown-toc-bitcoin-halving-schedule">Programul Înjumătățirii Bitcoin</a></li>
+  <li><a href="#what-happens-to-miners-during-halvings" id="markdown-toc-what-happens-to-miners-during-halvings">Ce Se Întâmplă cu Minerii În Timpul Înjumătățirilor?</a></li>
+  <li><a href="#when-is-the-next-bitcoin-halving-after-the-2020-halving" id="markdown-toc-when-is-the-next-bitcoin-halving-after-the-2020-halving">Când va avea loc Următoarea Înjumătățire Bitcoin?</a></li>
+  <li><a href="#bitcoin-halving-history" id="markdown-toc-bitcoin-halving-history">Istoria Înjumătățirii Bitcoin</a>    <ul>
+      <li><a href="#2012-halving" id="markdown-toc-2012-halving">Înjumătățirea din 2012</a></li>
+      <li><a href="#2016-halving" id="markdown-toc-2016-halving">Înjumătățirea din 2016</a></li>
+    </ul>
+  </li>
+  <li><a href="#current-bitcoin-block-reward" id="markdown-toc-current-bitcoin-block-reward">Subvenția curentă pentru Blocurile Bitcoin</a></li>
+  <li><a href="#bitcoin-halving-parties" id="markdown-toc-bitcoin-halving-parties">Participanții la Înjumătățirea Bitcoin</a></li>
+    <li><a href="#21-million" id="21-million">Când Vor Fi Minate Toate Cele 21 de Milioane de Monede Bitcoin?</a></li>
+  <li><a href="#is-there-a-litecoin-block-reward-halving-countdown" id="markdown-toc-is-there-a-litecoin-block-reward-halving-countdown">Există o Numărătoare Inversă pentru Înjumătățirea Recompenselor pentru Blocurile Litecoin?</a></li>
+  <li><a href="#is-there-an-ethereum-block-reward-halving-countdown" id="markdown-toc-is-there-an-ethereum-block-reward-halving-countdown">Există o Numărătoare Inversă pentru Înjumătățirea Recompenselor pentru Blocurile Ethereum?</a></li>
+  <li><a href="#what-is-the-bitcoin-clock" id="markdown-toc-what-is-the-bitcoin-clock">Ce este Ceasul Bitcoin?</a></li>
+  <li><a href="#is-the-reward-halving-necessary" id="markdown-toc-is-the-reward-halving-necessary">Este Necesară Înjumătățirea Recompenselor?</a></li>
+  <li><a href="#why-our-estimates-are-the-most-accurate" id="markdown-toc-why-our-estimates-are-the-most-accurate">De Ce Sunt Estimările Noastre Cele Mai Precise</a></li>
+</ul>
