@@ -1,0 +1,211 @@
+---
+layout: default
+seo_title: "Bitcoin Halving 2020 Countdown & Date ETA (Bitcoin Clock)"
+title: "Bitcoin Clock: 2020 Bitcoin Halving Countdown"
+lang: cs
+pagename: clock
+permalink: "/cs/"
+dotclock: yes
+---
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://www.bitcoinclock.com/configBlockTime.js"></script>
+
+<script>
+    var height;
+    jQuery(document).ready(function($){
+        $.getJSON("https://www.satochi.co/latest-block", function( data ) {
+            var height = data;
+            var total_number = 12.5 * (height - 472500) + 16406250;
+            var append_html = "<span></span>";
+
+            
+            var til_halving = 630000 - height;
+            append_html += "<b>Blocks Until Halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            
+            // var block_time = 9.69166666667;
+            var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
+            var days_til_halving = minutes_til_halving / (24 * 60);
+            var days_remainder = days_til_halving - Math.floor(days_til_halving);
+            var minutes = days_remainder - Math.floor(days_remainder);
+            var percent_done = (((height % 210000) / 210000) * 360);
+                        
+            $(".minutes").css("transform", "rotate(" + percent_done +"deg)");
+              
+              $('#days_calc').append(Math.floor(days_til_halving));
+               $('#hours_calc').append(Math.floor(days_remainder * 24));
+                $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                
+                var d = new Date( Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000); 
+                
+                var month = d.getMonth() + 1;
+				var day = d.getUTCDate();
+				var year = d.getUTCFullYear();
+				
+				console.log(month);
+								
+				if (month === 4) {
+					var month_name = "April";
+				}
+				
+				else if (month === 5) {
+					var month_name = "May";
+				}
+				
+				else if (month === 3) {
+					var month_name = "March";
+				}
+
+				$('#date_eta').append(month_name + " " + day + ", " + year);
+				
+				let hours_label = "hours";
+				
+				if (Math.floor(days_remainder * 24) == 1) {
+					hours_label = "hour";
+				}
+				
+				$("#hours_label").append(hours_label);
+								
+				let minutes_label = "minutes";
+				
+				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
+					minutes_label = "minute";
+				}
+				
+				$("#minutes_label").append(minutes_label);
+
+
+            $("#calc-content-div").append(append_html);
+        });
+    });
+</script>
+
+
+<p style="text-align: center; color: black;"><b>ETA Půlení bloků ETA:</b> <span style="font-weight: bold;" id="days_calc"></span> days, <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span>, <span style="font-weight: bold;" id="minutes_calc"></span> <span id="minutes_label"></span></p>
+
+<p style="text-align: center; color: black;"><b>Datum ETA:</b> <span id="date_eta"></span></p>
+
+<div class="clock simple">
+  <div class="minutes-container">
+    <div class="minutes"></div>
+  </div>
+</div>
+
+
+<div id="calc-content-div" style="text-align: center;"></div>
+
+<h2 id="what-is-the-bitcoin-halving">Co je půlení bitcoinu?</h2>
+<p>Síť vydává nové bitcoiny každých 10 minut. Během prvních čtyř let existence bitcoinu byl počet nově vydaných bitcoinů každých 10 minut roven 50. Každé čtyři roky pak bylo toto číslo sníženo na polovinu. Den, kdy k půlení dochází se v žargonu nazývá "halving".</p> 
+
+<p>V roce 2012 klesl počet bitcoinů, vydávaných každých 10 minut na 25. V roce 2016 pak počet klesl na 12,5. Teď, v roce 2020 klesne po halvingu počet vydávaných bitcoinů na 6,25.</p> 
+
+<h2 id="what-is-the-significance-of-the-reward-halving">Co je výrazným rysem halvingu bitcoinových bloků?</h2>
+<p>Halving snižuje množství bitcoinů, vydaných každým blokem. To znamená, že dodávka nových bitcoinů je nižší.</p>
+<p>Na normálních trzích nižší dodávka se stálou poptávkou obvykle vede k vyšším cenám. Protože halving snižuje dodávku nových bitcoinů bitcoins přičemž poptávka obvykle zůstává stejná, halving obvykle předchází největším výkyvům v ceně bitcoinů. </p>
+
+<p>Na obrázku níže ukazují vertikální zelené linie předchozí dva halvingy (<a href="https://en.bitcoin.it/wiki/Controlled_supply">2012-11-28 a 2016-7-9</a>). Všimněte si, jak cena výrazně poskočila po každém půlení.</p>
+
+<img src="/halvingdates.png" style="width: 100%;margin: 0 auto;">
+
+<h2 id="bitcoin-halving-chart">Žebříček půlení bitcoinů</h2>
+<p>Na obrázku níže si můžete prohlédnout hodnotu inflace bitcoinu během každého období. </p>
+
+<img src="/inflation.png" style="width: 100%;margin: 0 auto;">
+
+<p>Každý halving snižuje hladinu inflace bitcoinu. Oranžová linie představuje hodnotu inflace bitcoinu během daného období, zatímco modrá linie je celkový počet vydaných bitcoinů.</p>
+
+<h2 id="bitcoin-halving-schedule">Rozvrh půlení bitcoinů</h2>
+<p>Halving bitcoinů je naplánován podle výše bloků, nikoli podle přesného data.</p>
+
+<p>Halving se odehrává každých 210,000 bloků. Halving v roce 2020 se bude konat během bloků číslo 630,000. Halving v roce 2024 se uskuteční na bloku 840,000.</p>
+
+<h2 id="what-happens-to-miners-during-halvings">Co se během půlení děje těžařům?</h2>
+<p>Mnoho lidí <a href="https://techcrunch.com/2016/07/09/the-reward-for-mining-bitcoin-was-just-cut-in-half/">vždy spekuluje</a> že těžaři po půlení ukončí činnost. Realita ale je, že většina těžařů je velmi chytrá a během halvingu nastaví ceny tak, aby žádný z nich nemusel skončit.</p>
+
+<h2 id="when-is-the-next-bitcoin-halving-after-the-2020-halving">Kdy nastane půlení bitcoinu v roce 2024?</h2>
+<p>Halving v roce 2024 se pravděpodobně uskuteční mezi březnem 2024 a červnem 2024. </p>
+
+<h2 id="bitcoin-halving-history">Historie půlení bitcoinu</h2>
+
+<p>Tato sekce se zaměří podrobněji na předchozí dvě půlení.</p>
+
+<h2 id="2012-halving">Halving 2012</h2>
+
+<p><a href="https://en.bitcoin.it/wiki/Halving_day_2012">Blokové půlení 2012</a> bylo prvním halvingem. Bylo vytěženo SlushPoolem, těžařem, který používal Radeon HD 5800.</p>
+
+<ul>
+<li><b>Nové BTC na blok předtím:</b> 50 BTC na blok</li>
+<li><b>Nové BTC na blok poté:</b> 25 BTC na blok</li>
+<li><b>Cena v den půlení:</b> $12.35</li>
+<li><b>Cena o 150 dní později:</b> $127.00</li>
+</ul>
+
+<h2 id="2016-halving">Halving 2016</h2>
+
+<p>V roce 2016 proběhlo půlení podruhé.</p>
+
+<ul>
+<li><b>Nové BTC na blok předtím:</b> 25 BTC na blok</li>
+<li><b>Nové BTC na blok poté:</b> 12.5 BTC na blok</li>
+<li><b>Cena v den půlení:</b> $650.63</li>
+<li><b>Cena o 150 dní později:</b> $758.81</li>
+</ul>
+
+<h2 id="current-bitcoin-block-reward">Současné subvence bitcoinových bloků</h2>
+<p>Současné subvence bitcoinových bloků tvoří 12.5 bitcoinů na blok. Až bude v roce 2020 překonán blok 630,000, subvence poklesnou na 6.25 bitcoinů (BTC) na blok.</p>
+
+<h2 id="bitcoin-halving-parties">Strany při půlení bitcoinu</h2>
+<p>Tisíce bitcoiners po celém světě slavilo halving v roce 2016. Objevily se <a href="http://blog.thehalvening.com/bitcoin-halving-parties-2016/">strany</a> ve spoustě hlavních měst jako Buenos Aires, Melbourne, Montreal, Paris, Athens, Dublin a desítkách dalších .</p>
+
+<p>Zde je video z roku 2016 <a href="https://billfodl.com/blogs/fodl-blog/what-does-hodl-mean">HODL</a> halving party v Tel Avivu:</p>
+
+<iframe style="height: auto; max-width: 100%;" src="https://www.youtube.com/embed/T0IR8X-Qnqs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<p>Při zveřejňování party událostí je budeme zaznamenávat zde!</p>
+
+<h2 id="21-million">Kdy bude vytěženo všech 21 milionů bitcoinů?</h2>
+<p>Všech 21 milionů bitcoinů (BTC) bude vytěženo v roce 2140. Nicméně více než 98% už bude vytěženo po roce 2030.</p>
+
+<h2 id="is-there-a-litecoin-block-reward-halving-countdown">Existuje odpočet odměny za Litecoin blokový halving?</h2>
+<p>Ano, navštivte <a href="http://litecoinblockhalf.com/">tuto stránku</a>. Litecoin je momentálně projektován na halving jeden rok před bitcoinem, přibližně v srpnu 2019. Odměna za Litecoin na blok se sníží z 25 LTC na blok na 12.5 LTC na blok. Odměna v Litecoinech za blok se rozpůlí každých 840,000 bloků.</p>
+
+<h2 id="is-there-an-ethereum-block-reward-halving-countdown">Existuje odpočet odměny za blokový halving Ethereum?</h2>
+<p>Bloky měny Ethereum nemají halving jako bitcoiny, takže žádný odpočet neexistuje.</p>
+
+<h2 id="what-is-the-bitcoin-clock">Co jsou bitcoinové hodiny?</h2>
+<p>Bitcoinové hodiny existují od roku 2011. V roce 2018 nechal majitel dom=nu vypršet. My jsme stránku obnovili a vylepšili na původní, originální představu.</p>
+
+<h2 id="is-the-reward-halving-necessary">Je půlení nezbytné?</h2>
+<p>Halving je nezbytný. Tady je ukázáno, jak <a href="https://financepond.com/credit-cards/buy-bitcoin/">Bitcoin</a> ovládá svou dodávku. Jakmile vyprší subvence bloku, transakční poplatky zaplatí těžařům za zabezpečení sítě.</p>
+
+<h2 id="why-our-estimates-are-the-most-accurate">Proč jsou naše odhady nejpřesnější</h2>
+<p>Většina jiných odhadců data halvingu používá 10 minutové bloky pro výpočet předpokládaného data půlení. </p>
+
+<p>Bloky nicméně byly těženy v kratších, než 10 minutových intervalech téměř po celou dobu existence bitcoinu.</p>
+
+<p>Naše kalkulačka používá data z BTC.com, aby získala průměrné trvání jednoho bloku za poslední dva měsíce. Pak použije tento blokový čas (momentálně 9.69166666667 minut mezi bloky) pro odhad předpokládaného data halvingu.</p>
+
+<p>Zatímco většina ostatních stránek předpovídá halving na pozdní květen, mnohem pravděpodobnější je, že k halvingu dojde již začátkem května.</p>
+
+<h2>Co je současná bloková bitcoinová odměna?</h2>
+<p>V současnosti vytváří každý blok 12.5 nových bitcoinů.</p>
+<ul id="markdown-toc">
+  <li><a href="#what-is-the-bitcoin-halving" id="markdown-toc-what-is-the-bitcoin-halving">Co je půlení bitcoinu?</a></li>
+  <li><a href="#what-is-the-significance-of-the-reward-halving" id="markdown-toc-what-is-the-significance-of-the-reward-halving">Co je výrazným rysem halvingu bitcoinových bloků?</a></li>
+  <li><a href="#bitcoin-halving-chart" id="markdown-toc-bitcoin-halving-chart">Žebříček půlení bitcoinu</a></li>
+  <li><a href="#bitcoin-halving-schedule" id="markdown-toc-bitcoin-halving-schedule">Rozvrh půlení bitcoinů</a></li>
+  <li><a href="#what-happens-to-miners-during-halvings" id="markdown-toc-what-happens-to-miners-during-halvings">Co se během půlení děje těžařům?</a></li>
+  <li><a href="#when-is-the-next-bitcoin-halving-after-the-2020-halving" id="markdown-toc-when-is-the-next-bitcoin-halving-after-the-2020-halving">Kdy nastane půlení bitcoinu v roce 2024?</a></li>
+  <li><a href="#bitcoin-halving-history" id="markdown-toc-bitcoin-halving-history">Historie půlení bitcoinu</a>    <ul>
+      <li><a href="#2012-halving" id="markdown-toc-2012-halving">Halving 2012</a></li>
+      <li><a href="#2016-halving" id="markdown-toc-2016-halving">Halving 2016</a></li>
+    </ul>
+  </li>
+  <li><a href="#current-bitcoin-block-reward" id="markdown-toc-current-bitcoin-block-reward">Současné subvence bitcoinových bloků</a></li>
+  <li><a href="#bitcoin-halving-parties" id="markdown-toc-bitcoin-halving-parties">Strany při půlení bitcoinu</a></li>
+    <li><a href="#21-million" id="21-million">Kdy bude vytěženo všech 21 milionů bitcoinů?</a></li>
+  <li><a href="#is-there-a-litecoin-block-reward-halving-countdown" id="markdown-toc-is-there-a-litecoin-block-reward-halving-countdown">Existuje odpočet odměny za Litecoin blokový halving?</a></li>
+  <li><a href="#is-there-an-ethereum-block-reward-halving-countdown" id="markdown-toc-is-there-an-ethereum-block-reward-halving-countdown">Existuje odpočet odměny za blokový halving Ethereum?</a></li>
+  <li><a href="#what-is-the-bitcoin-clock" id="markdown-toc-what-is-the-bitcoin-clock">Co jsou bitcoinové hodiny?</a></li>
+  <li><a href="#is-the-reward-halving-necessary" id="markdown-toc-is-the-reward-halving-necessary">Je půlení nezbytné?</a></li>
+  <li><a href="#why-our-estimates-are-the-most-accurate" id="markdown-toc-why-our-estimates-are-the-most-accurate">Proč jsou naše odhady nejpřesnější</a></li>
+</ul>
