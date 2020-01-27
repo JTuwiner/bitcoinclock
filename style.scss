@@ -35,6 +35,11 @@
 	background-size: 97% !important;
 }
 
+.spaceclock .clock {
+	background: #fff url(/spaceclock.png) no-repeat center !important;
+	background-size: 97% !important;
+}
+
 @media (max-width: 550px) { 
   #main .clock {
   	width: 100%;
