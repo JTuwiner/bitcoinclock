@@ -57,7 +57,7 @@ permalink: "/ar/"
 
 				$('#date_eta').append(month_name + " " + day + ", " + year);
 				
-				let hours_label = "hours";
+				let hours_label = "ساعات";
 				
 				if (Math.floor(days_remainder * 24) == 1) {
 					hours_label = "hour";
@@ -65,7 +65,7 @@ permalink: "/ar/"
 				
 				$("#hours_label").append(hours_label);
 								
-				let minutes_label = "minutes";
+				let minutes_label = "دقائق";
 				
 				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
 					minutes_label = "minute";
