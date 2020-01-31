@@ -40,6 +40,10 @@
 	background-size: 97% !important;
 }
 
+.arabic, .arabic p, .arabic h2 {
+	direction: rtl;
+}
+
 @media (max-width: 550px) { 
   #main .clock {
   	width: 100%;
