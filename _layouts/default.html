@@ -21,7 +21,7 @@
     <!-- Created with Jekyll Now - http://github.com/barryclark/jekyll-now -->
   </head>
 
-  <body {% if page.dotclock %}class="dotclock"{% endif %} {% if page.spaceclock %}class="spaceclock"{% endif %} {% if page.lange == "ar" %}class="arabic"{% endif %}>
+  <body {% if page.dotclock %}class="dotclock"{% endif %} {% if page.spaceclock %}class="spaceclock"{% endif %} {% if page.rtl %}class="arabic"{% endif %}>
     <div class="wrapper-masthead">
       <div class="container">
         <header class="masthead clearfix">
@@ -49,7 +49,7 @@
 	           {% elsif page.lang == 'pt' %}
 	           <a href="{{ site.baseurl }}/pt/">{{ site.name }}</a>
 	           {% elsif page.lang == 'ar' %}
-	           <a href="{{ site.baseurl }}/pt/">ساعة البتكوين</a>
+	           <a href="{{ site.baseurl }}/ar/">ساعة البتكوين</a>
 	           {% elsif page.lang == 'cs' %}
 	           <a href="{{ site.baseurl }}/pt/">Bitcoinové hodiny</a>
 	           {% elsif page.lang == 'id' %}
