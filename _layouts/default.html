@@ -66,6 +66,46 @@
     <div id="main" role="main" class="container">
       {{ content }}
       
+      {% if page.proxima %}
+      <style>
+	      
+	      @font-face {
+  font-family: 'Proxima';
+  font-weight: 300;
+  font-style: normal;
+  src: url('/fonts/proximanova-light-webfont.eot'); /* IE9 Compat Modes */
+  src: url('/fonts/proximanova-light-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/proximanova-light-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/fonts/proximanova-light-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('/fonts/proximanova-light-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('/fonts/proximanova-light-webfont.svg#svgproximanova-light-webfont') format('svg');
+}
+
+@font-face {
+  font-family: 'Proxima';
+  font-weight: 400;
+  font-style: normal;
+  src: url('/fonts/proximanova-regular-webfont.eot'); /* IE9 Compat Modes */
+  src: url('/fonts/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/proximanova-regular-webfont.woff2') format('woff2'), /* Super Modern Browsers */
+       url('/fonts/proximanova-regular-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('/fonts/proximanova-regular-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('/fonts/proximanova-regular-webfont.svg#svgproximanova-regular-webfont') format('svg');
+}
+
+@font-face {
+  font-family: 'Proxima';
+  font-weight: 600;
+  font-style: normal;
+  src: url('/fonts/proximanova-semibold-webfont.eot'); /* IE9 Compat Modes */
+  src: url('/fonts/proximanova-semibold-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('/fonts/proximanova-semibold-webfont.woff') format('woff'), /* Pretty Modern Browsers */
+       url('/fonts/proximanova-semibold-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+       url('/fonts/proximanova-semibold-webfont.svg#svgproximanova-semibold-webfont') format('svg');
+}
+	      
+	      </style>
+      {% endif %}
       
     </div>
 
