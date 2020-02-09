@@ -11,64 +11,71 @@ spaceclock: yes
 <script src="https://www.bitcoinclock.com/configBlockTime.js"></script>
 
 <script>
-    var height = GLOBAL_BLOCKHEIGHT;
-    jQuery(document).ready(function ($) {
-        var total_number = 12.5 * (height - 472500) + 16406250;
-        var append_html = "<span></span>";
+    var height;
+    jQuery(document).ready(function($){
+        $.getJSON("https://www.satochi.co/latest-block", function( data ) {
+            var height = data;
+            var total_number = 12.5 * (height - 472500) + 16406250;
+            var append_html = "<span></span>";
+
+            
+            var til_halving = 630000 - height;
+            append_html += "<b>Блоков до халвинга:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+            
+//             var block_time = 9.69166666667;
+            var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
+            var days_til_halving = minutes_til_halving / (24 * 60);
+            var days_remainder = days_til_halving - Math.floor(days_til_halving);
+            var minutes = days_remainder - Math.floor(days_remainder);
+            var percent_done = (((height % 210000) / 210000) * 360);
+                        
+            $(".minutes").css("transform", "rotate(" + percent_done +"deg)");
+              
+              $('#days_calc').append(Math.floor(days_til_halving));
+               $('#hours_calc').append(Math.floor(days_remainder * 24));
+                $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                
+                var d = new Date( Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000); 
+                
+                var month = d.getMonth() + 1;
+				var day = d.getUTCDate();
+				var year = d.getUTCFullYear();
+				
+				console.log(month);
+								
+				if (month === 4) {
+					var month_name = "April";
+				}
+				
+				else if (month === 5) {
+					var month_name = "Май";
+				}
+				
+				else if (month === 3) {
+					var month_name = "March";
+				}
+
+				$('#date_eta').append(month_name + " " + day + ", " + year);
+				
+				let hours_label = "часов";
+				
+				if (Math.floor(days_remainder * 24) == 1) {
+					hours_label = "час";
+				}
+				
+				$("#hours_label").append(hours_label);
+								
+				let minutes_label = "минут";
+				
+				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
+					minutes_label = "минута";
+				}
+				
+				$("#minutes_label").append(minutes_label);
 
 
-        var til_halving = 630000 - height;
-        append_html += "<b>Blocks Until Halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-
-        // var block_time = 9.69166666667;
-        var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
-        var days_til_halving = minutes_til_halving / (24 * 60);
-        var days_remainder = days_til_halving - Math.floor(days_til_halving);
-        var minutes = days_remainder - Math.floor(days_remainder);
-        var percent_done = (((height % 210000) / 210000) * 360);
-
-        $(".minutes").css("transform", "rotate(" + percent_done + "deg)");
-
-        $('#days_calc').append(Math.floor(days_til_halving));
-        $('#hours_calc').append(Math.floor(days_remainder * 24));
-        $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-
-        var d = new Date(Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000);
-
-        var month = d.getMonth() + 1;
-        var day = d.getUTCDate();
-        var year = d.getUTCFullYear();
-
-        console.log(month);
-
-        if (month === 4) {
-            var month_name = "April";
-        } else if (month === 5) {
-            var month_name = "May";
-        } else if (month === 3) {
-            var month_name = "March";
-        }
-
-        $('#date_eta').append(month_name + " " + day + ", " + year);
-
-        let hours_label = "hours";
-
-        if (Math.floor(days_remainder * 24) == 1) {
-            hours_label = "hour";
-        }
-
-        $("#hours_label").append(hours_label);
-
-        let minutes_label = "minutes";
-
-        if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
-            minutes_label = "minute";
-        }
-
-        $("#minutes_label").append(minutes_label);
-
-
-        $("#calc-content-div").append(append_html);
+            $("#calc-content-div").append(append_html);
+        });
     });
 </script>
 
