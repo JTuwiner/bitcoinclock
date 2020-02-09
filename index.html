@@ -9,7 +9,7 @@ pagename: clock
 <script src="https://www.bitcoinclock.com/configBlockTime.js"></script>
 
 <script>
-    var height = 616676;
+    var height = GLOBAL_BLOCKHEIGHT;
     jQuery(document).ready(function ($) {
         var total_number = 12.5 * (height - 472500) + 16406250;
         var append_html = "<span></span>";
