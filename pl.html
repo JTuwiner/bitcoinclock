@@ -12,10 +12,8 @@ dotclock: yes
 <script src="https://www.bitcoinclock.com/configBlockTime.js"></script> 
 
 <script>
-    var height;
+    var height = GLOBAL_BLOCKHEIGHT;
     jQuery(document).ready(function($){
-        $.getJSON("https://www.satochi.co/latest-block", function( data ) {
-            var height = data;
             var total_number = 12.5 * (height - 472500) + 16406250;
             var append_html = "<span></span>";
 
@@ -76,7 +74,6 @@ dotclock: yes
 
 
             $("#calc-content-div").append(append_html);
-        });
     });
 </script>
 
