@@ -1,7 +1,7 @@
 ---
 layout: default
-seo_title: "Bitcoin Halving 2020 Countdown & Date ETA (Bitcoin Clock)"
-title: "Bitcoin Clock: 2020 Bitcoin Halving Countdown"
+seo_title: "ספירה לאחור ותאריך משוער של חציית הביטקוין ב-2020 (שעון הביטקוין)"
+title: "שעון הביטקוין: ספירה לאחור של חציית הביטקוין ב-2020"
 lang: he
 pagename: clock
 proxima: yes
@@ -19,7 +19,7 @@ permalink: "/he/"
 
 
         var til_halving = 630000 - height;
-        append_html += "<b>Blocks Until Halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+        append_html += "<b>מספר הבלוקים עד החצייה:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 
         // var block_time = 9.69166666667;
         var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
@@ -45,25 +45,25 @@ permalink: "/he/"
         if (month === 4) {
             var month_name = "April";
         } else if (month === 5) {
-            var month_name = "May";
+            var month_name = "מאי";
         } else if (month === 3) {
             var month_name = "March";
         }
 
         $('#date_eta').append(month_name + " " + day + ", " + year);
 
-        let hours_label = "hours";
+        let hours_label = "שעות";
 
         if (Math.floor(days_remainder * 24) == 1) {
-            hours_label = "hour";
+            hours_label = "שעה";
         }
 
         $("#hours_label").append(hours_label);
 
-        let minutes_label = "minutes";
+        let minutes_label = "דקות";
 
         if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
-            minutes_label = "minute";
+            minutes_label = "דקה";
         }
 
         $("#minutes_label").append(minutes_label);
