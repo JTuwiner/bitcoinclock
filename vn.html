@@ -1,0 +1,213 @@
+---
+layout: default
+seo_title: "Đếm ngược ngày dự kiến của sự kiện Bitcoin Halving 2020(Đồng hồ Bitcoin)"
+title: "Đồng hồ Bitcoin: Đếm ngược sự kiện Bitcoin Halving"
+lang: vn
+pagename: clock
+proxima: yes
+permalink: "/vn/"
+---
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://www.bitcoinclock.com/configBlockTime.js"></script> 
+
+<script>
+    var height = GLOBAL_BLOCKHEIGHT;
+    jQuery(document).ready(function($){
+            var height = data;
+            var total_number = 12.5 * (height - 472500) + 16406250;
+            var append_html = "<span></span>";
+
+            
+            var til_halving = 630000 - height;
+            append_html += "<b>Khối chuỗi còn đến Halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            
+            // var block_time = 9.69166666667;
+            var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
+            var days_til_halving = minutes_til_halving / (24 * 60);
+            var days_remainder = days_til_halving - Math.floor(days_til_halving);
+            var minutes = days_remainder - Math.floor(days_remainder);
+            var percent_done = (((height % 210000) / 210000) * 360);
+                        
+            $(".minutes").css("transform", "rotate(" + percent_done +"deg)");
+              
+              $('#days_calc').append(Math.floor(days_til_halving));
+               $('#hours_calc').append(Math.floor(days_remainder * 24));
+                $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                
+                var d = new Date( Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000); 
+                
+                var month = d.getMonth() + 1;
+				var day = d.getUTCDate();
+				var year = d.getUTCFullYear();
+				
+				console.log(month);
+								
+				if (month === 4) {
+					var month_name = "April";
+				}
+				
+				else if (month === 5) {
+					var month_name = "May";
+				}
+				
+				else if (month === 3) {
+					var month_name = "March";
+				}
+
+				$('#date_eta').append(month_name + " " + day + ", " + year);
+				
+				let hours_label = "giờ";
+				
+				if (Math.floor(days_remainder * 24) == 1) {
+					hours_label = "hour";
+				}
+				
+				$("#hours_label").append(hours_label);
+								
+				let minutes_label = "phút";
+				
+				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
+					minutes_label = "minute";
+				}
+				
+				$("#minutes_label").append(minutes_label);
+
+
+            $("#calc-content-div").append(append_html);
+    });
+</script>
+
+
+<p style="text-align: center; color: black;"><b>Dự kiến sự kiện Bitcoin Halving:</b> <span style="font-weight: bold;" id="days_calc"></span> ngày, <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span>, <span style="font-weight: bold;" id="minutes_calc"></span> <span id="minutes_label"></span></p>
+
+<p style="text-align: center; color: black;"><b>Ngày dự kiến:</b> <span id="date_eta"></span></p>
+
+<div class="clock simple">
+  <div class="minutes-container">
+    <div class="minutes"></div>
+  </div>
+</div>
+
+
+<div id="calc-content-div" style="text-align: center;"></div>
+
+<h2 id="what-is-the-bitcoin-halving">Sự kiện Bitcoin Halving là gì?</h2>
+<p>Cứ sau mỗi 10 phút Bitcoin mới sẽ được sinh ra từ mạng lưới Bitcoin. Trong bốn năm đầu tiên của Bitcoin, trong 10 phút sẽ có 50 Bitcoin mới được sinh ra. Sau mỗi bốn năm, con số này giảm một nửa. Ngày mà con số này giảm một nửa được gọi là "halving".</p> 
+
+<p>Năm 2012, lượng Bitcoin được sinh ra sau mỗi 10 phút giảm từ 50 xuống 25. Trong năm 2016, nó đã giảm từ 25 xuống 12.5. Và bây giờ, trong sự kiện Halving năm 2020, nó sẽ giảm từ 12.5 xuống 6.5.</p> 
+
+<h2 id="what-is-the-significance-of-the-reward-halving">Việc giảm khối Bitcoin có ý nghĩa như thế nào?</h2>
+<p>Halving làm giảm một nửa số lượng Bitcoin được sinh ra trên mỗi khối. Điều này làm giảm lượng cung cấp Bitcoin mới.</p>
+<p>Trong thị trường, khi nguồn cung thấp đi và nhu cầu đang ổn định thì sẽ dẫn đến việc mặt hàng tăng giá. Vì vậy việc giảm một nửa nguồn cung Bitcoin mới trong khi nhu cầu thị trường đang duy trì ổn định, thường báo hiệu trước các biến động lớn của Bitcoin. </p>
+
+<p>Trong hình bên dưới, các đường màu xanh lá cây dọc là giá Bitcoin trước mỗi sự kiện Halving (<a href="https://en.bitcoin.it/wiki/Controlled_supply">2012-11-28 and 2016-7-9</a>). Lưu ý rằng giá đã tăng vọt sau mỗi sự kiện Halving.</p>
+
+<img src="/halvingdates.png" style="width: 100%;margin: 0 auto;">
+
+<h2 id="bitcoin-halving-chart">Biểu đồ Bitcoin Halving</h2>
+<p>Trong hình bên dưới, bạn có thể thấy tỷ lệ lạm phát của Bitcoin trong từng thời kỳ. </p>
+
+<img src="/inflation.png" style="width: 100%;margin: 0 auto;">
+
+<p>Mỗi sự kiện Halving làm giảm một nửa tỷ lệ lạm phát của Bitcoin. Đường màu cam là tỷ lệ lạm phát của Bitcoin trong một khoảng thời gian nhất định, trong khi đường màu xanh là tổng số Bitcoin được phát hành.</p>
+
+<h2 id="bitcoin-halving-schedule">Lịch Bitcoin Halving</h2>
+<p>Sự kiện Bitcoin Halving được lên lịch theo độ cao khối, không phải theo ngày.</p>
+
+<p>Halving xảy ra cứ sau mỗi 210.000 khối. Halving của năm 2020 sẽ xảy ra trên khối 630.000. Halving năm 2024 sẽ xảy ra ở khối 840.000.</p>
+
+<h2 id="what-happens-to-miners-during-halvings">Chuyện gì xảy ra với các Thợ đào Bitcoin trong thời gian Halving?</h2>
+<p>Nhiều người <a href="https://techcrunch.com/2016/07/09/the-reward-for-mining-bitcoin-was-just-cut-in-half/">cho rằng</a> các thợ mở sẽ dừng hoạt động sau khi sự kiện Halving diễn ra. Thực tế là hầu hết các thợ mỏ đều rất khôn khéo và sẽ định giá trong quá trình Halving, vì thế họ vẫn không đóng cửa bất kì mỏ khai thác nào.</p>
+
+<h2 id="when-is-the-next-bitcoin-halving-after-the-2020-halving">Khi nào sự kiện Halving năm 2024 diễn ra?</h2>
+<p>Sự kiện Halving năm 2024 có thể xảy ra trong khoảng thời gian từ tháng 03 đến tháng 06 năm 2024. </p>
+
+<h2 id="bitcoin-halving-history">Lịch sử sự kiện Bitcoin Halving</h2>
+
+<p>Phần này sẽ nhìn lại hai sự kiện Halving đã diễn ra trước đây.</p>
+
+<h2 id="2012-halving">Halving năm 2012</h2>
+
+<p>Khối <a href="https://en.bitcoin.it/wiki/Halving_day_2012">Halving năm 2012</a> đánh dấu sự kiện Halving đầu tiên. Ai đó đã khai thác nó tại mỏ SlushPool với máy đào Radeon HD 5800.</p>
+
+<ul>
+<li><b>Trước sự kiện, BTC mới sau mỗi Khối:</b> 50 BTC/khối</li>
+<li><b>Sau sự kiện, BTC mới sau mỗi Khối:</b> 25 BTC/khối</li>
+<li><b>Giá tại thời điểm diễn ra Halving:</b> 12.35$</li>
+<li><b>Giá sau 150 ngày:</b> 127.00$</li>
+</ul>
+
+<h2 id="2016-halving">Halving năm 2016</h2>
+
+<p>Năm 2016 là lần Halving thứ hai diễn ra.</p>
+
+<ul>
+<li><b>Trước sự kiện, BTC mới sau mỗi Khối:</b> 25 BTC/khối</li>
+<li><b>Sau sự kiện, BTC mới sau mỗi Khối:</b> 12.5 BTC/khối</li>
+<li><b>Giá tại thời điểm diễn ra Halving:</b> 650.63$</li>
+<li><b>Giá sau 150 ngày:</b> 758.81$</li>
+</ul>
+
+<h2 id="current-bitcoin-block-reward">Nguồn cung Bitcoin hiện tại sau mỗi khối</h2>
+<p>Hiện tại lượng Bitcoin được phát hành sau mỗi khối là 12,5 Bitcoin. Khi nó đạt đến khối thứ 630.000 trong năm 2020, lượng Bitcoin sẽ giảm xuống 6.25 Bitcoin(BTC)/khối.</p>
+
+<h2 id="bitcoin-halving-parties">Ăn mừng vì sự kiện Bitcoin Halving</h2>
+<p>Hàng nghìn tín đồ Bitcoin đã ăn mừng sự kiện Halving năm 2016. Có <a href="http://blog.thehalvening.com/bitcoin-halving-parties-2016/">rất nhiều buổi liên hoan</a> tại các thành phố như Buenos Aires, Melbourne, Montreal, Paris, Athens, Dublin và một loạt các thành phố khác.</p>
+
+<p>Đây là một video từ năm 2016 <a href="https://billfodl.com/blogs/fodl-blog/what-does-hodl-mean">HODL</a> tiệc Halving tại Tel Aviv:</p>
+
+<iframe style="height: auto; max-width: 100%;" src="https://www.youtube.com/embed/T0IR8X-Qnqs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<p>Khi các sự kiện tiệc tùng được đăng, chúng ta sẽ theo dõi tại đây!</p>
+
+<h2 id="21-million">Khi nào tất cả 21 triệu Bitcoin sẽ được khai thác?</h2>
+<p>Tất cả 21 triệu Bitcoin (BTC) sẽ được khai thác vào năm 2140. Nhưng hơn 98% sẽ được khai thác vào năm 2030.</p>
+
+<h2 id="is-there-a-litecoin-block-reward-halving-countdown">Có phần thưởng Litecoin nào cho sự kiện đếm ngược Halving không?</h2>
+<p>Có, hãy vào <a href="http://litecoinblockhalf.com/">trang web này</a>. Halving của Litecoin sẽ diễn ra một năm trước Halving của Bitcoin, vào tháng 08 năm 2019. Phần thưởng Litecoin cho mỗi khối được giảm từ 25 LTC xuống còn 12,5 LTC. Halving Litecoin diễn ra sau mỗi 840.000 khối.</p>
+
+<h2 id="is-there-an-ethereum-block-reward-halving-countdown">Có phần thưởng Litecoin nào cho sự kiện đếm ngược Halving không?</h2>
+<p>Phần thưởng khối Ethereum không có như Bitcoin, vì vậy không có đếm ngược.</p>
+
+<h2 id="what-is-the-bitcoin-clock">Đồng hồ Bitcoin là gì?</h2>
+<p>Đồng hồ Bitcoin đã xuất hiện vào năm 2011. Năm 2018, tên miền không được gia hạn bởi chủ sở hữu. Chúng tôi đã mua lại trang web và khôi phục nó như ban đầu.</p>
+
+<h2 id="is-the-reward-halving-necessary">Sự kiện Halving có cần thiết không?</h2>
+<p>Sự kiện Halving là cần thiết. Đây là cách mà <a href="https://financepond.com/credit-cards/buy-bitcoin/">Bitcoin</a> kiểm soát nguồn cung của nó. Khi nguồn cung hết, phí giao dịch sẽ được trả cho những người khai thác để bảo vệ mạng lưới.</p>
+
+<h2 id="why-our-estimates-are-the-most-accurate">Tại sao ước tính của chúng tôi là chính xác nhất</h2>
+<p>Để ước tính ngày sự kiện Halving, hầu hết các công cụ khác sử dụng các khối 10 phút để tính ngày Halving. </p>
+
+<p>Tuy nhiên, trong lịch sử khai thác Bitcoin, hầu hết các khối được khai thác trong khoảng thời gian dưới 10 phút.</p>
+
+<p>Cách tính của chúng tôi là sử dụng dữ liệu từ BTC.com để có được thời gian giải Khối trung bình trong hai tháng qua. Sau đó, nó sử dụng thời gian khối này (hiện tại là 9.69166666667 phút giữa các khối) để ước tính ngày Halving.</p>
+
+<p>Trong khi hầu hết các trang web khác ước tính ngày Halving diễn ra vào cuối tháng Năm, thì kết quả rất có thể Halving sẽ diễn ra vào đầu tháng 05.</p>
+
+<h2>Phần thưởng khối Bitcoin hiện tại là bao nhiêu?</h2>
+<p>Hiện tại, sau mỗi khối có 12.5 Bitcoin mới được phát hành.</p>
+
+<!--
+<ul id="markdown-toc">
+  <li><a href="#what-is-the-bitcoin-halving" id="markdown-toc-what-is-the-bitcoin-halving">What is the Bitcoin Halving?</a></li>
+  <li><a href="#what-is-the-significance-of-the-reward-halving" id="markdown-toc-what-is-the-significance-of-the-reward-halving">What is the Significance of the Reward Halving?</a></li>
+  <li><a href="#bitcoin-halving-chart" id="markdown-toc-bitcoin-halving-chart">Bitcoin Halving Chart</a></li>
+  <li><a href="#bitcoin-halving-schedule" id="markdown-toc-bitcoin-halving-schedule">Bitcoin Halving Schedule</a></li>
+  <li><a href="#what-happens-to-miners-during-halvings" id="markdown-toc-what-happens-to-miners-during-halvings">What Happens to Miners During Halvings?</a></li>
+  <li><a href="#when-is-the-next-bitcoin-halving-after-the-2020-halving" id="markdown-toc-when-is-the-next-bitcoin-halving-after-the-2020-halving">When is the Next Bitcoin Halving?</a></li>
+  <li><a href="#bitcoin-halving-history" id="markdown-toc-bitcoin-halving-history">Bitcoin Halving History</a>    <ul>
+      <li><a href="#2012-halving" id="markdown-toc-2012-halving">2012 Halving</a></li>
+      <li><a href="#2016-halving" id="markdown-toc-2016-halving">2016 Halving</a></li>
+    </ul>
+  </li>
+  <li><a href="#current-bitcoin-block-reward" id="markdown-toc-current-bitcoin-block-reward">Current Bitcoin Block Reward</a></li>
+  <li><a href="#bitcoin-halving-parties" id="markdown-toc-bitcoin-halving-parties">Bitcoin Halving Parties</a></li>
+    <li><a href="#21-million" id="21-million">When Will all 21 Million Bitcoin be Mined?</a></li>
+  <li><a href="#is-there-a-litecoin-block-reward-halving-countdown" id="markdown-toc-is-there-a-litecoin-block-reward-halving-countdown">Is There a Litecoin Block Reward Halving Countdown?</a></li>
+  <li><a href="#is-there-an-ethereum-block-reward-halving-countdown" id="markdown-toc-is-there-an-ethereum-block-reward-halving-countdown">Is There an Ethereum Block Reward Halving Countdown?</a></li>
+  <li><a href="#what-is-the-bitcoin-clock" id="markdown-toc-what-is-the-bitcoin-clock">What is the Bitcoin Clock?</a></li>
+  <li><a href="#is-the-reward-halving-necessary" id="markdown-toc-is-the-reward-halving-necessary">Is the Reward Halving Necessary?</a></li>
+  <li><a href="#why-our-estimates-are-the-most-accurate" id="markdown-toc-why-our-estimates-are-the-most-accurate">Why Our Estimates Are the Most Accurate</a></li>
+</ul>
+-->
