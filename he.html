@@ -1,0 +1,216 @@
+---
+layout: default
+seo_title: "Bitcoin Halving 2020 Countdown & Date ETA (Bitcoin Clock)"
+title: "Bitcoin Clock: 2020 Bitcoin Halving Countdown"
+lang: he
+pagename: clock
+proxima: yes
+rtl: yes
+permalink: "/he/"
+---
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://www.bitcoinclock.com/configBlockTime.js"></script>
+
+<script>
+    var height = GLOBAL_BLOCKHEIGHT;
+    jQuery(document).ready(function ($) {
+        var total_number = 12.5 * (height - 472500) + 16406250;
+        var append_html = "<span></span>";
+
+
+        var til_halving = 630000 - height;
+        append_html += "<b>Blocks Until Halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+        // var block_time = 9.69166666667;
+        var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
+        var days_til_halving = minutes_til_halving / (24 * 60);
+        var days_remainder = days_til_halving - Math.floor(days_til_halving);
+        var minutes = days_remainder - Math.floor(days_remainder);
+        var percent_done = (((height % 210000) / 210000) * 360);
+
+        $(".minutes").css("transform", "rotate(" + percent_done + "deg)");
+
+        $('#days_calc').append(Math.floor(days_til_halving));
+        $('#hours_calc').append(Math.floor(days_remainder * 24));
+        $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+        var d = new Date(Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000);
+
+        var month = d.getMonth() + 1;
+        var day = d.getUTCDate();
+        var year = d.getUTCFullYear();
+
+        console.log(month);
+
+        if (month === 4) {
+            var month_name = "April";
+        } else if (month === 5) {
+            var month_name = "May";
+        } else if (month === 3) {
+            var month_name = "March";
+        }
+
+        $('#date_eta').append(month_name + " " + day + ", " + year);
+
+        let hours_label = "hours";
+
+        if (Math.floor(days_remainder * 24) == 1) {
+            hours_label = "hour";
+        }
+
+        $("#hours_label").append(hours_label);
+
+        let minutes_label = "minutes";
+
+        if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
+            minutes_label = "minute";
+        }
+
+        $("#minutes_label").append(minutes_label);
+
+
+        $("#calc-content-div").append(append_html);
+    });
+</script>
+
+<p style="text-align: center; color: black;"><b>זמן שנותר לחציית בלוק:</b> <span style="font-weight: bold;"
+                                                                             id="days_calc"></span> ימים, <span
+        style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span>, <span
+        style="font-weight: bold;" id="minutes_calc"></span> <span id="minutes_label"></span></p>
+
+<p style="text-align: center; color: black;"><b>תאריך משוער:</b> <span id="date_eta"></span></p>
+
+<div class="clock simple">
+    <div class="minutes-container">
+        <div class="minutes"></div>
+    </div>
+</div>
+
+
+<div id="calc-content-div" style="text-align: center;"></div>
+
+<h2 id="what-is-the-bitcoin-halving">מהי חציית הביטקוין?</h2>
+<p>רשת ביטקוין חדשה מונפקת על ידי רשת הביטקוין כל 10 דקות. בארבע השנים הראשונות לקיומו של ביטקוין, כמות הביטקוין החדשה שהונפקה כל 10 דקות הייתה 50. כל ארבע שנים מספר זה נחצה לשניים. היום בו הסכום נחצה נקרא &quot;חצייה&quot; (halving).</p>
+
+<p>בשנת 2012, כמות הביטקוין החדשה שהונפקה כל 10 דקות ירדה מ-50 ביטקוין ל-25. בשנת 2016 כמות זו צנחה מ-25 ל-12.5. כעת, בחציית 2020, הוא יירד מ-12.5 ל-6.25.</p>
+
+<h2 id="what-is-the-significance-of-the-reward-halving">מה החשיבות של חציית בלוק הביטקוין?</h2>
+<p>החצייה מקטינה את כמות הביטקוין החדשה שנוצרת בכל בלוק. המשמעות היא שההיצע של ביטקוין חדשים תהיה נמוכה יותר.</p>
+<p>בשווקים רגילים, היצע נמוך יותר עם ביקוש קבוע מוביל בדרך כלל למחירים גבוהים יותר. מכיוון שהחצייה מקטינה את ההיצע של ביטקוין חדשים, והביקוש בדרך כלל נשאר יציב, לרוב המחצית מקדימה חלק מהריצות הגדולות יותר של הביטקוין. </p>
+
+<p>בתמונה למטה, הקווים הירוקים האנכיים מציינים את שני החציות הקודמות (<a
+        href="https://en.bitcoin.it/wiki/Controlled_supply">2012-11-28 ו- 2016-7-9</a>). שימו לב כיצד המחיר קפץ משמעותית לאחר כל חצייה.</p>
+
+<img src="/halvingdates.png" style="width: 100%;margin: 0 auto;">
+
+<h2 id="bitcoin-halving-chart">תרשים חציית ביטקוין</h2>
+<p>בתמונה למטה, תוכלו לראות את שיעור האינפלציה של ביטקוין בכל תקופה. </p>
+
+<img src="/inflation.png" style="width: 100%;margin: 0 auto;">
+
+<p>כל חצייה מורידה את שיעור האינפלציה של הביטקוין. הקו הכתום הוא שיעור האינפלציה של הביטקוין בתקופה נתונה, ואילו הקו הכחול הוא המספר הכולל של הביטקוין שהונפקו.</p>
+
+<h2 id="bitcoin-halving-schedule">לוח הזמנים לחציית הביטקוין</h2>
+<p>חציית הביטקוין מתוכננת בגובה הבלוק, לא בתאריך.</p>
+
+<p>החצייה מתרחשת כל 210,000 בלוקים. חציית 2020 תתרחש בבלוק 630,000. חציית 2024 תתרחש בבלוק 840,000.</p>
+
+<h2 id="what-happens-to-miners-during-halvings">מה קורה לכורים של הביטקוין במהלך החצייה?</h2>
+<p>רבים <a href="https://techcrunch.com/2016/07/09/the-reward-for-mining-bitcoin-was-just-cut-in-half/">תמיד משערים</a> שכורים ייסגרו לאחר החצייה. המציאות היא שרוב הכורים, באופן חכם ומתבקש, מוכרים מראש את שבבעלותם טרם החצייה, כך שבסופו של דבר לא יצטרכו לסגור שום כורים.</p>
+
+<h2 id="when-is-the-next-bitcoin-halving-after-the-2020-halving">מתי תהיה חציית הביטקוין של 2024?</h2>
+<p>חציית 2024 תתרחש ככל הנראה בין מרץ 2024 ליוני 2024. </p>
+
+<h2 id="bitcoin-halving-history">היסטוריית חציית הביטקוין</h2>
+
+<p>קטע זה יעיף מבט על שני חלוקות הביטקוין הקודמות.</p>
+
+<h2 id="2012-halving">חציית 2012</h2>
+
+<p><a href="https://en.bitcoin.it/wiki/Halving_day_2012">חציית הבלוק של 2012</a> הייתה החצייה הראשונה. כרייה זאת בוצעה ע&quot;י SlushPool, בעזרת מישהו שהשתמש בכורה Radeon HD 5800.</p>
+
+<ul>
+    <li><b>ביטקוין חדש לכל בלוק לפני:</b> 50 ביטקוין לכל בלוק</li>
+    <li><b>ביטקוין חדש לכל בלוק אחרי כן:</b> 25 ביטקוין לכל בלוק</li>
+    <li><b>מחיר ביום החצייה:</b> 12.35 דולר</li>
+    <li><b>מחיר 150 יום לאחר מכן:</b> 127.00 דולר</li>
+</ul>
+
+<h2 id="2016-halving">חציית 2016</h2>
+
+<p>שנת 2016 הייתה החצייה השנייה.</p>
+
+<ul>
+    <li><b>ביטקוין חדש לכל בלוק לפני:</b> 25 ביטקוין לכל בלוק</li>
+    <li><b>ביטקוין חדש לכל בלוק אחרי כן:</b> 12.5 ביטקוין לכל בלוק</li>
+    <li><b>מחיר ביום החצייה:</b> 650.63 דולר</li>
+    <li><b>מחיר 150 יום לאחר מכן:</b> 758.81 דולר</li>
+</ul>
+
+<h2 id="current-bitcoin-block-reward">סבסוד נוכחי לבלוק ביטקוין</h2>
+<p>הסבסוד הנוכחי של בלוק ביטקוין הוא 12.5 ביטקוין לכל בלוק. כאשר יגיעו לבלוק 630,000 בשנת 2020, הסבסוד יירד ל-6.25 ביטקוין (BTC) לכל בלוק.</p>
+
+<h2 id="bitcoin-halving-parties">חגיגות חציית הביטקוין</h2>
+<p>אלפי משתמשים ברחבי העולם חגגו את חציית 2016. התקיימו <a
+        href="http://blog.thehalvening.com/bitcoin-halving-parties-2016/">מסיבות</a> רבות בערים מרכזיות כמו בואנוס איירס, מלבורן, מונטריאול, פריז, אתונה, דבלין ועשרות ערים אחרות.</p>
+
+<p>הנה סרטון מסיבת חצייה משנת 2016 של<a href="https://billfodl.com/blogs/fodl-blog/what-does-hodl-mean">HODL</a> בתל אביב:</p>
+
+<iframe style="height: auto; max-width: 100%;" src="https://www.youtube.com/embed/T0IR8X-Qnqs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<p>כשיתפרסמו אירועי מסיבות, נעקוב אחריהם כאן!</p>
+
+<h2 id="21-million">מתי כריית כל ה-21 מיליון ביטקוין תתקיים?</h2>
+<p>כריית כל 21 מיליון הביטקוין (BTC) תתקיים עד 2140. אולם למעלה מ-98% יכרתו כבר עד 2030.</p>
+
+<h2 id="is-there-a-litecoin-block-reward-halving-countdown">האם ישנה ספירה לאחור של תגמולי חציית בלוק הליטקוין?</h2>
+<p>כן, תוכל לבדוק <a href="http://litecoinblockhalf.com/">באתר זה</a>. כעת צפוי כי ליטקוין תחל את חצייתה שנה לפני הביטקוין, בסביבות אוגוסט 2019. תגמול הליטקוין לכל בלוק יקטן מ-25 ליטקוין לכל בלוק ל-12.5 ליטקוין לכל בלוק. תגמול בלוק הליטקוין מתרחש כל חצייה של 840,000 בלוקים.</p>
+
+<h2 id="is-there-an-ethereum-block-reward-halving-countdown">האם ישנה ספירה לאחור של תגמולי חציית בלוק האתריום? </h2>
+<p>תגמול בלוק האתריום לא נחצה כמו זה של הביטקוין, כך שאין ספירה לאחור.</p>
+
+<h2 id="what-is-the-bitcoin-clock">מהו שעון הביטקוין?</h2>
+<p>שעון הביטקוין קיים מאז 2011. בשנת 2018, הבעלים נתן לאתר (Domain) להיפסק. שיפצנו את האתר והחזרנו אותו לחזונו המקורי.</p>
+
+<h2 id="is-the-reward-halving-necessary">האם החצייה הכרחית?</h2>
+<p>החצייה אכן הכרחית ונחוצה. בדרך זו <a href="https://financepond.com/credit-cards/buy-bitcoin/">הביטקוין</a> שולט באספקה שלו. לאחר שפג תוקף סבסוד הבלוק, דמי ההעברות ישלמו לכורים עבור אבטחת הרשת.</p>
+
+<h2 id="why-our-estimates-are-the-most-accurate">מדוע הערכותינו הן המדויקות ביותר</h2>
+<p>מרבית אומדני תאריכי החצייה האחרים משתמשים בבלוקים של כל 10 דקות כדי לחשב את תאריך החצייה המשוער. </p>
+
+<p>עם זאת, ישנם בלוקים אשר כרייתם התבצעה אף בפחות מ-10 דקות במשך כמעט כל ההיסטוריה של ביטקוין.</p>
+
+<p>המחשבון שלנו משתמש בנתונים מהאתר BTC.com כדי לקבל את זמן הבלוק הממוצע בחודשיים האחרונים. לאחר מכן, הוא משתמש בזמן בלוק זה (נכון לעכשיו, 9.69166666667 דקות בין כל בלוק) כדי להעריך את תאריך החצייה המשוער.</p>
+
+<p>בעוד שרוב האתרים האחרים מעריכים את החצייה לקראת סוף מאי, התוצאה הסבירה יותר היא חציית התגמול בתחילת מאי.</p>
+
+<h2>מהו התגמול הנוכחי לבלוק בביטקוין?</h2>
+<p>בשלב זה, יש 12.5 ביטקוין חדשים המונפקים בכל בלוק.</p>
+
+<ul id="markdown-toc">
+    <li><a href="#what-is-the-bitcoin-halving" id="markdown-toc-what-is-the-bitcoin-halving">מהי חציית הביטקוין?</a></li>
+    <li><a href="#what-is-the-significance-of-the-reward-halving"
+           id="markdown-toc-what-is-the-significance-of-the-reward-halving">מה המשמעות של חציית התגמול?</a></li>
+    <li><a href="#bitcoin-halving-chart" id="markdown-toc-bitcoin-halving-chart">תרשים חציית ביטקוין</a></li>
+    <li><a href="#bitcoin-halving-schedule" id="markdown-toc-bitcoin-halving-schedule">לוח הזמנים לחציית הביטקוין</a></li>
+    <li><a href="#what-happens-to-miners-during-halvings" id="markdown-toc-what-happens-to-miners-during-halvings">מה קורה לכורים של הביטקוין במהלך החצייה?</a></li>
+    <li><a href="#when-is-the-next-bitcoin-halving-after-the-2020-halving"
+           id="markdown-toc-when-is-the-next-bitcoin-halving-after-the-2020-halving">מתי תתרחש חציית הביטקוין הבאה?</a></li>
+    <li><a href="#bitcoin-halving-history" id="markdown-toc-bitcoin-halving-history">היסטוריית חציית הביטקוין</a>
+        <ul>
+            <li><a href="#2012-halving" id="markdown-toc-2012-halving">חציית 2012</a></li>
+            <li><a href="#2016-halving" id="markdown-toc-2016-halving">חציית 2016</a></li>
+        </ul>
+    </li>
+    <li><a href="#current-bitcoin-block-reward" id="markdown-toc-current-bitcoin-block-reward">התגמול הנוכחי לבלוק בביטקוין</a></li>
+    <li><a href="#bitcoin-halving-parties" id="markdown-toc-bitcoin-halving-parties">חגיגות חציית הביטקוין</a></li>
+    <li><a href="#21-million" id="21-million">מתי כריית כל 21 מיליון הביטקוין תתקיים?</a></li>
+    <li><a href="#is-there-a-litecoin-block-reward-halving-countdown"
+           id="markdown-toc-is-there-a-litecoin-block-reward-halving-countdown">האם ישנה ספירה לאחור של תגמולי חציית בלוק הליטקוין?</a></li>
+    <li><a href="#is-there-an-ethereum-block-reward-halving-countdown"
+           id="markdown-toc-is-there-an-ethereum-block-reward-halving-countdown">האם ישנה ספירה לאחור של תגמולי חציית בלוק האתריום?</a></li>
+    <li><a href="#what-is-the-bitcoin-clock" id="markdown-toc-what-is-the-bitcoin-clock">מהו שעון הביטקוין?</a>
+    </li>
+    <li><a href="#is-the-reward-halving-necessary" id="markdown-toc-is-the-reward-halving-necessary">האם חציית התגמול הכרחית?</a></li>
+    <li><a href="#why-our-estimates-are-the-most-accurate" id="markdown-toc-why-our-estimates-are-the-most-accurate">מדוע הערכותינו הן המדויקות ביותר</a></li>
+</ul>
