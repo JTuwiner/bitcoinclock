@@ -1,0 +1,213 @@
+---
+layout: default
+seo_title: "2020 Bitcoin Yarýlanmasý Geri Sayýmý (Bitcoin Saati)"
+title: "Bitcoin Saati: 2020 Bitcoin Yarýlanmasý Geri Sayýmý"
+permalink: "/tr/"
+lang: de
+pagename: clock
+dotclock: yes
+proxima: yes
+---
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://www.bitcoinclock.com/configBlockTime.js"></script> 
+
+<script>
+    var height;
+    jQuery(document).ready(function($){
+        $.getJSON("https://www.satochi.co/latest-block", function( data ) {
+            var height = data;
+            var total_number = 12.5 * (height - 472500) + 16406250;
+            var append_html = "<span></span>";
+
+            
+            var til_halving = 630000 - height;
+            append_html += "<b>Yarýlanmaya Kalan Blok Sayýsý:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+            
+            // var block_time = 9.69166666667;
+            var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
+            var days_til_halving = minutes_til_halving / (24 * 60);
+            var days_remainder = days_til_halving - Math.floor(days_til_halving);
+            var minutes = days_remainder - Math.floor(days_remainder);
+            var percent_done = (((height % 210000) / 210000) * 360);
+                        
+            $(".minutes").css("transform", "rotate(" + percent_done +"deg)");
+              
+              $('#days_calc').append(Math.floor(days_til_halving));
+               $('#hours_calc').append(Math.floor(days_remainder * 24));
+                $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                
+                var d = new Date( Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000); 
+                
+                var month = d.getMonth() + 1;
+				var day = d.getUTCDate();
+				var year = d.getUTCFullYear();
+				
+				console.log(month);
+								
+				if (month === 4) {
+					var month_name = "Nisan";
+				}
+				
+				else if (month === 5) {
+					var month_name = "Mayýs";
+				}
+				
+				else if (month === 3) {
+					var month_name = "Mart";
+				}
+
+				$('#date_eta').append(month_name + " " + day + ", " + year);
+				
+				let hours_label = "saat";
+				
+				if (Math.floor(days_remainder * 24) == 1) {
+					hours_label = "saat";
+				}
+				
+				$("#hours_label").append(hours_label);
+								
+				let minutes_label = "saat";
+				
+				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
+					minutes_label = "saat";
+				}
+				
+				$("#minutes_label").append(minutes_label);
+
+
+            $("#calc-content-div").append(append_html);
+        });
+    });
+</script>
+
+
+<p style="text-align: center; color: black;"><b>Blok Yarýlanmasý Tahmini Gerçekleþme Zamaný</b> <span style="font-weight: bold;" id="days_calc"></span> gün, <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span>, <span style="font-weight: bold;" id="minutes_calc"></span> <span id="minutes_label"></span></p>
+
+<p style="text-align: center; color: black;"><b>Tahmini Tarih:</b> <span id="date_eta"></span></p>
+
+<div class="clock simple">
+  <div class="minutes-container">
+    <div class="minutes"></div>
+  </div>
+</div>
+
+
+<div id="calc-content-div" style="text-align: center;"></div>
+
+<h2 id="what-is-the-bitcoin-halving">Bitcoin Yarýlanmasý Nedir?</h2>
+<p>Bitcoin aðý, her 10 dakikada bir yeni Bitcoin'ler üretir. Bitcoin'in ortaya çýktýðý ilk dört sene boyunca, her 10 dakikada bir üretilen Bitcoin sayýsý 50'ydi. Her dört yýlda bir bu sayý yarýya iner. Bu sayýnýn yarýlandýðý günlere "yarýlanma" adý verilir.</p> 
+
+<p>2012'de, her 10 dakikada bir üretilen yeni Bitcoin miktarý 50'den 25'e düþtü. 2016'da bu sayý 25'ten 12.5'a düþtü. Önümüzdeki 2020 yarýlanmasýnda ise bu sayý 12.5'tan 6.25'e düþecek.</p> 
+
+<h2 id="what-is-the-significance-of-the-reward-halving">Bitcoin Ödül Yarýlanmasý Neden Önemli?</h2>
+<p>Yarýlanma, blok baþýna üretilen yeni bitcoin miktarýný azaltýr. Bu, yeni Bitcoin kaynaðýnýn azaldýðý anlamýna gelir.</p>
+<p>Normal piyasalarda, sabit talep ve kýsýtlý kaynak iliþkisi fiyatlarýn yükselmesine neden olur. Yarýlanma Bitcoin kaynaðýný azalttýðý fakat talep genellikle sabit olduðu için, Bitcoin'in en güçlü dönemleri genellikle yarýlanmalardan sonra olmuþtur. </p>
+
+<p>Aþaðýdaki grafikte dikey ve yeþil çizgiler, daha önceki iki yarýlanmayý gösteriyor.(<a href="https://en.bitcoin.it/wiki/Controlled_supply">2012-11-28 and 2016-7-9</a>). Fiyatýn her yarýlanmadan sonra nasýl yukarý sýçradýðýna dikkat edin.</p>
+
+<img src="/halvingdates.png" style="width: 100%;margin: 0 auto;">
+
+<h2 id="bitcoin-halving-chart">Bitcoin Yarýlanma Grafiði</h2>
+<p>Aþaðýdaki grafikte Bitcoin'in her dönemdeki enflasyon oranýný görebilirsiniz.</p>
+
+<img src="/inflation.png" style="width: 100%;margin: 0 auto;">
+
+<p>Her bir yarýlanma Bitcoin'in enflasyon oranýný düþürür. Kýrmýzý çizgi Bitcoin'in belli bir dönemdeki enflasyon oranýný gösterirken, mavi çizgi ise üretilen toplam Bitcoin sayýsýný gösteriyor.</p>
+
+<h2 id="bitcoin-halving-schedule">Bitcoin Yarýlanma Takvimi</h2>
+<p>Bitcoin yarýlanmasý belli bir tarihe göre deðil, blok boyutuna göre ayarlanýr.</p>
+
+<p>Yarýlanma her 210.000 blokta bir gerçekleþir. 2020 yarýlanmasý, 630.000 numaralý blokta gerçekleþecek. 2024 yarýlanmasý ise 840.000 numaralý bloða ulaþýldýðýnda gerçekleþecek.</p>
+
+<h2 id="what-happens-to-miners-during-halvings">Yarýlanma Olduðunda Madencilere Ne Olur?</h2>
+<p>Çoðu kiþi daima, yarýlanmalardan sonra madencilerin kepenkleri kapatacaðý <a href="https://techcrunch.com/2016/07/09/the-reward-for-mining-bitcoin-was-just-cut-in-half/">yorumunda bulunur</a>. Gerçekte ise madencilerin çoðu zeki insanlardýr ve bu yarýlanmalara bir deðer biçerler ve madencilik yapmayý býrakmazlar.</p>
+
+<h2 id="when-is-the-next-bitcoin-halving-after-the-2020-halving">2024 Bitcoin Yarýlanmasý Ne Zaman Gerçekleþecek?</h2>
+<p>2024 yarýlanmasý muhtemelen Mart ve Haziran aylarý arasýnda gerçekleþecek.</p>
+
+<h2 id="bitcoin-halving-history">Bitcoin Yarýlanma Geçmiþi</h2>
+
+<p>Bu bölümde önceki iki yarýlanmayý inceleyeceðiz.</p>
+<h2 id="2012-halving">2012 Yarýlanmasý</h2>
+
+<p><a href="https://en.bitcoin.it/wiki/Halving_day_2012">2012 blok yarýlanmasý</a>, Bitcoin tarihindeki ilk yarýlanmaydý. SlushPool üzerinden, Radeon HD 5800 ekran kartý kullanan bir madenci tarafýndan çözüldü.</p>
+
+<ul>
+<li><b>Blok Baþýna Önceki BTC Miktarý:</b> Blok baþýna 50 BTC</li>
+<li><b>Blok Baþýna Yeni BTC Miktarý:</b> Blok baþýna 25  BTC</li>
+<li><b>Yarýlanma günündeki fiyatý:</b> 12.35$</li>
+<li><b>150 gün sonraki fiyatý:</b> 127.00$</li>
+</ul>
+
+<h2 id="2016-halving">2016 Yarýlanmasý</h2>
+
+<p>2016, Bitcoin tarihindeki ikinci yarýlanmaydý.</p>
+
+<ul>
+<li><b>Blok Baþýna Önceki BTC Miktarý:</b> Blok baþýna 25 BTC</li>
+<li><b>Blok Baþýna Yeni BTC Miktarý:</b> Blok baþýna 12.5  BTC</li>
+<li><b>Yarýlanma günündeki fiyatý:</b> 650.63$</li>
+<li><b>150 gün sonraki fiyatý:</b> 758.81$</li>
+</ul>
+
+<h2 id="current-bitcoin-block-reward">Güncel Bitcoin Bloðu Ödülü</h2>
+<p>Þu anda bir Bitcoin bloðu baþýna ödül miktarý 12.5 Bitcoin. 630.000 numaralý blok 2020'de çözüldüðünde, ödül blok baþýna 6.25 Bitcoin'e (BTC) düþecek.</p>
+
+<h2 id="bitcoin-halving-parties">Bitcoin Yarýlanma Partileri</h2>
+<p>2016 yarýlanmasý sýrasýnda, dünyanýn dört bir yanýndaki binlerce Bitcoin sahibi kutlama yaptý. Buenos Aires, Melbourne, Montreal, Atina, Dublin ve bunun gibi onlarca büyük þehirde <a href="http://blog.thehalvening.com/bitcoin-halving-parties-2016/">partiler verildi</a>.</p>
+
+<p>Ýþte 2016'da Tel Aviv þehrinden bir <a href="https://billfodl.com/blogs/fodl-blog/what-does-hodl-mean">HODL</a> yarýlanma partisi videosu:</p>
+
+<iframe style="height: auto; max-width: 100%;" src="https://www.youtube.com/embed/T0IR8X-Qnqs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<p>Parti etkinlikleri paylaþýldýkça onlarý buradan birlikte takip edeceðiz!</p>
+
+<h2 id="21-million">21 Milyon Bitcoin'in Hepsi Ne Zaman Üretilmiþ Olacak?</h2>
+<p>21 milyon Bitcoin'in hepsi 2140 yýlýna kadar üretilmiþ olacak. Ancak %98'inden fazlasý ise 2030 yýlýna kadar üretilmiþ olacak.</p>
+
+<h2 id="is-there-a-litecoin-block-reward-halving-countdown">Bir Litecoin Blok Ödülü Yarýlanmasý Geri Sayýmý Var mý?</h2>
+<p>Evet, <a href="http://litecoinblockhalf.com/">bu siteye bir bak</a>. Litecoin'in yarýlanma tarihinin, Bitcoin'den bir sene önce yani 2019 yýlýnýn Aðustos ayýnda gerçekleþmesi düþünülüyor. Litecoin'in blok baþýna verdiði ödül 25 LTC'den 12.5 LTC'ye düþecek. Litecoin'in blok ödülü her 840.000 blokta bir yarýlanýr.</p>
+
+<h2 id="is-there-an-ethereum-block-reward-halving-countdown"> Bir Ethereum Blok Ödülü Yarýlanmasý Geri Sayýmý Var mý?</h2>
+<p>Ethereum'un blok ödülü, Bitcoin'de olduðu gibi yarýlanmaz. Bu yüzden bir geri sayým yok.</p>
+
+<h2 id="what-is-the-bitcoin-clock">Bitcoin Saati Nedir?</h2>
+<p>Bitcoin saati 2011 yýlýndan beri vardý. 2018'de sitenin sahibi að adresinin süresinin dolmasýna göz yumdu. Biz siteyi elden geçirdik ve baþtaki vizyonuna kavuþturduk.</p>
+
+<h2 id="is-the-reward-halving-necessary">Yarýlanma Gerekli Midir?</h2>
+<p>Yarýlanma gereklidir. Bu þekilde <a href="https://financepond.com/credit-cards/buy-bitcoin/">Bitcoin</a> kendi üretimini kontrol eder. Blok ödülü sistemi ömrünü tamamladýðýnda, madenciler aða yaptýklarý katkýnýn karþýlýðýný iþlem ücretleri üzerinden almaya devam edecektir.</p>
+
+<h2 id="why-our-estimates-are-the-most-accurate">Neden En Doðrusu Bizim Tahminlerimiz?</h2>
+<p>Diðer yarýlanma tarihi tahmincilerinin çoðu, tahmini yarýlanma tarihini hesaplamak için 10 dakikalýk bloklar kullanýr.</p>
+
+<p>Ancak Bitcoin'in tüm tarihi boyunca, bloklar 10 dakikadan daha az zaman dilimlerinde üretilmiþtir.</p>
+
+<p>Bizim hesaplayýcýmýz BTC.com verilerini kullanarak son iki aydaki ortalama blok süresini öðrenir. Ardýndan bu blok süresini (þimdilik 9,69166666667 dakika) kullanarak yarýlanma tarihini tahmin eder.</p>
+
+<p>Çoðu diðer site yarýlanma tarihini Mayýs sonu olarak hesaplarken, ödül yarýlanmasýnýn Mayýs baþýnda gerçekleþmesi daha olasýdýr.</p>
+
+<h2>Güncel Bitcoin Blok Ödülü Ne Kadar?</h2>
+<p>Þu anda blok baþýna 12.5 yeni bitcoin üretiliyor.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#what-is-the-bitcoin-halving" id="markdown-toc-what-is-the-bitcoin-halving">Bitcoin Yarýlanmasý Nedir?</a></li>
+  <li><a href="#what-is-the-significance-of-the-reward-halving" id="markdown-toc-what-is-the-significance-of-the-reward-halving">Bitcoin Ödül Yarýlanmasý Neden Önemli?</a></li>
+  <li><a href="#bitcoin-halving-chart" id="markdown-toc-bitcoin-halving-chart">Bitcoin Yarýlanma Grafiði</a></li>
+  <li><a href="#bitcoin-halving-schedule" id="markdown-toc-bitcoin-halving-schedule">Bitcoin Yarýlanma Takvimi</a></li>
+  <li><a href="#what-happens-to-miners-during-halvings" id="markdown-toc-what-happens-to-miners-during-halvings">Yarýlanma Olduðunda Madencilere Ne Olur?</a></li>
+  <li><a href="#when-is-the-next-bitcoin-halving-after-the-2020-halving" id="markdown-toc-when-is-the-next-bitcoin-halving-after-the-2020-halving">Bir Sonraki Bitcoin Yarýlanmasý Ne Zaman?</a></li>
+  <li><a href="#bitcoin-halving-history" id="markdown-toc-bitcoin-halving-history">Bitcoin Yarýlanma Geçmiþi</a>    <ul>
+      <li><a href="#2012-halving" id="markdown-toc-2012-halving">2012 Yarýlanmasý</a></li>
+      <li><a href="#2016-halving" id="markdown-toc-2016-halving">2016 Yarýlanmasý</a></li>
+    </ul>
+  </li>
+  <li><a href="#current-bitcoin-block-reward" id="markdown-toc-current-bitcoin-block-reward">Güncel Bitcoin Bloðu Ödülü</a></li>
+  <li><a href="#bitcoin-halving-parties" id="markdown-toc-bitcoin-halving-parties">Bitcoin Yarýlanma Partileri</a></li>
+    <li><a href="#21-million" id="21-million">21 Milyon Bitcoin'in Hepsi Ne Zaman Üretilmiþ Olacak?</a></li>
+  <li><a href="#is-there-a-litecoin-block-reward-halving-countdown" id="markdown-toc-is-there-a-litecoin-block-reward-halving-countdown">Bir Litecoin Blok Ödülü Yarýlanmasý Geri Sayýmý Var mý?</a></li>
+  <li><a href="#is-there-an-ethereum-block-reward-halving-countdown" id="markdown-toc-is-there-an-ethereum-block-reward-halving-countdown">Bir Ethereum Blok Ödülü Yarýlanmasý Geri Sayýmý Var mý?</a></li>
+  <li><a href="#what-is-the-bitcoin-clock" id="markdown-toc-what-is-the-bitcoin-clock">Bitcoin Saati Nedir?</a></li>
+  <li><a href="#is-the-reward-halving-necessary" id="markdown-toc-is-the-reward-halving-necessary">Ödül Yarýlanmasý Gerekli Midir?</a></li>
+  <li><a href="#why-our-estimates-are-the-most-accurate" id="markdown-toc-why-our-estimates-are-the-most-accurate">Neden En Doðrusu Bizim Tahminlerimiz?</a></li>
+</ul>
