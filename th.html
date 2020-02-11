@@ -1,0 +1,207 @@
+---
+layout: default
+seo_title: "นับถอยหลัง Bitcoin Halving ปี 2020 & วันที่ ETA (นาฬิกา Bitcoin)"
+title: "นาฬิกา Bitcoin: นับถอยหลังสู่ Bitcoin Halving ปี 2020"
+permalink: "/th/"
+lang: th
+pagename: clock
+dotclock: yes
+proxima: yes
+---
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://www.bitcoinclock.com/configBlockTime.js"></script>
+
+<script>
+    var height = GLOBAL_BLOCKHEIGHT;
+    jQuery(document).ready(function ($) {
+        var total_number = 12.5 * (height - 472500) + 16406250;
+        var append_html = "<span></span>";
+
+
+        var til_halving = 630000 - height;
+        append_html += "<b>จำนวนบล็อกก่อนการ halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+        // var block_time = 9.69166666667;
+        var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
+        var days_til_halving = minutes_til_halving / (24 * 60);
+        var days_remainder = days_til_halving - Math.floor(days_til_halving);
+        var minutes = days_remainder - Math.floor(days_remainder);
+        var percent_done = (((height % 210000) / 210000) * 360);
+
+        $(".minutes").css("transform", "rotate(" + percent_done + "deg)");
+
+        $('#days_calc').append(Math.floor(days_til_halving));
+        $('#hours_calc').append(Math.floor(days_remainder * 24));
+        $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+        var d = new Date(Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000);
+
+        var month = d.getMonth() + 1;
+        var day = d.getUTCDate();
+        var year = d.getUTCFullYear();
+
+        console.log(month);
+
+        if (month === 4) {
+            var month_name = "April";
+        } else if (month === 5) {
+            var month_name = "พฤษภาคม";
+        } else if (month === 3) {
+            var month_name = "March";
+        }
+
+        $('#date_eta').append(month_name + " " + day + ", " + year);
+
+        let hours_label = "ชั่วโมง";
+
+        if (Math.floor(days_remainder * 24) == 1) {
+            hours_label = "ชั่วโมง";
+        }
+
+        $("#hours_label").append(hours_label);
+
+        let minutes_label = "นาที";
+
+        if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
+            minutes_label = "นาที";
+        }
+
+        $("#minutes_label").append(minutes_label);
+
+
+        $("#calc-content-div").append(append_html);
+    });
+</script>
+
+
+<p style="text-align: center; color: black;"><b>การ Halving บล็อก ETA:</b> <span style="font-weight: bold;" id="days_calc"></span> วัน, <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span>, <span style="font-weight: bold;" id="minutes_calc"></span> <span id="minutes_label"></span></p>
+
+<p style="text-align: center; color: black;"><b>วันที่ ETA:</b> <span id="date_eta"></span></p>
+
+<div class="clock simple">
+  <div class="minutes-container">
+    <div class="minutes"></div>
+  </div>
+</div>
+
+
+<div id="calc-content-div" style="text-align: center;"></div>
+
+<h2 id="what-is-the-bitcoin-halving">Bitcoin Halving คืออะไร?</h2>
+<p>เหรียญ Bitcoin (บิทคอยน์) ที่ออกใหม่นั้นจะมีการปล่อยออกมาทุก ๆ 10  นาที โดยเครือข่าย Bitcoin ในช่วงสี่ปีแรกจำนวนเหรียญ Bitcoin ที่ออกใหม่ในทุก 10 นาทีจะมีจำนวนเหรียญออกใหม่ 50 เหรียญ  แต่ในทุก ๆ สี่ปีตัวเลขจำนวนนี้จะถูกแบ่งลดจำนวนลงครึ่งหนึ่ง และวันที่ตัวเลขจำนวนเหรียญใหม่นี้ถูกแบ่งครึ่งก็ถูกเรียกว่า "halving (ฮาฟวิ่ง)"</p> 
+
+<p>ในปี 2012 จำนวนเหรียญ Bitcoin ใหม่ที่ออกทุก 10 นาทีลดลงจาก 50 Bitcoin เป็น 25 Bitcoin ในปี 2016 มันลดลงจาก 25 เป็น 12.5 และตอนนี้ ในการ halving ของปี 2020 มันจะลดลงจาก 12.5 เป็น 6.25 Bitcoin</p> 
+
+<h2 id="what-is-the-significance-of-the-reward-halving">นัยสำคัญของ Bitcoin Block Halving คืออะไร?</h2>
+<p>การ halving หรือการลดจำนวนลงครึ่งหนึ่งของ Bitcoin ใหม่ที่สร้างขึ้นต่อบล็อก หมายความว่า ปริมาณของเหรียญ Bitcoin ใหม่ ๆ จะมีจำนวนลดลง</p>
+<p>ในตลาดปกติ เมื่ออุปทานลดลงแต่อุปสงค์คงที่ มักจะทำให้เกิดราคาที่สูงขึ้น เนื่องจากการ halving ลดจำนวนอุปทานของ Bitcoin แต่อุปสงค์หรือความต้องการเหรียญยังคงมีอยู่อย่างสม่ำเสมอ การ halving จึงมักจะนำไปสู่การเปลี่ยนแปลงราคาของ Bitcoin ที่เพิ่มสูงขึ้น</p>
+
+<p>ภาพด้านล่าง เส้นสีเขียวแนวตั้งบ่งบอกถึงการ halving สองครั้งก่อนหน้านี้(<a href="https://en.bitcoin.it/wiki/Controlled_supply">2012-11-28 และ 2016-7-9</a>). สังเกตว่าราคาได้เพิ่มสูงขึ้นอย่างมีนัยสำคัญหลังจากการ halving ในแต่ละครั้ง</p>
+
+<img src="/halvingdates.png" style="width: 100%;margin: 0 auto;">
+
+<h2 id="bitcoin-halving-chart">แผนภูมิของ Bitcoin Halving</h2>
+<p>จากภาพด้านล่าง คุณจะเห็นว่าอัตราการเฟ้อของ Bitcoin ในแต่ละช่วงเวลา</p>
+
+<img src="/inflation.png" style="width: 100%;margin: 0 auto;">
+
+<p>ในการ halving แต่ละครั้ง เกิดการลดอัตราการเฟ้อของ Bitcoin เส้นสีส้มคืออัตราการเฟ้อของ Bitcoin ในช่วงเวลาที่กำหนด ในขณะที่เส้นสีฟ้าคือ Bitcoin ทั้งหมดที่ปล่อยออกมา</p>
+
+<h2 id="bitcoin-halving-schedule">กำหนดการของการเกิด Bitcoin Halving</h2>
+<p>การเกิด Bitcoin halving หรือการลดจำนวนการปล่อยเหรียญใหม่ลงครึ่งหนึ่งนั้น ถูกกำหนดด้วยจำนวนของบล็อก ไม่ใช่วันที่</p>
+
+<p>การ halving เกิดขึ้นทุก ๆ 210,000 บล็อก การ halving ของปี 2020 จะเกิดขึ้นในบล็อกที่ 630,000 และในปี 2024 การ halving จะเกิดขึ้นที่บล็อก 840,000</p>
+
+<h2 id="what-happens-to-miners-during-halvings">เกิดอะไรขึ้นกับนักขุดในระหว่างการ Halving?</h2>
+<p>หลายคน<a href="https://techcrunch.com/2016/07/09/the-reward-for-mining-bitcoin-was-just-cut-in-half/">มักคาดการณ์</a>ว่านักขุดจะหยุดขุดหลังการ halving แต่ในความเป็นจริงนักขุดส่วนใหญ่มีความชาญฉลาดและจะควบคุมราคาในระหว่างการ halving ดังนั้น จึงไม่เคยมีนักขุดคนใดต้องหยุดทำการขุด</p>
+
+<h2 id="when-is-the-next-bitcoin-halving-after-the-2020-halving">Bitcoin Halving ปี 2024 จะเกิดขึ้นเมื่อไหร่?</h2>
+<p>การ halving ในปี 2024 จะเกิดขึ้นในระหว่างเดือนมีนาคม 2024 ถึงเดือนมิถุนายน 2024</p>
+
+<h2 id="bitcoin-halving-history">ประวัติของการเกิด Bitcoin Halving</h2>
+
+<p>ในส่วนนี้จะต้องย้อนกลับไปดูที่การเกิด halving ทั้งสองครั้งที่ผ่านมา</p>
+
+<h2 id="2012-halving">การ Halving ในปี 2012</h2>
+
+<p>The <a href="https://en.bitcoin.it/wiki/Halving_day_2012">การเกิดบล็อก halving ปี 2012</a> เป็นการ halving ครั้งแรก. มันถูกขุดโดย SlushPool โดยบุคคลที่ใช้เครื่องขุด  Radeon HD 5800</p>
+
+<ul>
+<li><b>การออกเหรียญ BTC ใหม่ต่อบล็อก ก่อนหน้า:</b> 50 BTC ต่อบล็อก</li>
+<li><b>การออกเหรียญ BTC ใหม่ต่อบล็อก ภายหลัง:</b> 25 BTC ต่อบล็อก</li>
+<li><b>ราคาในวันที่เกิดการ Halving:</b> $12.35</li>
+<li><b>ราคาหลังจากที่เกิดการ halving แล้ว 150 วัน:</b> $127.00</li>
+</ul>
+
+<h2 id="2016-halving">การ Halving ในปี 2016</h2>
+
+<p>ปี 2016 เป็นการลดจำนวนลงครั้งที่สอง</p>
+
+<ul>
+<li><b>การออกเหรียญ BTC ใหม่ต่อบล็อก ก่อนหน้า:</b> 25 BTC ต่อบล็อก</li>
+<li><b>การออกเหรียญ BTC ใหม่ต่อบล็อก ภายหลัง:</b> 12.5 BTC ต่อบล็อก</li>
+<li><b>ราคาในวันที่เกิดการ Halving:</b> $650.63</li>
+<li><b>ราคาหลังจากที่เกิดการ halving แล้ว 150 วัน:</b> $758.81</li>
+</ul>
+
+<h2 id="current-bitcoin-block-reward">เงินอุดหนุนสมทบของบล็อก Bitcoin ในปัจจุบัน</h2>
+<p>เงินอุดหนุนสมทบของบล็อก Bitcoin ในปัจจุบัน คือ 12.5 Bitcoin ต่อบล็อก เมื่ออยู่ที่บล็อก 630,000 ในปี 2020 เงินอุดหนุนสมทบจะลดลงเหลือ 6.25 Bitcoin (BTC) ต่อบล็อก</p>
+
+<h2 id="bitcoin-halving-parties">พันธมิตรของ Bitcoin Halving</h2>
+<p>Bitcoiner หรือผู้ที่ครอบครองบิทคอยน์หลายพันคนทั่วได้โลกเฉลิมฉลองการ halving ที่เกิดขึ้นในปี 2016  มี<a href="http://blog.thehalvening.com/bitcoin-halving-parties-2016/">พันธมิตร</a>มากมายในเมืองสำคัญต่าง ๆ เช่น Buenos Aires, Melbourne, Montreal, Paris, Athens, Dublin และอีกหลายเมือง</p>
+
+<p>นี่คือวีดีโอจากปารตี้การ halving ปี 2016<a href="https://billfodl.com/blogs/fodl-blog/what-does-hodl-mean">HODL</a>จัดขึ้นที่ Tel Aviv:</p>
+
+<iframe style="height: auto; max-width: 100%;" src="https://www.youtube.com/embed/T0IR8X-Qnqs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<p>เมื่อมีการโพสต์กิจกรรมการจัดปาร์ตี้ขึ้น เราจะเห็นพวกเขาได้ที่นี่!</p>
+
+<h2 id="21-million">การขุด Bitcoin ทั้งหมด 21 ล้านเหรียญ จะหมดลงเมื่อไหร่?</h2>
+<p>Bitcoin (BTC) ทั้งหมด 21 ล้านเหรียญจะถูกขุดหมดในปี 2140 แต่มากกว่า 98% จะถูกขุดในปี 2030</p>
+
+<h2 id="is-there-a-litecoin-block-reward-halving-countdown">มีการนับถอยหลังสู่การ Halving ลดรางวัลการขุดบล็อก Litecoin หรือไม่?</h2>
+<p>มี โปรดตรวจสอบที่<a href="http://litecoinblockhalf.com/">เว็บไซต์นี้</a>ในปัจจุบันเหรียญ Litecoin มีโครงการที่จะทำการ halving หนึ่งปีก่อนหน้า Bitcoin คาดว่าจะเกิดขึ้นประมาณเดือนสิงหาคม ปี 2019 รางวัลการขุด Litecoin ต่อบล็อกจะลดลงจาก 25 LTC ต่อบล็อกเป็น 12.5 LTC ต่อบล็อก รางวัลของบล็อก Litecoin จะลดจำนวนลงครึ่งหนึ่งในทุก ๆ 840,000 บล็อก</p>
+
+<h2 id="is-there-an-ethereum-block-reward-halving-countdown">มีการนับถอยหลังสู่การ Halving ลดรางวัลการขุดบล็อก Ethereum หรือไม่?</h2>
+<p>รางวัลของบล็อก Ethereum ไม่มีการลดจำนวนลงครึ่งหนึ่งเหมือนบล็อกของ Bitcoin ดังนั้น มันจึงไม่มีการนับถอยหลัง</p>
+
+<h2 id="what-is-the-bitcoin-clock">นาฬิกา Bitcoin คืออะไร?</h2>
+<p>นาฬิกา Bitcoin เริ่มขึ้นตั้งแต่ปี 2011 และเจ้าของได้ปล่อยให้โดเมนหมดอายุลงในปี 2014 เราได้ทำการปรับปรุงเว็บไซต์ขึ้นใหม่ และทำให้มันกลับมาใช้งานได้ดังเดิม</p>
+
+<h2 id="is-the-reward-halving-necessary">การ Halving มีความจำเป็นหรือไม่?</h2>
+<p>การ halving เป็นสิ่งที่จำเป็น มันเป็นวิธีควบคุมอุปทานของ <a href="https://financepond.com/credit-cards/buy-bitcoin/">Bitcoin</a> เมื่อเงินอุดหนุนสมทบของบล็อกหมดลง ค่าธรรมเนียมการทำธุรกรรมจะจ่ายให้แก่นักขุดสำหรับการรักษาความปลอดภัยเครือข่าย</p>
+
+<h2 id="why-our-estimates-are-the-most-accurate">สาเหตุที่การประมาณการของเรามีความแม่นยำมากที่สุด</h2>
+<p>ผู้ที่ทำการประมาณวันที่ในการเกิดการ halving อื่น ๆ ส่วนมากใช้ช่วงเวลาการคำนวณบล็อกเป็น 10 นาที เพื่อหาวันที่เกิดการ halving โดยประมาณ</p>
+
+<p>อย่างไรก็ตาม จากประวัติการขุด Bitcoin บล็อกถูกขุดอย่างต่ำ 10  นาที</p>
+
+<p>การคำนวณของเราใช้ข้อมูลจาก BTC.com เพื่อหาค่าเฉลี่ยเวลาต่อบล็อกในช่วงสองเดือนที่ผ่านมา จากนั้นใช้เวลาต่อบล็อก (ปัจจุบันอยู่ที่ 9.69166666667 นาทีต่อบล็อก) มาประมาณวันที่เกิดการ halving</p>
+
+<p>ในขณะที่เว็บไซต์อื่น ๆ ส่วนใหญ่ประมาณการเกิด halving ในช่วงปลายเดือนพฤษภาคม แต่ดูเหมือนว่าผลที่ได้คือการ halving จะเกิดในช่วงต้นเดือนพฤษภาคม</p>
+
+<h2>รางวัลการขุดบล็อก Bitcoin ในปัจจุบันคืออะไร?</h2>
+<p>ในปัจจุบัน มีเหรียญ Bitcoin ใหม่ออกมา 12.5 เหรียญต่อบล็อก</p>
+
+<ul id="markdown-toc">
+  <li><a href="#what-is-the-bitcoin-halving" id="markdown-toc-what-is-the-bitcoin-halving">Bitcoin Halving คืออะไร?</a></li>
+  <li><a href="#what-is-the-significance-of-the-reward-halving" id="markdown-toc-what-is-the-significance-of-the-reward-halving">นัยสำคัญของ Bitcoin Block Halving คืออะไร?</a></li>
+  <li><a href="#bitcoin-halving-chart" id="markdown-toc-bitcoin-halving-chart">แผนภูมิ Bitcoin Halving</a></li>
+  <li><a href="#bitcoin-halving-schedule" id="markdown-toc-bitcoin-halving-schedule">กำหนดการของการเกิด Bitcoin Halving</a></li>
+  <li><a href="#what-happens-to-miners-during-halvings" id="markdown-toc-what-happens-to-miners-during-halvings">เกิดอะไรขึ้นกับนักขุดในระหว่างการ Halving?</a></li>
+  <li><a href="#when-is-the-next-bitcoin-halving-after-the-2020-halving" id="markdown-toc-when-is-the-next-bitcoin-halving-after-the-2020-halving">Bitcoin Halving ครั้งต่อไปจะเกิดขึ้นเมื่อไหร่?</a></li>
+  <li><a href="#bitcoin-halving-history" id="markdown-toc-bitcoin-halving-history">ประวัติของการเกิด Bitcoin Halving</a>    <ul>
+      <li><a href="#2012-halving" id="markdown-toc-2012-halving">การ Halving ในปี 2012</a></li>
+      <li><a href="#2016-halving" id="markdown-toc-2016-halving">การ Halving ในปี 2016</a></li>
+    </ul>
+  </li>
+  <li><a href="#current-bitcoin-block-reward" id="markdown-toc-current-bitcoin-block-reward">รางวัลการขุดบล็อก Bitcoin ในปัจจุบัน</a></li>
+  <li><a href="#bitcoin-halving-parties" id="markdown-toc-bitcoin-halving-parties">พันธมิตรของ Bitcoin Halving</a></li>
+    <li><a href="#21-million" id="21-million">การขุด Bitcoin ทั้งหมด 21 ล้านเหรียญจะหมดลงเมื่อไหร่?</a></li>
+  <li><a href="#is-there-a-litecoin-block-reward-halving-countdown" id="markdown-toc-is-there-a-litecoin-block-reward-halving-countdown">มีการนับถอยหลังสู่การ Halving ลดรางวัลการขุดบล็อก Litecoin หรือไม่?</a></li>
+  <li><a href="#is-there-an-ethereum-block-reward-halving-countdown" id="markdown-toc-is-there-an-ethereum-block-reward-halving-countdown">มีการนับถอยหลังสู่การ Halving ลดรางวัลการขุดบล็อก Ethereum หรือไม่?</a></li>
+  <li><a href="#what-is-the-bitcoin-clock" id="markdown-toc-what-is-the-bitcoin-clock">นาฬิกา Bitcoin คืออะไร?</a></li>
+  <li><a href="#is-the-reward-halving-necessary" id="markdown-toc-is-the-reward-halving-necessary">การ Halving มีความจำเป็นหรือไม่?</a></li>
+  <li><a href="#why-our-estimates-are-the-most-accurate" id="markdown-toc-why-our-estimates-are-the-most-accurate">สาเหตุที่การประมาณการของเรามีความแม่นยำมากที่สุด</a></li>
+</ul>
