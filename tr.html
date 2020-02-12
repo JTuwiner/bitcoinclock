@@ -1,6 +1,6 @@
 ---
 layout: default
-seo_title: "2020 Bitcoin Yarýlanmasý Geri Sayýmý (Bitcoin Saati)"
+seo_title: "2020 Bitcoin Yarılanması Geri Sayımı (Bitcoin Saati)"
 title: "Bitcoin Saati: 2020 Bitcoin Yarılanması Geri Sayımı"
 permalink: "/tr/"
 lang: tr
@@ -35,7 +35,7 @@ specialfont: yes
               
               $('#days_calc').append(Math.floor(days_til_halving));
                $('#hours_calc').append(Math.floor(days_remainder * 24));
-                $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, "."));
                 
                 var d = new Date( Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000); 
                 
