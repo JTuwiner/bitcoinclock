@@ -1,0 +1,204 @@
+---
+layout: default
+seo_title: "Bitcoin Halving 2020 Countdown & Date ETA (Bitcoin Clock)"
+title: "Bitcoin Clock: 2020 Bitcoin Halving Countdown"
+lang: el
+pagename: clock
+permalink: "/el/"
+dotclock: yes
+---
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://www.bitcoinclock.com/configBlockTime.js"></script>
+
+<script>
+    var height = GLOBAL_BLOCKHEIGHT;
+    jQuery(document).ready(function ($) {
+        var total_number = 12.5 * (height - 472500) + 16406250;
+        var append_html = "<span></span>";
+
+
+        var til_halving = 630000 - height;
+        append_html += "<b>Block μέχρι το Halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+
+        // var block_time = 9.69166666667;
+        var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
+        var days_til_halving = minutes_til_halving / (24 * 60);
+        var days_remainder = days_til_halving - Math.floor(days_til_halving);
+        var minutes = days_remainder - Math.floor(days_remainder);
+        var percent_done = (((height % 210000) / 210000) * 360);
+
+        $(".minutes").css("transform", "rotate(" + percent_done + "deg)");
+
+        $('#days_calc').append(Math.floor(days_til_halving));
+        $('#hours_calc').append(Math.floor(days_remainder * 24));
+        $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+
+        var d = new Date(Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000);
+
+        var month = d.getMonth() + 1;
+        var day = d.getUTCDate();
+        var year = d.getUTCFullYear();
+
+        console.log(month);
+
+        if (month === 4) {
+            var month_name = "April";
+        } else if (month === 5) {
+            var month_name = "Μάιος";
+        } else if (month === 3) {
+            var month_name = "March";
+        }
+
+        $('#date_eta').append(month_name + " " + day + ", " + year);
+
+        let hours_label = "ώρες";
+
+        if (Math.floor(days_remainder * 24) == 1) {
+            hours_label = "ώρες";
+        }
+
+        $("#hours_label").append(hours_label);
+
+        let minutes_label = "λεπτά";
+
+        if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
+            minutes_label = "λεπτά";
+        }
+
+        $("#minutes_label").append(minutes_label);
+
+
+        $("#calc-content-div").append(append_html);
+    });
+</script>
+
+<p style="text-align: center; color: black;"><b>Εκτιμώμενη Άφιξη του Block Halving:</b> <span style="font-weight: bold;" id="days_calc"></span> ημέρες, <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span>, <span style="font-weight: bold;" id="minutes_calc"></span> <span id="minutes_label"></span></p>
+
+<p style="text-align: center; color: black;"><b>Εκτιμώμενη Ημερομηνία:</b> <span id="date_eta"></span></p>
+
+<div class="clock simple">
+  <div class="minutes-container">
+    <div class="minutes"></div>
+  </div>
+</div>
+
+
+<div id="calc-content-div" style="text-align: center;"></div>
+
+<h2 id="what-is-the-bitcoin-halving">Τί είναι το Bitcoin Halving;</h2>
+<p>Κάθε 10 λεπτά εκδίδονται νέα bitcoin από το δίκτυο Bitcoin. Κατά τα πρώτα τέσσερα χρόνια ύπαρξης του Bitcoin, ο αριθμός των νέων bitcoin που εκδίδονταν κάθε 10 λεπτά ανερχόταν στα 50. Κάθε τέσσερα χρόνια, αυτός ο αριθμός διαιρούταν στα δύο. Η ημέρα κατά την οποία ο αριθμός αυτός διαιρείται, ονομάζεται “halving”.</p> 
+
+<p>Το 2012, ο αριθμός των νέων bitcoins που εκδίδονταν κάθε 10 λεπτά έπεσε από τα 50 bitcoins στα 25. Το 2016, έπεσε από τα 25 στα 12,5. Τώρα, με το halving του 2020, θα πέσει από τα 12,5 στα 6,25.</p> 
+
+<h2 id="what-is-the-significance-of-the-reward-halving">Ποια η Σημαντικότητα του Bitcoin Block Halving;</h2>
+<p>Το halving μειώνει τον αριθμό των νέων bitcoin που παράγονται ανά block. Αυτό σημαίνει ότι η προσφορά νέων bitcoin είναι πλέον χαμηλότερη.</p>
+<p>Στις κανονικές αγορές, η χαμηλότερη προσφορά σε συνδυασμό με τη σταθερή ζήτηση, συνήθως οδηγεί σε υψηλότερες τιμές. Καθώς το halving μειώνει την προσφορά νέων bitcoin, με τη ζήτησή τους να μένει συνήθως σταθερή, στο παρελθόν έχει προσημάνει κάποιες από τις πιο σημαντικές αυξήσεις στις τιμές του Bitcoin. </p>
+
+<p>Στην παρακάτω εικόνα, οι κάθετες πράσινες γραμμές αντιπροσωπεύουν τα δύο προηγούμενα halvings (<a href="https://en.bitcoin.it/wiki/Controlled_supply">2012-11-28 και 2016-7-9</a>). Δείτε πως η τιμή αυξήθηκε σημαντικά μετά από κάθε halving.</p>
+
+<img src="/halvingdates.png" style="width: 100%;margin: 0 auto;">
+
+<h2 id="bitcoin-halving-chart">Διάγραμμα Bitcoin Halving</h2>
+<p>Στην παρακάτω εικόνα, μπορείτε να δείτε το ρυθμό πληθωρισμού του Bitcoin ανά περίοδο. </p>
+
+<img src="/inflation.png" style="width: 100%;margin: 0 auto;">
+
+<p>Κάθε halving μειώνει το ρυθμό πληθωρισμού του Bitcoin. Η πορτοκαλί γραμμή είναι ο ρυθμός πληθωρισμού του Bitcoin ανά μια συγκεκριμένη περίοδο, ενώ η μπλε γραμμή είναι ο συνολικός αριθμός των bitcoin που έχουν εκδοθεί.</p>
+
+<h2 id="bitcoin-halving-schedule">Χρονοδιάγραμμα του Bitcoin Halving</h2>
+<p>Το Bitcoin halving προγραμματίζεται βάσει αριθμού blocks, όχι ημερομηνίας.</p>
+
+<p>Το halving γίνεται κάθε 210.000 blocks. Το halving του 2020 θα γίνει με το block 630.000. Το halving του 2024 θα γίνει στο block 840.000.</p>
+
+<h2 id="what-happens-to-miners-during-halvings">Πώς επηρεάζονται οι Miners (Εξορύκτες) από τα Halvings;</h2>
+<p>Υπάρχουν πολλοί <a href="https://techcrunch.com/2016/07/09/the-reward-for-mining-bitcoin-was-just-cut-in-half/">που πάντα υποστήριζαν</a> ότι οι miners θα κλείσουν μετά το halving. Η πραγματικότητα όμως έχει δείξει ότι οι miners είναι αρκετά έξυπνοι και προσαρμόζουν την τιμή του Bitcoin λαμβάνοντας υπόψη το halving, έτσι ώστε να μη χρειαστεί να κλείσει κάποια μονάδα mining.</p>
+
+<h2 id="when-is-the-next-bitcoin-halving-after-the-2020-halving">Για πότε προβλέπεται το Bitcoin Halving του 2024;</h2>
+<p>Το halving του 2024 είναι πιθανό να λάβει χώρα κάποια στιγμή μεταξύ του Μαΐου και του Ιουνίου του 2024. </p>
+
+<h2 id="bitcoin-halving-history">Ιστορικό των Bitcoin Halvings</h2>
+
+<p>Σε αυτή την ενότητα θα αναφερθούμε στα δύο προηγούμενα halvings.</p>
+
+<h2 id="2012-halving">Halving του 2012</h2>
+
+<p>Το <a href="https://en.bitcoin.it/wiki/Halving_day_2012">block halving του 2012</a> ήταν το πρώτο halving. Εξoρύχθηκε μέσω της SlushPool, από κάποιον που χρησιμοποιούσε μια κάρτα γραφικών Radeon HD 5800 για mining.</p>
+
+<ul>
+<li><b>Νέα BTC Ανά Block Πριν:</b> 50 BTC ανά block</li>
+<li><b>Νέα BTC Ανά Block Μετά:</b> 25 BTC ανά block</li>
+<li><b>Τιμή την Ημέρα του Halving:</b> $12,35</li>
+<li><b>Τιμή 150 Ημέρες Αργότερα:</b> $127,00</li>
+</ul>
+
+<h2 id="2016-halving">Halving του 2016</h2>
+
+<p>Το halving του 2016 ήταν το δεύτερο halving στην ιστορία.</p>
+
+<ul>
+<li><b>Νέα BTC Ανά Block Πριν:</b> 25 BTC ανά block</li>
+<li><b>Νέα BTC Ανά Block Μετά:</b> 12.5 BTC ανά block</li>
+<li><b>Τιμή την Ημέρα του Halving:</b> $650,63</li>
+<li><b>Τιμή 150 Ημέρες Αργότερα:</b> $758,81</li>
+</ul>
+
+<h2 id="current-bitcoin-block-reward">Τρέχουσα Αμοιβή σε Bitcoin ανά Block</h2>
+<p>Η τρέχουσα αμοιβή σε Bitcoin ανά block ανέρχεται στα 12,5 bitcoins ανά block. Όταν φτάσουμε στο μπλοκ 630.000 μέσα στο 2020, η αμοιβή θα πέσει στα 6,25 bitcoins (BTC) ανά block.</p>
+
+<h2 id="bitcoin-halving-parties">Πάρτι για το Bitcoin Halving</h2>
+<p>Χιλιάδες λάτρεις του Bitcoin γιόρτασαν το halving του 2016 σε όλα τα μέρη της γης. Έγιναν <a href="http://blog.thehalvening.com/bitcoin-halving-parties-2016/">πάρτι</a> σε πολλές μεγάλες πόλεις όπως το Μπουένος Άιρες, η Μελβούρνη, το Μόντρεαλ, το Παρίσι, η Αθήνα, το Δουβλίνο και δεκάδες άλλες πόλεις.</p>
+
+<p>Δείτε ένα βίντεο από το <a href="https://billfodl.com/blogs/fodl-blog/what-does-hodl-mean">HODL</a> halving πάρτι του 2016 στο Τελ Αβίβ:</p>
+
+<iframe style="height: auto; max-width: 100%;" src="https://www.youtube.com/embed/T0IR8X-Qnqs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<p>Όταν δημοσιεύονται ημερομηνίες και τοποθεσίες για πάρτι, θα τις συγκεντρώνουμε εδώ!</p>
+
+<h2 id="21-million">Πότε θα Εξορυχτούν Όλα (και τα 21 Εκατομμύρια) Bitcoin;</h2>
+<p>Όλα τα Bitcoin (21 εκατομμύρια) θα έχουν εξορυχτεί μέχρι το 2140. Αλλά περισσότερα από τα 98% θα έχουν εξορυχτεί μέχρι το 2030.</p>
+
+<h2 id="is-there-a-litecoin-block-reward-halving-countdown">Υπάρχει Κάποια Αντίστοιχη Αντίστροφη Μέτρηση για το Halving των Αμοιβών ανά Litecoin Βlock;</h2>
+<p>Ναι, δείτε <a href="http://litecoinblockhalf.com/">αυτή την ιστοσελίδα</a>. Υπολογίζεται ότι το halving για το Litecoin θα γίνει ένα χρόνο πριν το halving του Bitcoin, δηλαδή γύρω στον Αύγουστο του 2019. Η Αμοιβή σε Litecoin ανά block θα μειωθεί από τα 25 LTC ανά block στα 12,5 LTC ανά block. Η Αμοιβή σε Litecoin ανά block διαιρείται δια δύο κάθε 840.000 blocks.</p>
+
+<h2 id="is-there-an-ethereum-block-reward-halving-countdown">Υπάρχει Κάποια Αντίστοιχη Αντίστροφη Μέτρηση για το Halving των Αμοιβών ανά Ethereum Βlock; </h2>
+<p>Η αμοιβή σε Ethereum ανά block δεν διαιρείται όπως συμβαίνει με το Bitcoin, γι’ αυτό και δεν υπάρχει κάποια σχετική αντίστροφη μέτρηση.</p>
+
+<h2 id="what-is-the-bitcoin-clock">Τί είναι το Ρολόι Bitcoin;</h2>
+<p>Το ρολόι Bitcoin υπάρχει περίπου από το 2011. Το 2018, ο ιδιοκτήτης άφησε τη διεύθυνση domain της ιστοσελίδας του να λήξει. Εμείς ανακαινίσαμε την ιστοσελίδα και την επαναφέραμε στην αρχική της πορεία.</p>
+
+<h2 id="is-the-reward-halving-necessary">Είναι το Halving Απαραίτητο;</h2>
+<p>Το halving είναι αναγκαίο. Έτσι ελέγχει την προσφορά του το <a href="https://financepond.com/credit-cards/buy-bitcoin/">Bitcoin</a>. Μόλις λήξει η αμοιβή ανά block, τα κόστη συναλλαγών θα πληρώνουν τους miners για τη διασφάλιση του δικτύου..</p>
+
+<h2 id="why-our-estimates-are-the-most-accurate">Γιατί οι Υπολογισμοί μας Είναι οι Πιο Έγκυροι</h2>
+<p>Οι πλειονότητα των άλλων υπολογισμών της ημερομηνίας του halving χρησιμοποιούν blocks των 10 λεπτών για να υπολογίσουν την προβλεπόμενη ημερομηνία του halving. </p>
+
+<p>Τα blocks, ωστόσο, σχεδόν καθ’ όλη τη διάρκεια της ιστορίας του Bitcoin, εξορύσσονται σε διαστήματα μικρότερα των 10 λεπτών.</p>
+
+<p>Ο υπολογιστής μας χρησιμοποιεί δεδομένα από το BTC.com, ώστε να προσδιορίσει τον μέσο απαιτούμενο χρόνο ανά block, κατά το διάστημα των τελευταίων δύο μηνών. Έπειτα, χρησιμοποιεί αυτό το χρόνο των block (αυτή τη στιγμή 9.69166666667 λεπτά μεταξύ των blocks), για να υπολογίσει την ημερομηνία του halving.</p>
+
+<p>Ενώ οι περισσότερες ιστοσελίδες υπολογίζουν την ημερομηνία του halving προς τα τέλη του Μαΐου, θεωρούμε πιο πιθανό να επέλθει το halving των αμοιβών στις αρχές του Μαΐου.</p>
+
+<h2>Ποια είναι η Τρέχουσα Αμοιβή σε Bitcoin ανά Block;</h2>
+<p>Αυτή τη στιγμή, εκδίδονται 12,5 νέα bitcoins ανά block.</p>
+
+<ul id="markdown-toc">
+  <li><a href="#what-is-the-bitcoin-halving" id="markdown-toc-what-is-the-bitcoin-halving">Τί είναι το Bitcoin Halving;</a></li>
+  <li><a href="#what-is-the-significance-of-the-reward-halving" id="markdown-toc-what-is-the-significance-of-the-reward-halving">Ποια η Σημαντικότητα του Bitcoin Block Halving;</a></li>
+  <li><a href="#bitcoin-halving-chart" id="markdown-toc-bitcoin-halving-chart">Διάγραμμα Bitcoin Halving</a></li>
+  <li><a href="#bitcoin-halving-schedule" id="markdown-toc-bitcoin-halving-schedule">Χρονοδιάγραμμα του Bitcoin Halving</a></li>
+  <li><a href="#what-happens-to-miners-during-halvings" id="markdown-toc-what-happens-to-miners-during-halvings">Πώς επηρεάζονται οι Miners (Εξορύκτες) από τα Halvings;</a></li>
+  <li><a href="#when-is-the-next-bitcoin-halving-after-the-2020-halving" id="markdown-toc-when-is-the-next-bitcoin-halving-after-the-2020-halving">Για πότε προβλέπεται το Επόμενο Bitcoin Halving;</a></li>
+  <li><a href="#bitcoin-halving-history" id="markdown-toc-bitcoin-halving-history">Ιστορικό των Bitcoin Halvings</a>    <ul>
+      <li><a href="#2012-halving" id="markdown-toc-2012-halving">Halving του 2012</a></li>
+      <li><a href="#2016-halving" id="markdown-toc-2016-halving">Halving του 2016</a></li>
+    </ul>
+  </li>
+  <li><a href="#current-bitcoin-block-reward" id="markdown-toc-current-bitcoin-block-reward">Τρέχουσα Αμοιβή σε Bitcoin ανά Block</a></li>
+  <li><a href="#bitcoin-halving-parties" id="markdown-toc-bitcoin-halving-parties">Πάρτι για το Bitcoin Halving</a></li>
+    <li><a href="#21-million" id="21-million">Πότε θα Εξορυχτούν Όλα (και τα 21 Εκατομμύρια) Bitcoin;</a></li>
+  <li><a href="#is-there-a-litecoin-block-reward-halving-countdown" id="markdown-toc-is-there-a-litecoin-block-reward-halving-countdown">Υπάρχει Κάποια Αντίστοιχη Αντίστροφη Μέτρηση για το Halving των Αμοιβών ανά Litecoin Βlock;</a></li>
+  <li><a href="#is-there-an-ethereum-block-reward-halving-countdown" id="markdown-toc-is-there-an-ethereum-block-reward-halving-countdown">Υπάρχει Κάποια Αντίστοιχη Αντίστροφη Μέτρηση για το Halving των Αμοιβών ανά Ethereum Βlock;</a></li>
+  <li><a href="#what-is-the-bitcoin-clock" id="markdown-toc-what-is-the-bitcoin-clock">Τί είναι το Ρολόι Bitcoin;</a></li>
+  <li><a href="#is-the-reward-halving-necessary" id="markdown-toc-is-the-reward-halving-necessary">Είναι το Halving των Αμοιβών Απαραίτητο;</a></li>
+  <li><a href="#why-our-estimates-are-the-most-accurate" id="markdown-toc-why-our-estimates-are-the-most-accurate">Γιατί οι Υπολογισμοί μας Είναι οι Πιο Έγκυροι</a></li>
+</ul>
