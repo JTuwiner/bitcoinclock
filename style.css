@@ -26,19 +26,6 @@ img {
 
 
 
-
-.clock {
-    border-radius: 50%;
-    background: url(/IMG/clock.svg) no-repeat center;
-    background-size: 97%;
-    height: 600px;
-    position: relative;
-    width: 600px;
-    margin: 0 auto;
-    margin-top: 2rem;
-    margin-bottom: 2rem;
-}
-
 .container {
     width: 1100px;
     max-width: 90%;
@@ -92,10 +79,6 @@ display: none;
         align-self: center;
         font-size: 18px !important;
         padding: 1rem 1rem !important;
-    }
-
-    #minutes_label, #hours_label, #days_calc {
-        font-size: 26px !important;
     }
 
 
@@ -276,7 +259,7 @@ display: none;
 
 @media (max-width: 640px) {
     .clock {
-        width: 100%;
+        width: 100% !important;
         height: 332px !important;
         padding-bottom: 85px;
         padding-top: 19%;
@@ -291,27 +274,6 @@ display: none;
         padding-bottom: 85px;
 }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 ul {
@@ -341,11 +303,6 @@ footer p {
 footer span {
     color: #FFCD46;
 }
-
-
-
-
-
 
 
 #arabic {
