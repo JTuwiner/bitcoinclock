@@ -8,86 +8,59 @@ pagename: clock
 dotclock: yes
 proxima: yes
 ---
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://www.bitcoinclock.com/configBlockTime.js"></script>
-
-<script>
-    var height = GLOBAL_BLOCKHEIGHT;
-    jQuery(document).ready(function($){
-            var total_number = 12.5 * (height - 472500) + 16406250;
-            var append_html = "<span></span>";
-
-            
-            var til_halving = 630000 - height;
-            append_html += "<b>Bloques hasta el halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-            
-//             var block_time = 9.69166666667;
-            var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
-            var days_til_halving = minutes_til_halving / (24 * 60);
-            var days_remainder = days_til_halving - Math.floor(days_til_halving);
-            var minutes = days_remainder - Math.floor(days_remainder);
-            var percent_done = (((height % 210000) / 210000) * 360);
-                        
-            $(".minutes").css("transform", "rotate(" + percent_done +"deg)");
-              
-              $('#days_calc').append(Math.floor(days_til_halving));
-               $('#hours_calc').append(Math.floor(days_remainder * 24));
-                $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-                
-                var d = new Date( Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000); 
-                
-                var month = d.getMonth() + 1;
-				var day = d.getUTCDate();
-				var year = d.getUTCFullYear();
-								
-				if (month === 4) {
-					var month_name = "abril";
-				}
-				
-				else if (month === 5) {
-					var month_name = "mayo";
-				}
-				
-				else if (month === 3) {
-					var month_name = "marzo";
-				}
-
-				$('#date_eta').append(day + " de " + month_name + " de " + year);
-				
-				let hours_label = "horas";
-				
-				if (Math.floor(days_remainder * 24) == 1) {
-					hours_label = "hora";
-				}
-				
-				$("#hours_label").append(hours_label);
-								
-				let minutes_label = "minutos";
-				
-				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
-					minutes_label = "minuto";
-				}
-				
-				$("#minutes_label").append(minutes_label);
 
 
-            $("#calc-content-div").append(append_html);
-    });
-</script>
-
-
-<p style="text-align: center; color: black;"><b>Estimativa para o halving:</b> <span style="font-weight: bold;" id="days_calc"></span> days, <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span>, <span style="font-weight: bold;" id="minutes_calc"></span> <span id="minutes_label"></span></p>
-
-<p style="text-align: center; color: black;"><b>Data estimada:</b> <span id="date_eta"></span></p>
-
-<div class="clock simple">
-  <div class="minutes-container">
-    <div class="minutes"></div>
+<div class="halving">
+    <p>Estimativa para o halving:</p>
+  
+    <div class="inner_halving">
+  
+      <div class="halve days">
+        <span id="days_calc"></span> 
+        <span id="days_one">days</span>
+      </div>
+  
+      <div class="halve hourse">
+        <span id="hours_calc"></span>
+        <span id="hours_label"></span>
+      </div>
+  
+      <div class="halve minutess">
+        <span id="minutes_calc"></span>
+        <span id="minutes_label"></span>
+      </div>
+  
+  
+    </div><!-- Inner Halving -->
+    
+    <p>
+      <b class="date_eta">Data estimada:</b> 
+      <span id="date_eta"></span>
+    </p>
+  
+  
+  
+  </div> <!-- Halving -->
+  
+  
+  
+  <div class="clock simple">
+    <div class="minutes-container">
+        <div class="minutes"></div>
+        <img id="grid_background" src="/IMG/grid.svg" alt="grid">
+    </div>
   </div>
-</div>
-
-
-<div id="calc-content-div" style="text-align: center;"></div>
+  
+  <div id="calc-content-div"></div>
+  
+  
+  </div> <!--CONTAINER-->
+  
+      
+  <img class="path" src="/IMG/path1.png" alt="yellow line for home page">
+  <img class="path_svg" src="/IMG/path3.svg" alt="yellow line for home page">
+  
+  <div class="container_text">
 
 <h2 id="what-is-the-bitcoin-halving">O que é o halving do Bitcoin?</h2>
 <p>Novos bitcoins são gerados pela rede Bitcoin a cada 10 minutos. Nos primeiros quatro anos de existência do Bitcoin, a quantidade de novos bitcoins a cada 10 minutos era de 50. A cada quatro anos, esse número é reduzido pela metade. O dia em que a quantidade é reduzida é chamado de "halving", ou "corte pela metade".</p> 
@@ -100,12 +73,12 @@ proxima: yes
 
 <p>Na imagem abaixo, as linhas verdes verticais indicam os dois halvings anteriores (<a href="https://en.bitcoin.it/wiki/Controlled_supply">2012-11-28 e 2016-7-9</a>). Observe como o preço subiu significativamente após cada corte.</p>
 
-<img src="/halvingdates.png" style="width: 100%;margin: 0 auto;">
+<img src="/IMG/halvingdates.png" style="width: 100%;margin: 0 auto;">
 
 <h2 id="bitcoin-halving-chart">Gráfico do halving do Bitcoin</h2>
 <p>Na imagem abaixo, você pode ver a taxa de inflação do Bitcoin durante cada período. </p>
 
-<img src="/inflation.png" style="width: 100%;margin: 0 auto;">
+<img src="/IMG/inflation.png" style="width: 100%;margin: 0 auto;">
 
 <p>Cada halving reduz a taxa de inflação do Bitcoin. A linha laranja é a taxa de inflação do Bitcoin durante um determinado período, enquanto que a linha azul é o número total de bitcoins gerados.</p>
 
@@ -203,3 +176,72 @@ proxima: yes
   <li><a href="#is-the-reward-halving-necessary" id="markdown-toc-is-the-reward-halving-necessary">O halving é necessário?</a></li>
   <li><a href="#why-our-estimates-are-the-most-accurate" id="markdown-toc-why-our-estimates-are-the-most-accurate">Por que nossas estimativas são as mais precisas</a></li>
 </ul>
+</div> <!--CONTAINER-->
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://www.bitcoinclock.com/configBlockTime.js"></script>
+
+<script>
+    var height = GLOBAL_BLOCKHEIGHT;
+    jQuery(document).ready(function($){
+            var total_number = 12.5 * (height - 472500) + 16406250;
+            var append_html = "<span></span>";
+
+            
+            var til_halving = 630000 - height;
+            append_html += "<b>Bloques hasta el halving:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            
+//             var block_time = 9.69166666667;
+            var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
+            var days_til_halving = minutes_til_halving / (24 * 60);
+            var days_remainder = days_til_halving - Math.floor(days_til_halving);
+            var minutes = days_remainder - Math.floor(days_remainder);
+            var percent_done = (((height % 210000) / 210000) * 360);
+                        
+            $(".minutes").css("transform", "rotate(" + percent_done +"deg)");
+              
+              $('#days_calc').append(Math.floor(days_til_halving));
+               $('#hours_calc').append(Math.floor(days_remainder * 24));
+                $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                
+                var d = new Date( Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000); 
+                
+                var month = d.getMonth() + 1;
+				var day = d.getUTCDate();
+				var year = d.getUTCFullYear();
+								
+				if (month === 4) {
+					var month_name = "abril";
+				}
+				
+				else if (month === 5) {
+					var month_name = "mayo";
+				}
+				
+				else if (month === 3) {
+					var month_name = "marzo";
+				}
+
+				$('#date_eta').append(day + " de " + month_name + " de " + year);
+				
+				let hours_label = "horas";
+				
+				if (Math.floor(days_remainder * 24) == 1) {
+					hours_label = "hora";
+				}
+				
+				$("#hours_label").append(hours_label);
+								
+				let minutes_label = "minutos";
+				
+				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
+					minutes_label = "minuto";
+				}
+				
+				$("#minutes_label").append(minutes_label);
+
+
+            $("#calc-content-div").append(append_html);
+    });
+</script>

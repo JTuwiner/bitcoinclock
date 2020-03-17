@@ -18,18 +18,15 @@
     {% if page.specialfont %}	
 
 
-<link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700&display=swap&subset=cyrillic,cyrillic-ext,greek,greek-ext,latin-ext,vietnamese" rel="stylesheet">
 
-
-    <style>
-	    body {
-		    font-family: Open Sans !important;
-	    }
-	    </style>
     {% endif %} 
 
     <link rel="stylesheet" type="text/css" href="{{ site.baseurl }}/style.css" />
     <link rel="alternate" type="application/rss+xml" title="{{ site.name }} - {{ site.description }}" href="{{ site.baseurl }}/feed.xml" />
+
+    <link rel="stylesheet" href="https://indestructibletype.com/fonts/Jost.css" type="text/css" charset="utf-8" />
+    <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
 
     <!-- Google Tag Manager -->
 <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
@@ -46,115 +43,87 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-TV58CZX"
 height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
-	  
-    <div class="wrapper-masthead">
-      <div class="container">
-        <header class="masthead clearfix">
-           <h1 class="site-name">
-	           {% if page.lang == "es" %}
-	            <a href="{{ site.baseurl }}/es/">Reloj Bitcoin</a>
-	           {% elsif page.lang == 'ko' %}
-	           <a href="{{ site.baseurl }}/ko/">비트코인 시계</a>
-	           {% elsif page.lang == 'cn' %}
-	           <a href="{{ site.baseurl }}/cn/">比特币时钟</a>
-	           {% elsif page.lang == 'uk' %}
-	           <a href="{{ site.baseurl }}/uk/">Біткоїн-годинник</a>
-	           {% elsif page.lang == 'de' %}
-	           <a href="{{ site.baseurl }}/de/">Bitcoin-Uhr</a>
-	           {% elsif page.lang == 'ru' %}
-	           <a href="{{ site.baseurl }}/ru/">Биткоин-часы</a>
-	           {% elsif page.lang == 'it' %}
-	           <a href="{{ site.baseurl }}/it/">Bitcoin Clock</a>
-	           {% elsif page.lang == 'nl' %}
-	           <a href="{{ site.baseurl }}/nl/">Bitcoin-klok</a>
-	           {% elsif page.lang == 'ro' %}
-	           <a href="{{ site.baseurl }}/ro/">Ceasul Bitcoin</a>
-	           {% elsif page.lang == 'en' %}
-	           <a href="{{ site.baseurl }}/">{{ site.name }}</a>
-	           {% elsif page.lang == 'pt' %}
-	           <a href="{{ site.baseurl }}/pt/">{{ site.name }}</a>
-	           {% elsif page.lang == 'ar' %}
-	           <a href="{{ site.baseurl }}/ar/">ساعة البتكوين</a>
-	           {% elsif page.lang == 'cs' %}
-	           <a href="{{ site.baseurl }}/cs/">Bitcoinové hodiny</a>
-	           {% elsif page.lang == 'he' %}
-	           <a href="{{ site.baseurl }}/he/">שעון הביטקוין</a>   
-	           {% elsif page.lang == 'vn' %}
-	           <a href="{{ site.baseurl }}/vn/">Đồng hồ Bitcoin</a>    
-	           {% elsif page.lang == 'pl' %}
-	           <a href="{{ site.baseurl }}/pl/">Zegar Bitcoinów</a>
-	           {% elsif page.lang == 'th' %}
-	           <a href="{{ site.baseurl }}/th/">นาฬิกา Bitcoin</a>
-	           {% elsif page.lang == 'id' %}
-	           <a href="{{ site.baseurl }}/id/">Jam Bitcoin</a>
-	           {% elsif page.lang == 'tr' %}
-	           <a href="{{ site.baseurl }}/tr/">Bitcoin Saati</a>
-	           {% elsif page.lang == 'el' %}
-	           <a href="{{ site.baseurl }}/el/">Ρολόι Bitcoin</a>
-	           {% elsif page.lang == 'ms' %}
-	           <a href="{{ site.baseurl }}/ms/">Jam Bitcoin</a>
-	           {% endif %}
-	         
-	           </h1>
-        </header>
-      </div>
-    </div>
 
-    <div id="main" role="main" class="container">
-      {{ content }}
+
+
+
+
+
+<div class="container">
+
+
+
+    <h1>	         
       
-      {% if page.proxima %}
-      <style>
-	      
-	      @font-face {
-  font-family: 'Proxima';
-  font-weight: 300;
-  font-style: normal;
-  src: url('/fonts/proximanova-light-webfont.eot'); /* IE9 Compat Modes */
-  src: url('/fonts/proximanova-light-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/fonts/proximanova-light-webfont.woff2') format('woff2'), /* Super Modern Browsers */
-       url('/fonts/proximanova-light-webfont.woff') format('woff'), /* Pretty Modern Browsers */
-       url('/fonts/proximanova-light-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('/fonts/proximanova-light-webfont.svg#svgproximanova-light-webfont') format('svg');
-}
+      {% if page.lang == "es" %}
+      Reloj Bitcoin
+     {% elsif page.lang == 'ko' %}
+     비트코인 시계
+     {% elsif page.lang == 'cn' %}
+     比特币时钟
+     {% elsif page.lang == 'uk' %}
+     Біткоїн-годинник
+     {% elsif page.lang == 'de' %}
+     Bitcoin-Uhr
+     {% elsif page.lang == 'ru' %}
+     Биткоин-часы
+     {% elsif page.lang == 'it' %}
+     Bitcoin Clock
+     {% elsif page.lang == 'nl' %}
+     Bitcoin-klok
+     {% elsif page.lang == 'ro' %}
+     Ceasul Bitcoin
+     {% elsif page.lang == 'en' %}
+     Bitcoin Clock
+     {% elsif page.lang == 'pt' %}
+     {{ site.name }}
+     {% elsif page.lang == 'ar' %}
+     ساعة البتكوين
+     {% elsif page.lang == 'cs' %}
+     Bitcoinové hodiny
+     {% elsif page.lang == 'he' %}
+     שעון הביטקוין 
+     {% elsif page.lang == 'vn' %}
+     Đồng hồ Bitcoin   
+     {% elsif page.lang == 'pl' %}
+     Zegar Bitcoinów
+     {% elsif page.lang == 'th' %}
+     นาฬิกา Bitcoin
+     {% elsif page.lang == 'id' %}
+     Jam Bitcoin
+     {% elsif page.lang == 'tr' %}
+     Bitcoin Saati
+     {% elsif page.lang == 'el' %}
+     Ρολόι Bitcoin
+     {% elsif page.lang == 'ms' %}
+      Jam Bitcoin
+     {% endif %}</h1>
+  
+    
+    {{ content }}
 
-@font-face {
-  font-family: 'Proxima';
-  font-weight: 400;
-  font-style: normal;
-  src: url('/fonts/proximanova-regular-webfont.eot'); /* IE9 Compat Modes */
-  src: url('/fonts/proximanova-regular-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/fonts/proximanova-regular-webfont.woff2') format('woff2'), /* Super Modern Browsers */
-       url('/fonts/proximanova-regular-webfont.woff') format('woff'), /* Pretty Modern Browsers */
-       url('/fonts/proximanova-regular-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('/fonts/proximanova-regular-webfont.svg#svgproximanova-regular-webfont') format('svg');
-}
+    <img class="path" src="/IMG/path1.png" alt="">
+    
+    <footer>
 
-@font-face {
-  font-family: 'Proxima';
-  font-weight: 600;
-  font-style: normal;
-  src: url('/fonts/proximanova-semibold-webfont.eot'); /* IE9 Compat Modes */
-  src: url('/fonts/proximanova-semibold-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
-       url('/fonts/proximanova-semibold-webfont.woff') format('woff'), /* Pretty Modern Browsers */
-       url('/fonts/proximanova-semibold-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
-       url('/fonts/proximanova-semibold-webfont.svg#svgproximanova-semibold-webfont') format('svg');
-}
-	      
-	      </style>
-      {% endif %}
-      
-    </div>
+        <p>Bitcoin Clock - a project by <span><a href="https://www.buybitcoinworldwide.com/">Buy Bitcoin Worldwide.</a></span></p>
+        <a href="https://www.buybitcoinworldwide.com/">
+        <img src="/IMG/logofooter.png" alt="buy bitcoin worldwide">
+      </a>
+    </footer>
 
-    <div class="wrapper-footer">
-      <div class="container">
-        <footer class="footer">
-          <cetner><p>Bitcoin Clock - a project by <a href="https://www.buybitcoinworldwide.com/">Buy Bitcoin Worldwide</a>.</p>
-          <a href="https://www.buybitcoinworldwide.com/"><img style="width: 300px !important;" src="https://www.buybitcoinworldwide.com/img/logofooter.png"></a></cetner>
-        </footer>
-      </div>
-    </div>
 
-    {% include analytics.html %}
-  </body>
+
+
+
+
+
+
+
+
+{% include analytics.html %}
+
+
+
+</body>
 </html>

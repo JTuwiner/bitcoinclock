@@ -5,9 +5,177 @@ title: "Reloj Bitcoin: Conteo regresivo del halving Bitcoin 2020"
 permalink: "/es/"
 lang: es
 pagename: clock
-dotclock: yes
-proxima: yes
 ---
+
+<div class="halving">
+  <p>Tiempo estimado para halving de bloques:</p>
+
+  <div class="inner_halving">
+
+    <div class="halve days">
+      <span id="days_calc"></span> 
+      <span id="days_one">días</span>
+    </div>
+
+    <div class="halve hourse">
+      <span id="hours_calc"></span>
+      <span id="hours_label"></span>
+    </div>
+
+    <div class="halve minutess">
+      <span id="minutes_calc"></span>
+      <span id="minutes_label"></span>
+    </div>
+
+
+  </div><!-- Inner Halving -->
+  
+  <p>
+    <b class="date_eta">Fecha estimada:</b> 
+    <span id="date_eta"></span>
+  </p>
+
+
+
+</div> <!-- Halving -->
+
+
+
+<div class="clock simple">
+  <div class="minutes-container">
+      <div class="minutes"></div>
+      <img id="grid_background" src="/IMG/grid.svg" alt="grid">
+  </div>
+</div>
+
+<div id="calc-content-div"></div>
+
+
+</div> <!--CONTAINER-->
+
+    
+<img class="path" src="/IMG/path1.png" alt="yellow line for home page">
+<img class="path_svg" src="/IMG/path3.svg" alt="yellow line for home page">
+
+<div class="container_text">
+    <h2 id="what-is-the-bitcoin-halving">¿Qué es el halving de Bitcoin?</h2>
+    <p>Nuevos bitcoins son emitidos por la red Bitcoin cada 10 minutos. Durante los primeros cuatro años de existencia del Bitcoin, la cantidad de nuevos bitcoins emitidos cada 10 minutos fue de 50. Cada cuatro años, este número se divide en dos. El día que la cantidad se divide en dos se llama el "halving".</p> 
+    
+    <p>En 2012, la cantidad de nuevos bitcoins emitidos cada 10 minutos cayó de 50 bitcoins a 25. En 2016, cayó de 25 a 12,5. Ahora, en el halving de 2020, caerá de 12,5 a 6,25.</p> 
+    
+    <h2 id="what-is-the-significance-of-the-reward-halving">¿Cuál es el significado del halving de los bloques de Bitcoin?</h2>
+    <p>El halving disminuye la cantidad de nuevos bitcoins generados por bloque. Esto implica que el suministro de nuevos bitcoins es menor.</p>
+    <p>En mercados normales, un suministro menor junto a una demanda estable usualmente conllevan a precios más altos. Dado que el halving reduce el suministro de nuevos bitcoins, y la demanda usualmente se mantiene estática, el halving usualmente ha anticipado las alzas más altas de Bitcoin. </p>
+    
+    <p>En la imagen de abajo, las líneas verdes verticales indican los dos halvings anteriores (<a href="https://en.bitcoin.it/wiki/Controlled_supply">28/11/2012 y 9/7/2016</a>). Nota cómo el precio saltó significativamente luego de cada halving.</p>
+    
+    <img src="/IMG/halvingdates.png" style="width: 100%;margin: 0 auto;">
+    
+    <h2 id="bitcoin-halving-chart">Gráfico de halving de Bitcoin</h2>
+    <p>En la imagen de abajo, puedes ver la tasa de inflación de Bitcoin durante cada período. </p>
+    
+    <img src="/IMG/inflation.png" style="width: 100%;margin: 0 auto;">
+    
+    <p>Cada halving reduce la tasa de inflación del Bitcoin. La línea naranja es la tasa de inflación del Bitcoin durante un período dado, mientras que la línea azul es el número total de bitcoins emitidos.</p>
+    
+    <h2 id="bitcoin-halving-schedule">Programa del halving de Bitcoin</h2>
+    <p>El halving de Bitcoin está programado por bloques, no por fecha.</p>
+    
+    <p>El halving ocurre cada 210.000 bloques. El halving de 2020 ocurrirá en el bloque 630.000. El halving de 2024 ocurrirá en el bloque 840.000.</p>
+    
+    <h2 id="what-happens-to-miners-during-halvings">¿Qué sucede con los mineros durante los halvings?</h2>
+    <p>Muchos <a href="https://techcrunch.com/2016/07/09/the-reward-for-mining-bitcoin-was-just-cut-in-half/">siempre especulan</a> que los mineros cesarán su actividad luego del halving. La realidad es que la mayoría de los mineros son muy inteligentes y marcan precio en el halving, así que no terminan clausurando ningún minero.</p>
+    
+    <h2 id="when-is-the-next-bitcoin-halving-after-the-2020-halving">¿Cuándo es el próximo halving de Bitcoin, luego del halving de 2020?</h2>
+    <p>El halving de 2024 probablemente ocurrirá entre marzo de 2024 y junio de 2024. </p>
+    
+    <h2 id="bitcoin-halving-history">Historial del halving en Bitcoin</h2>
+    
+    <p>Esta sección analizará los dos halvings anteriores.</p>
+    
+    <h2 id="2012-halving">Halving de 2012</h2>
+    
+    <p>El <a href="https://en.bitcoin.it/wiki/Halving_day_2012">halving de bloques de 2012</a> fue el primer halving. Fue minado por SlushPool por alguien que usó un minero Radeon HD 5800.</p>
+    
+    <ul>
+    <li><b>Nuevo BTC por bloque antes:</b> 50 BTC por bloque</li>
+    <li><b>Nuevo BTC por bloque después:</b> 25 BTC por bloque</li>
+    <li><b>Precio en el día del halving:</b> $12,35</li>
+    <li><b>Precio 150 días después:</b> $127,00</li>
+    </ul>
+    
+    <h2 id="2016-halving">Halving de 2016</h2>
+    
+    <p>El de 2016 fue el segundo que ocurrió.</p>
+    
+    <ul>
+    <li><b>Nuevo BTC por bloque antes:</b> 25 BTC por bloque</li>
+    <li><b>Nuevo BTC por bloque después:</b> 12,5 BTC por bloque</li>
+    <li><b>Precio en el día del halving:</b> $650,63</li>
+    <li><b>Precio 150 días después:</b> $758,81</li>
+    </ul>
+    
+    <h2 id="current-bitcoin-block-reward">Subsidio por bloque actual en Bitcoin</h2>
+    <p>El subsidio por bloque actual de Bitcoin es de 12,5 bitcoins por bloque. Cuando el bloque 630.000 sea alcanzado en 2020, el subsidio caerá a 6,25 bitcoins (BTC) por bloque.</p>
+    
+    <h2 id="bitcoin-halving-parties">Fiestas de halving de Bitcoin</h2>
+    <p>Miles de Bitcoiners de todo el mundo celebraron el halving de 2016. Se organizaron <a href="http://blog.thehalvening.com/bitcoin-halving-parties-2016/">fiestas</a> en montones de ciudades importantes como Buenos Aires, Melbourne, Montreal, París, Atenas, Dublín y decenas de otras ciudades.</p>
+    
+    <p>Aquí hay un video de la fiesta del halving de 2016 en Tel Aviv:</p>
+    
+    <iframe style="height: auto; max-width: 100%;" src="https://www.youtube.com/embed/T0IR8X-Qnqs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    
+    <p>¡Cuando se publiquen eventos, mantendremos un registro de ellos aquí!</p>
+    
+    <h2 id="21-million">¿Cuándo serán minados todos los 21 millones de Bitcoins?</h2>
+    <p>Todos los 21 millones de bitcoins (BTC) serán minados en el 2140. Pero más del 98% serán minados para 2030.</p>
+    
+    <h2 id="is-there-a-litecoin-block-reward-halving-countdown">¿Hay alguna cuenta regresiva del halving de la recompensa por bloque de Litecoin?</h2>
+    <p>Sí, echa un vistazo <a href="http://litecoinblockhalf.com/">a este sitio</a>. El Litecoin actualmente tiene pronosticado su halving un año antes de Bitcoin, alrededor de agosto de 2019. La recompensa por bloque de Litecoin disminuirá de 25 LTC por bloque a 12,5 LTC por bloque. La recompensa por bloque del Litecoin se divide en dos cada 840.000 bloques.</p>
+    
+    <h2 id="is-there-an-ethereum-block-reward-halving-countdown">¿Hay alguna cuenta regresiva del halving de la recompensa por bloque de Ethereum? </h2>
+    <p>La recompensa por bloque de Ethereum no se divide en dos como la de Bitcoin, así que no hay un conteo regresivo.</p>
+    
+    <h2 id="what-is-the-bitcoin-clock">¿Qué es el reloj Bitcoin?</h2>
+    <p>El reloj Bitcoin ha estado activo desde 2011. En 2018, el propietario dejó que el dominio expire. Nosotros reversionamos el sitio y lo restauramos con su visión original.</p>
+    
+    <h2 id="is-the-reward-halving-necessary">¿Es necesario el halving?</h2>
+    <p>El halving es necesario. Es así como Bitcoin controla su suministro. Una vez que el subsidio por bloque expire, las tarifas por transacción serán pagadas a los mineros para asegurar la red.</p>
+    
+    <h2 id="why-our-estimates-are-the-most-accurate">Por qué nuestras estimaciones son las más precisas</h2>
+    <p>La mayoría de los otros estimadores de la fecha del halving usan bloques de 10 minutos para calcular la fecha estimada del halving. </p>
+    
+    <p>Los bloques, sin embargo, han sido minados en menos de intervalos de 10 minutos durante casi toda la historia del Bitcoin.</p>
+    
+    <p>Nuestra calculadora usa datos de <a href="https://data.bitcoinity.org/bitcoin/block_time/5y?f=m10&r=month&t=l">Bitcoinity</a> para obtener el tiempo promedio por bloque de los últimos 6 meses. Luego usa este tiempo por bloque (actualmente 9,69166666667 minutos entre bloque y bloque) para pronosticar la fecha del halving.</p>
+    
+    <p>Mientras que la mayoría de los otros sitios estiman que el halving suceda a finales de mayo, el resultado más probable es que haya un halving a principios de mayo.</p>
+    
+    <ul id="markdown-toc">
+      <li><a href="#what-is-the-bitcoin-halving" id="markdown-toc-what-is-the-bitcoin-halving">¿Qué es el halving de Bitcoin?</a></li>
+      <li><a href="#what-is-the-significance-of-the-reward-halving" id="markdown-toc-what-is-the-significance-of-the-reward-halving">¿Cuál es el significado del halving de los bloques de Bitcoin?</a></li>
+      <li><a href="#bitcoin-halving-chart" id="markdown-toc-bitcoin-halving-chart">Gráfico de halving de Bitcoin</a></li>
+      <li><a href="#bitcoin-halving-schedule" id="markdown-toc-bitcoin-halving-schedule">Programa del halving de Bitcoin</a></li>
+      <li><a href="#what-happens-to-miners-during-halvings" id="markdown-toc-what-happens-to-miners-during-halvings">¿Qué sucede con los mineros durante los halvings?</a></li>
+      <li><a href="#when-is-the-next-bitcoin-halving-after-the-2020-halving" id="markdown-toc-when-is-the-next-bitcoin-halving-after-the-2020-halving">¿Cuándo es el próximo halving de Bitcoin?</a></li>
+      <li><a href="#bitcoin-halving-history" id="markdown-toc-bitcoin-halving-history">Historial del halving en Bitcoin</a>    <ul>
+          <li><a href="#2012-halving" id="markdown-toc-2012-halving">Halving de 2012</a></li>
+          <li><a href="#2016-halving" id="markdown-toc-2016-halving">Halving de 2016</a></li>
+        </ul>
+      </li>
+      <li><a href="#current-bitcoin-block-reward" id="markdown-toc-current-bitcoin-block-reward">Recompensa por bloque actual de Bitcoin</a></li>
+      <li><a href="#bitcoin-halving-parties" id="markdown-toc-bitcoin-halving-parties">Fiestas de halving de Bitcoin</a></li>
+        <li><a href="#21-million" id="21-million">¿Cuándo serán minados todos los 21 millones de Bitcoins?</a></li>
+      <li><a href="#is-there-a-litecoin-block-reward-halving-countdown" id="markdown-toc-is-there-a-litecoin-block-reward-halving-countdown">¿Hay alguna cuenta regresiva del halving de la recompensa por bloque de Litecoin?</a></li>
+      <li><a href="#is-there-an-ethereum-block-reward-halving-countdown" id="markdown-toc-is-there-an-ethereum-block-reward-halving-countdown">¿Hay alguna cuenta regresiva del halving de la recompensa por bloque de Ethereum?</a></li>
+      <li><a href="#what-is-the-bitcoin-clock" id="markdown-toc-what-is-the-bitcoin-clock">¿Qué es el reloj Bitcoin?</a></li>
+      <li><a href="#is-the-reward-halving-necessary" id="markdown-toc-is-the-reward-halving-necessary">¿Es necesario el halving?</a></li>
+      <li><a href="#why-our-estimates-are-the-most-accurate" id="markdown-toc-why-our-estimates-are-the-most-accurate">Por qué nuestras estimaciones son las más precisas</a></li>
+    </ul>
+
+</div> <!--CONTAINER-->
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://www.bitcoinclock.com/configBlockTime.js"></script>
 
@@ -74,132 +242,3 @@ proxima: yes
             $("#calc-content-div").append(append_html);
     });
 </script>
-
-
-<p style="text-align: center; color: black;"><b>Tiempo estimado para halving de bloques:</b> <span style="font-weight: bold;" id="days_calc"></span> días, <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span>, <span style="font-weight: bold;" id="minutes_calc"></span> <span id="minutes_label"></span></p>
-
-<p style="text-align: center; color: black;"><b>Fecha estimada:</b> <span id="date_eta"></span></p>
-
-<div class="clock simple">
-  <div class="minutes-container">
-    <div class="minutes"></div>
-  </div>
-</div>
-
-
-<div id="calc-content-div" style="text-align: center;"></div>
-
-<h2 id="what-is-the-bitcoin-halving">¿Qué es el halving de Bitcoin?</h2>
-<p>Nuevos bitcoins son emitidos por la red Bitcoin cada 10 minutos. Durante los primeros cuatro años de existencia del Bitcoin, la cantidad de nuevos bitcoins emitidos cada 10 minutos fue de 50. Cada cuatro años, este número se divide en dos. El día que la cantidad se divide en dos se llama el "halving".</p> 
-
-<p>En 2012, la cantidad de nuevos bitcoins emitidos cada 10 minutos cayó de 50 bitcoins a 25. En 2016, cayó de 25 a 12,5. Ahora, en el halving de 2020, caerá de 12,5 a 6,25.</p> 
-
-<h2 id="what-is-the-significance-of-the-reward-halving">¿Cuál es el significado del halving de los bloques de Bitcoin?</h2>
-<p>El halving disminuye la cantidad de nuevos bitcoins generados por bloque. Esto implica que el suministro de nuevos bitcoins es menor.</p>
-<p>En mercados normales, un suministro menor junto a una demanda estable usualmente conllevan a precios más altos. Dado que el halving reduce el suministro de nuevos bitcoins, y la demanda usualmente se mantiene estática, el halving usualmente ha anticipado las alzas más altas de Bitcoin. </p>
-
-<p>En la imagen de abajo, las líneas verdes verticales indican los dos halvings anteriores (<a href="https://en.bitcoin.it/wiki/Controlled_supply">28/11/2012 y 9/7/2016</a>). Nota cómo el precio saltó significativamente luego de cada halving.</p>
-
-<img src="/halvingdates.png" style="width: 100%;margin: 0 auto;">
-
-<h2 id="bitcoin-halving-chart">Gráfico de halving de Bitcoin</h2>
-<p>En la imagen de abajo, puedes ver la tasa de inflación de Bitcoin durante cada período. </p>
-
-<img src="/inflation.png" style="width: 100%;margin: 0 auto;">
-
-<p>Cada halving reduce la tasa de inflación del Bitcoin. La línea naranja es la tasa de inflación del Bitcoin durante un período dado, mientras que la línea azul es el número total de bitcoins emitidos.</p>
-
-<h2 id="bitcoin-halving-schedule">Programa del halving de Bitcoin</h2>
-<p>El halving de Bitcoin está programado por bloques, no por fecha.</p>
-
-<p>El halving ocurre cada 210.000 bloques. El halving de 2020 ocurrirá en el bloque 630.000. El halving de 2024 ocurrirá en el bloque 840.000.</p>
-
-<h2 id="what-happens-to-miners-during-halvings">¿Qué sucede con los mineros durante los halvings?</h2>
-<p>Muchos <a href="https://techcrunch.com/2016/07/09/the-reward-for-mining-bitcoin-was-just-cut-in-half/">siempre especulan</a> que los mineros cesarán su actividad luego del halving. La realidad es que la mayoría de los mineros son muy inteligentes y marcan precio en el halving, así que no terminan clausurando ningún minero.</p>
-
-<h2 id="when-is-the-next-bitcoin-halving-after-the-2020-halving">¿Cuándo es el próximo halving de Bitcoin, luego del halving de 2020?</h2>
-<p>El halving de 2024 probablemente ocurrirá entre marzo de 2024 y junio de 2024. </p>
-
-<h2 id="bitcoin-halving-history">Historial del halving en Bitcoin</h2>
-
-<p>Esta sección analizará los dos halvings anteriores.</p>
-
-<h2 id="2012-halving">Halving de 2012</h2>
-
-<p>El <a href="https://en.bitcoin.it/wiki/Halving_day_2012">halving de bloques de 2012</a> fue el primer halving. Fue minado por SlushPool por alguien que usó un minero Radeon HD 5800.</p>
-
-<ul>
-<li><b>Nuevo BTC por bloque antes:</b> 50 BTC por bloque</li>
-<li><b>Nuevo BTC por bloque después:</b> 25 BTC por bloque</li>
-<li><b>Precio en el día del halving:</b> $12,35</li>
-<li><b>Precio 150 días después:</b> $127,00</li>
-</ul>
-
-<h2 id="2016-halving">Halving de 2016</h2>
-
-<p>El de 2016 fue el segundo que ocurrió.</p>
-
-<ul>
-<li><b>Nuevo BTC por bloque antes:</b> 25 BTC por bloque</li>
-<li><b>Nuevo BTC por bloque después:</b> 12,5 BTC por bloque</li>
-<li><b>Precio en el día del halving:</b> $650,63</li>
-<li><b>Precio 150 días después:</b> $758,81</li>
-</ul>
-
-<h2 id="current-bitcoin-block-reward">Subsidio por bloque actual en Bitcoin</h2>
-<p>El subsidio por bloque actual de Bitcoin es de 12,5 bitcoins por bloque. Cuando el bloque 630.000 sea alcanzado en 2020, el subsidio caerá a 6,25 bitcoins (BTC) por bloque.</p>
-
-<h2 id="bitcoin-halving-parties">Fiestas de halving de Bitcoin</h2>
-<p>Miles de Bitcoiners de todo el mundo celebraron el halving de 2016. Se organizaron <a href="http://blog.thehalvening.com/bitcoin-halving-parties-2016/">fiestas</a> en montones de ciudades importantes como Buenos Aires, Melbourne, Montreal, París, Atenas, Dublín y decenas de otras ciudades.</p>
-
-<p>Aquí hay un video de la fiesta del halving de 2016 en Tel Aviv:</p>
-
-<iframe style="height: auto; max-width: 100%;" src="https://www.youtube.com/embed/T0IR8X-Qnqs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-<p>¡Cuando se publiquen eventos, mantendremos un registro de ellos aquí!</p>
-
-<h2 id="21-million">¿Cuándo serán minados todos los 21 millones de Bitcoins?</h2>
-<p>Todos los 21 millones de bitcoins (BTC) serán minados en el 2140. Pero más del 98% serán minados para 2030.</p>
-
-<h2 id="is-there-a-litecoin-block-reward-halving-countdown">¿Hay alguna cuenta regresiva del halving de la recompensa por bloque de Litecoin?</h2>
-<p>Sí, echa un vistazo <a href="http://litecoinblockhalf.com/">a este sitio</a>. El Litecoin actualmente tiene pronosticado su halving un año antes de Bitcoin, alrededor de agosto de 2019. La recompensa por bloque de Litecoin disminuirá de 25 LTC por bloque a 12,5 LTC por bloque. La recompensa por bloque del Litecoin se divide en dos cada 840.000 bloques.</p>
-
-<h2 id="is-there-an-ethereum-block-reward-halving-countdown">¿Hay alguna cuenta regresiva del halving de la recompensa por bloque de Ethereum? </h2>
-<p>La recompensa por bloque de Ethereum no se divide en dos como la de Bitcoin, así que no hay un conteo regresivo.</p>
-
-<h2 id="what-is-the-bitcoin-clock">¿Qué es el reloj Bitcoin?</h2>
-<p>El reloj Bitcoin ha estado activo desde 2011. En 2018, el propietario dejó que el dominio expire. Nosotros reversionamos el sitio y lo restauramos con su visión original.</p>
-
-<h2 id="is-the-reward-halving-necessary">¿Es necesario el halving?</h2>
-<p>El halving es necesario. Es así como Bitcoin controla su suministro. Una vez que el subsidio por bloque expire, las tarifas por transacción serán pagadas a los mineros para asegurar la red.</p>
-
-<h2 id="why-our-estimates-are-the-most-accurate">Por qué nuestras estimaciones son las más precisas</h2>
-<p>La mayoría de los otros estimadores de la fecha del halving usan bloques de 10 minutos para calcular la fecha estimada del halving. </p>
-
-<p>Los bloques, sin embargo, han sido minados en menos de intervalos de 10 minutos durante casi toda la historia del Bitcoin.</p>
-
-<p>Nuestra calculadora usa datos de <a href="https://data.bitcoinity.org/bitcoin/block_time/5y?f=m10&r=month&t=l">Bitcoinity</a> para obtener el tiempo promedio por bloque de los últimos 6 meses. Luego usa este tiempo por bloque (actualmente 9,69166666667 minutos entre bloque y bloque) para pronosticar la fecha del halving.</p>
-
-<p>Mientras que la mayoría de los otros sitios estiman que el halving suceda a finales de mayo, el resultado más probable es que haya un halving a principios de mayo.</p>
-
-<ul id="markdown-toc">
-  <li><a href="#what-is-the-bitcoin-halving" id="markdown-toc-what-is-the-bitcoin-halving">¿Qué es el halving de Bitcoin?</a></li>
-  <li><a href="#what-is-the-significance-of-the-reward-halving" id="markdown-toc-what-is-the-significance-of-the-reward-halving">¿Cuál es el significado del halving de los bloques de Bitcoin?</a></li>
-  <li><a href="#bitcoin-halving-chart" id="markdown-toc-bitcoin-halving-chart">Gráfico de halving de Bitcoin</a></li>
-  <li><a href="#bitcoin-halving-schedule" id="markdown-toc-bitcoin-halving-schedule">Programa del halving de Bitcoin</a></li>
-  <li><a href="#what-happens-to-miners-during-halvings" id="markdown-toc-what-happens-to-miners-during-halvings">¿Qué sucede con los mineros durante los halvings?</a></li>
-  <li><a href="#when-is-the-next-bitcoin-halving-after-the-2020-halving" id="markdown-toc-when-is-the-next-bitcoin-halving-after-the-2020-halving">¿Cuándo es el próximo halving de Bitcoin?</a></li>
-  <li><a href="#bitcoin-halving-history" id="markdown-toc-bitcoin-halving-history">Historial del halving en Bitcoin</a>    <ul>
-      <li><a href="#2012-halving" id="markdown-toc-2012-halving">Halving de 2012</a></li>
-      <li><a href="#2016-halving" id="markdown-toc-2016-halving">Halving de 2016</a></li>
-    </ul>
-  </li>
-  <li><a href="#current-bitcoin-block-reward" id="markdown-toc-current-bitcoin-block-reward">Recompensa por bloque actual de Bitcoin</a></li>
-  <li><a href="#bitcoin-halving-parties" id="markdown-toc-bitcoin-halving-parties">Fiestas de halving de Bitcoin</a></li>
-    <li><a href="#21-million" id="21-million">¿Cuándo serán minados todos los 21 millones de Bitcoins?</a></li>
-  <li><a href="#is-there-a-litecoin-block-reward-halving-countdown" id="markdown-toc-is-there-a-litecoin-block-reward-halving-countdown">¿Hay alguna cuenta regresiva del halving de la recompensa por bloque de Litecoin?</a></li>
-  <li><a href="#is-there-an-ethereum-block-reward-halving-countdown" id="markdown-toc-is-there-an-ethereum-block-reward-halving-countdown">¿Hay alguna cuenta regresiva del halving de la recompensa por bloque de Ethereum?</a></li>
-  <li><a href="#what-is-the-bitcoin-clock" id="markdown-toc-what-is-the-bitcoin-clock">¿Qué es el reloj Bitcoin?</a></li>
-  <li><a href="#is-the-reward-halving-necessary" id="markdown-toc-is-the-reward-halving-necessary">¿Es necesario el halving?</a></li>
-  <li><a href="#why-our-estimates-are-the-most-accurate" id="markdown-toc-why-our-estimates-are-the-most-accurate">Por qué nuestras estimaciones son las más precisas</a></li>
-</ul>

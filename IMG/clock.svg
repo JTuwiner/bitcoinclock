@@ -1,0 +1,25 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="598" height="598" viewBox="0 0 598 598">
+  <g id="Group_29" data-name="Group 29" transform="translate(-661 -441)">
+    <g id="Bullseye-Gradient" transform="translate(864 644)" opacity="0.41">
+      <rect id="Rectangle_7" data-name="Rectangle 7" width="394" height="394" transform="translate(-101 -101)" fill="#222338"/>
+      <circle id="Ellipse_17" data-name="Ellipse 17" cx="299" cy="299" r="299" transform="translate(-203 -203)" fill="#171833"/>
+    </g>
+    <g id="Group_2" data-name="Group 2" transform="translate(684 464)">
+      <circle id="Ellipse_1" data-name="Ellipse 1" cx="276" cy="276" r="276" fill="#ffcd3b"/>
+    </g>
+    <circle id="Ellipse_2" data-name="Ellipse 2" cx="250" cy="250" r="250" transform="translate(710 491)" fill="#fff"/>
+    <rect id="Rectangle_2" data-name="Rectangle 2" width="27" height="7" transform="translate(709 737)" fill="#ffcd3b"/>
+    <rect id="Rectangle_3" data-name="Rectangle 3" width="27" height="7" transform="translate(1184 737)" fill="#ffcd3b"/>
+    <rect id="Rectangle_4" data-name="Rectangle 4" width="27.423" height="7.077" transform="translate(963.077 490.212) rotate(90)" fill="#ffcd3b"/>
+    <rect id="Rectangle_5" data-name="Rectangle 5" width="27.423" height="7.077" transform="translate(963.077 964.365) rotate(90)" fill="#ffcd3b"/>
+    <g id="Layer_2" data-name="Layer 2" transform="translate(855.074 588.343)">
+      <g id="Layer_1" data-name="Layer 1">
+        <path id="Path_1" data-name="Path 1" d="M218.941,116.641c4.78-30.594-19.121-46.848-52.584-57.364l10.517-41.111-24.858-6.693-9.561,40.155c-6.692-1.912-13.385-2.868-20.078-4.78L132.894,6.693,108.036,0,97.519,41.111c-5.736-.956-11.473-2.868-16.253-3.824l-34.419-8.6-6.693,26.77,18.165,4.78A13.1,13.1,0,0,1,69.793,74.574L58.32,121.421a3.537,3.537,0,0,1,2.868.956c-.956,0-1.912-.956-2.868-.956L42.067,187.39a9.561,9.561,0,0,1-11.473,5.736l-18.165-4.78L0,217.029l32.506,8.6c6.693,1.912,12.429,2.868,18.165,4.78L40.155,272.481l19.6,5.258v-.478l5.736,1.912,10.517-41.111a152.975,152.975,0,0,1,20.078,4.78L85.09,283.954l24.858,7.649,10.517-42.067c43.023,7.649,75.53,4.78,88.915-34.419,7.84-21.416,4.972-36.713-4.78-47.8-1.052-1.147-2.2-2.295-3.346-3.346a70.749,70.749,0,0,0-13.863-8.987h.574l-1.53-.86a39.964,39.964,0,0,0,32.506-37.478Zm-57.364,81.266h0c-8.509,30.212-60.137,13.385-77.155,9.561l13.385-55.452c14.532,4.111,55.93,10.23,63.579,31.742a19.79,19.79,0,0,1,1.147,4.685A23.328,23.328,0,0,1,161.576,197.907Zm7.649-81.266c-6.693,28.682-50.672,14.341-65.013,10.517l12.429-50.672c3.729.956,9.561,2.2,16.062,3.92,18.548,4.972,42.163,14.341,36.522,36.235Z" fill="#f5f0f0"/>
+      </g>
+    </g>
+    <text id="_577_500" data-name="577,500" transform="translate(747 748)" fill="#34364d" font-size="22" font-family="Jost-Semi, 'Jost*'"><tspan x="0" y="0">577,500</tspan></text>
+    <text id="_525_000" data-name="525,000" transform="translate(915 949)" fill="#34364d" font-size="22" font-family="Jost-Semi, 'Jost*'"><tspan x="0" y="0">525,000</tspan></text>
+    <text id="_630_000" data-name="630,000" transform="translate(915 544)" fill="#34364d" font-size="22" font-family="Jost-Semi, 'Jost*'"><tspan x="0" y="0">630,000</tspan></text>
+    <text id="_472_500" data-name="472,500" transform="translate(1083 748)" fill="#34364d" font-size="22" font-family="Jost-Semi, 'Jost*'"><tspan x="0" y="0">472,500</tspan></text>
+  </g>
+</svg>

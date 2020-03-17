@@ -8,88 +8,61 @@ permalink: "/ru/"
 spaceclock: yes
 specialfont: yes
 ---
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://www.bitcoinclock.com/configBlockTime.js"></script>
-
-<script>
-    var height = GLOBAL_BLOCKHEIGHT;
-    jQuery(document).ready(function($){
-            var total_number = 12.5 * (height - 472500) + 16406250;
-            var append_html = "<span></span>";
-
-            
-            var til_halving = 630000 - height;
-            append_html += "<b>Блоков до халвинга:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
-            
-//             var block_time = 9.69166666667;
-            var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
-            var days_til_halving = minutes_til_halving / (24 * 60);
-            var days_remainder = days_til_halving - Math.floor(days_til_halving);
-            var minutes = days_remainder - Math.floor(days_remainder);
-            var percent_done = (((height % 210000) / 210000) * 360);
-                        
-            $(".minutes").css("transform", "rotate(" + percent_done +"deg)");
-              
-              $('#days_calc').append(Math.floor(days_til_halving));
-               $('#hours_calc').append(Math.floor(days_remainder * 24));
-                $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-                
-                var d = new Date( Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000); 
-                
-                var month = d.getMonth() + 1;
-				var day = d.getUTCDate();
-				var year = d.getUTCFullYear();
-				
-				console.log(month);
-								
-				if (month === 4) {
-					var month_name = "April";
-				}
-				
-				else if (month === 5) {
-					var month_name = "Май";
-				}
-				
-				else if (month === 3) {
-					var month_name = "March";
-				}
-
-				$('#date_eta').append(month_name + " " + day + ", " + year);
-				
-				let hours_label = "часов";
-				
-				if (Math.floor(days_remainder * 24) == 1) {
-					hours_label = "час";
-				}
-				
-				$("#hours_label").append(hours_label);
-								
-				let minutes_label = "минут";
-				
-				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
-					minutes_label = "минута";
-				}
-				
-				$("#minutes_label").append(minutes_label);
 
 
-            $("#calc-content-div").append(append_html);
-    });
-</script>
 
-
-<p style="text-align: center; color: black;"><b>Халвинг Биткоина примерно через:</b> <span style="font-weight: bold;" id="days_calc"></span> дней, <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span>, <span style="font-weight: bold;" id="minutes_calc"></span> <span id="minutes_label"></span></p>
-
-<p style="text-align: center; color: black;"><b>Примерная дата:</b> <span id="date_eta"></span></p>
-
-<div class="clock simple">
-  <div class="minutes-container">
-    <div class="minutes"></div>
+<div class="halving">
+    <p>Халвинг Биткоина примерно через:</p>
+  
+    <div class="inner_halving">
+  
+      <div class="halve days">
+        <span id="days_calc"></span> 
+        <span id="days_one">дней</span>
+      </div>
+  
+      <div class="halve hourse">
+        <span id="hours_calc"></span>
+        <span id="hours_label"></span>
+      </div>
+  
+      <div class="halve minutess">
+        <span id="minutes_calc"></span>
+        <span id="minutes_label"></span>
+      </div>
+  
+  
+    </div><!-- Inner Halving -->
+    
+    <p>
+      <b class="date_eta">Примерная дата:</b> 
+      <span id="date_eta"></span>
+    </p>
+  
+  
+  
+  </div> <!-- Halving -->
+  
+  
+  
+  <div class="clock simple">
+    <div class="minutes-container">
+        <div class="minutes"></div>
+        <img id="grid_background" src="/IMG/grid.svg" alt="grid">
+    </div>
   </div>
-</div>
+  
+  <div id="calc-content-div"></div>
+  
+  
+  </div> <!--CONTAINER-->
 
+      
+<img class="path" src="/IMG/path1.png" alt="yellow line for home page">
+<img class="path_svg" src="/IMG/path3.svg" alt="yellow line for home page">
 
-<div id="calc-content-div" style="text-align: center;"></div>
+<div class="container_text">
+
 
 <h2 id="what-is-the-bitcoin-halving">Что такое халвинг Биткоина?</h2>
 <p>Новые BTC выпускаются в сеть Биткоина примерно каждые 10 минут – такой механизм был заложен в вайтпейпер криптовалюты её создателем Сатоши Накамото. В первые четыре года существования Биткоина каждые 10 минут выпускалось по 50 новых монет. Согласно заложенной модели дефицитного характера монеты, каждые 4 года это количество сокращается вдвое. День, в который происходит сокращение вдвое вознаграждения майнеров за добычу новых монет называется днем &quot;халвинга&quot;.</p>
@@ -102,12 +75,12 @@ specialfont: yes
 
 <p>На рисунке ниже вертикальные зеленые линии указывают на два предыдущих уполовинивания (<a href="https://en.bitcoin.it/wiki/Controlled_supply">28.11.2012 и 9.7.2016</a>). Обратите внимание на то, как после каждого из них подскакивала цена монеты.</p>
 
-<img src="/halvingdates.png" style="width: 100%;margin: 0 auto;">
+<img src="/IMG/halvingdates.png" style="width: 100%;margin: 0 auto;">
 
 <h2 id="bitcoin-halving-chart">График халвинга Биткоина</h2>
 <p>А на этом графике можно отчетливо видеть показатели инфляции Биткоина в течение каждого из этих событий. </p>
 
-<img src="/inflation.png" style="width: 100%;margin: 0 auto;"> 
+<img src="/IMG/inflation.png" style="width: 100%;margin: 0 auto;"> 
 
 <p>Каждый халвинг снижает инфляцию Биткоина. Оранжевая линия — это уровень инфляции Биткоина за определенный период, а синяя линия — общее количество выпущенных биткоинов.</p>
 
@@ -208,3 +181,78 @@ specialfont: yes
   <li><a href="#is-the-reward-halving-necessary" id="markdown-toc-is-the-reward-halving-necessary">Почему халвинг вознаграждения Биткоина – это важно?</a></li>
   <li><a href="#why-our-estimates-are-the-most-accurate" id="markdown-toc-why-our-estimates-are-the-most-accurate">Почему наши оценки самые точные?</a></li>
 </ul>
+</div> <!--CONTAINER-->
+
+
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://www.bitcoinclock.com/configBlockTime.js"></script>
+
+<script>
+    var height = GLOBAL_BLOCKHEIGHT;
+    jQuery(document).ready(function($){
+            var total_number = 12.5 * (height - 472500) + 16406250;
+            var append_html = "<span></span>";
+
+            
+            var til_halving = 630000 - height;
+            append_html += "<b>Блоков до халвинга:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, " ");
+            
+//             var block_time = 9.69166666667;
+            var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
+            var days_til_halving = minutes_til_halving / (24 * 60);
+            var days_remainder = days_til_halving - Math.floor(days_til_halving);
+            var minutes = days_remainder - Math.floor(days_remainder);
+            var percent_done = (((height % 210000) / 210000) * 360);
+                        
+            $(".minutes").css("transform", "rotate(" + percent_done +"deg)");
+              
+              $('#days_calc').append(Math.floor(days_til_halving));
+               $('#hours_calc').append(Math.floor(days_remainder * 24));
+                $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                
+                var d = new Date( Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000); 
+                
+                var month = d.getMonth() + 1;
+				var day = d.getUTCDate();
+				var year = d.getUTCFullYear();
+				
+				console.log(month);
+								
+				if (month === 4) {
+					var month_name = "April";
+				}
+				
+				else if (month === 5) {
+					var month_name = "Май";
+				}
+				
+				else if (month === 3) {
+					var month_name = "March";
+				}
+
+				$('#date_eta').append(month_name + " " + day + ", " + year);
+				
+				let hours_label = "часов";
+				
+				if (Math.floor(days_remainder * 24) == 1) {
+					hours_label = "час";
+				}
+				
+				$("#hours_label").append(hours_label);
+								
+				let minutes_label = "минут";
+				
+				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
+					minutes_label = "минута";
+				}
+				
+				$("#minutes_label").append(minutes_label);
+
+
+            $("#calc-content-div").append(append_html);
+    });
+</script>

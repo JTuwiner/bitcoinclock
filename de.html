@@ -5,92 +5,61 @@ title: "Bitcoin-Uhr: Bitcoin-Halbierungscountdown 2020"
 permalink: "/de/"
 lang: de
 pagename: clock
-dotclock: yes
-proxima: yes
 ---
 
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://www.bitcoinclock.com/configBlockTime.js"></script>
+<div class="halving">
+  <p>Blockhalbierung ETA:</p>
 
-<script>
-    var height = GLOBAL_BLOCKHEIGHT;
-    jQuery(document).ready(function($){
-            var total_number = 12.5 * (height - 472500) + 16406250;
-            var append_html = "<span></span>";
+  <div class="inner_halving">
 
-            
-            var til_halving = 630000 - height;
-            append_html += "<b>Blöcke bis zur Halbierung:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-            
-//             var block_time = 9.69166666667;
-            var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
-            var days_til_halving = minutes_til_halving / (24 * 60);
-            var days_remainder = days_til_halving - Math.floor(days_til_halving);
-            var minutes = days_remainder - Math.floor(days_remainder);
-            var percent_done = (((height % 210000) / 210000) * 360);
-                        
-            $(".minutes").css("transform", "rotate(" + percent_done +"deg)");
-              
-              $('#days_calc').append(Math.floor(days_til_halving));
-               $('#hours_calc').append(Math.floor(days_remainder * 24));
-                $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
-                
-                var d = new Date( Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000); 
-                
-                var month = d.getMonth() + 1;
-				var day = d.getUTCDate();
-				var year = d.getUTCFullYear();
-				
-				console.log(month);
-								
-				if (month === 4) {
-					var month_name = "April";
-				}
-				
-				else if (month === 5) {
-					var month_name = "Mai";
-				}
-				
-				else if (month === 3) {
-					var month_name = "March";
-				}
+    <div class="halve days">
+      <span id="days_calc"></span> 
+      <span id="days_one">Tage</span>
+    </div>
 
-				$('#date_eta').append(day + ". " + month_name + " " + year);
-				
-				let hours_label = "Stunden ";
-				
-				if (Math.floor(days_remainder * 24) == 1) {
-					hours_label = "Stunden";
-				}
-				
-				$("#hours_label").append(hours_label);
-								
-				let minutes_label = " Minuten";
-				
-				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
-					minutes_label = "minute";
-				}
-				
-				$("#minutes_label").append(minutes_label);
+    <div class="halve hourse">
+      <span id="hours_calc"></span>
+      <span id="hours_label"></span>
+    </div>
+
+    <div class="halve minutess">
+      <span id="minutes_calc"></span>
+      <span id="minutes_label"></span>
+    </div>
 
 
-            $("#calc-content-div").append(append_html);
-    });
-</script>
 
-<p style="text-align: center; color: black;"><b>Blockhalbierung ETA:</b> <span style="font-weight: bold;" id="days_calc"></span> Tage <span style="font-weight: bold;" id="hours_calc"></span> <span id="hours_label"></span><span style="font-weight: bold;" id="minutes_calc"></span><span id="minutes_label"></span></p>
+  </div><!-- Inner Halving -->
+  
+  <p>
+    <b class="date_eta">Datum ETA:</b> 
+    <span id="date_eta"></span>
+  </p>
 
-<p style="text-align: center; color: black;"><b>Datum ETA:</b> <span id="date_eta"></span></p>
+
+
+</div> <!-- Halving -->
+
+
 
 <div class="clock simple">
   <div class="minutes-container">
-    <div class="minutes"></div>
+      <div class="minutes"></div>
+      <img id="grid_background" src="/IMG/grid.svg" alt="grid">
   </div>
 </div>
 
+<div id="calc-content-div"></div>
 
-<div id="calc-content-div" style="text-align: center;"></div>
 
+</div> <!--CONTAINER-->
+
+    
+<img class="path" src="/IMG/path1.png" alt="yellow line for home page">
+<img class="path_svg" src="/IMG/path3.svg" alt="yellow line for home page">
+
+<div class="container_text">
+    
 <h2 id="what-is-the-bitcoin-halving">Was ist die Bitcoin-Halbierung?</h2>
 <p>Neue Bitcoins werden vom Bitcoin-Netzwerk alle 10 Minuten ausgegeben. In den ersten vier Jahren nach dem Bestehen 
 von Bitcoin betrug die Anzahl der alle 10 Minuten neu ausgegebenen Bitcoins 50. Alle vier Jahre wird diese Zahl halbiert. 
@@ -110,12 +79,12 @@ Halbierung in der Regel einigen der gr&ouml;&szlig;ten Bitcoin-Runs voraus.</p>
 (<a href="https://en.bitcoin.it/wiki/Controlled_supply">28.11.2012 und 9.7.2016</a>). 
 Wie Sie sehen k&ouml;önnen, ist der Preis nach jeder Halbierung deutlich gestiegen.</p>
 
-<img src="/halvingdates.png" style="width: 100%;margin: 0 auto;">
+<img src="/IMG/halvingdates.png" style="width: 100%;margin: 0 auto;">
 
 <h2 id="bitcoin-halving-chart">Bitcoin-Halbierungsdiagramm</h2>
 <p>In der folgenden Abbildung sehen Sie die Inflationsrate von Bitcoin in jedem Zeitraum.</p>
 
-<img src="/inflation.png" style="width: 100%;margin: 0 auto;">
+<img src="/IMG/inflation.png" style="width: 100%;margin: 0 auto;">
 
 <p>Jede Halbierung senkt die Inflationsrate von Bitcoin. Die orange Linie ist die Inflationsrate von 
 Bitcoin in einem bestimmten Zeitraum, w&auml;hrend die blaue Linie die Gesamtzahl der ausgegebenen Bitcoins darstellt.</p>
@@ -224,3 +193,76 @@ der letzten 6 Monate zu ermitteln. Mit dieser Blockzeit (derzeit 9,69166666667 M
   <li><a href="#is-the-reward-halving-necessary" id="markdown-toc-is-the-reward-halving-necessary">Ist die Halbierung notwendig?</a></li>
   <li><a href="#why-our-estimates-are-the-most-accurate" id="markdown-toc-why-our-estimates-are-the-most-accurate">Warum unsere Sch&auml;tzungen die genauesten sind</a></li>
 </ul>
+
+</div> <!--CONTAINER-->
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="https://www.bitcoinclock.com/configBlockTime.js"></script>
+
+<script>
+    var height = GLOBAL_BLOCKHEIGHT;
+    jQuery(document).ready(function($){
+            var total_number = 12.5 * (height - 472500) + 16406250;
+            var append_html = "<span></span>";
+
+            
+            var til_halving = 630000 - height;
+            append_html += "<b>Blöcke bis zur Halbierung:</b> " + til_halving.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+            
+//             var block_time = 9.69166666667;
+            var minutes_til_halving = til_halving * GLOBAL_BLOCKTIME;
+            var days_til_halving = minutes_til_halving / (24 * 60);
+            var days_remainder = days_til_halving - Math.floor(days_til_halving);
+            var minutes = days_remainder - Math.floor(days_remainder);
+            var percent_done = (((height % 210000) / 210000) * 360);
+                        
+            $(".minutes").css("transform", "rotate(" + percent_done +"deg)");
+              
+              $('#days_calc').append(Math.floor(days_til_halving));
+               $('#hours_calc').append(Math.floor(days_remainder * 24));
+                $('#minutes_calc').append(((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ","));
+                
+                var d = new Date( Date.now() + ((days_til_halving * 24 + days_remainder) * 60 + minutes) * 60 * 1000); 
+                
+                var month = d.getMonth() + 1;
+				var day = d.getUTCDate();
+				var year = d.getUTCFullYear();
+				
+				console.log(month);
+								
+				if (month === 4) {
+					var month_name = "April";
+				}
+				
+				else if (month === 5) {
+					var month_name = "Mai";
+				}
+				
+				else if (month === 3) {
+					var month_name = "March";
+				}
+
+				$('#date_eta').append(day + ". " + month_name + " " + year);
+				
+				let hours_label = "Stunden ";
+				
+				if (Math.floor(days_remainder * 24) == 1) {
+					hours_label = "Stunden";
+				}
+				
+				$("#hours_label").append(hours_label);
+								
+				let minutes_label = " Minuten";
+				
+				if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
+					minutes_label = "minute";
+				}
+				
+				$("#minutes_label").append(minutes_label);
+
+
+            $("#calc-content-div").append(append_html);
+    });
+</script>

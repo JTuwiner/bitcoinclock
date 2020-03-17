@@ -2,11 +2,183 @@
 layout: default
 seo_title: "2020년 비트코인 반감기 카운트다운 및 예상 날짜 (비트코인 시계)"
 title: "비트코인 시계: 2020년 비트코인 반감기 카운트다운"
+permalink: "/ko/"
 lang: ko
 pagename: clock
-permalink: "/ko/"
-proxima: yes
 ---
+
+<div class="halving">
+  <p>블록 반감기까지 남은 시간:</p>
+
+  <div class="inner_halving">
+
+
+    <div class="halve days">
+      <span id="days_calc"></span> 
+      <span id="days_one">일</span>
+    </div>
+
+    <div class="halve hourse">
+      <span id="hours_calc"></span>
+      <span id="hours_label"></span>
+    </div>
+
+    <div class="halve minutess">
+      <span id="minutes_calc"></span>
+      <span id="minutes_label"></span>
+    </div>
+
+
+  </div><!-- Inner Halving -->
+  
+  <p>
+    <b class="date_eta">블록 반감기 예정일:</b> 
+    <span id="date_eta"></span>
+  </p>
+
+
+
+</div> <!-- Halving -->
+
+
+
+<div class="clock simple">
+  <div class="minutes-container">
+      <div class="minutes"></div>
+      <img id="grid_background" src="/IMG/grid.svg" alt="grid">
+  </div>
+</div>
+
+<div id="calc-content-div"></div>
+
+
+</div> <!--CONTAINER-->
+
+    
+<img class="path" src="/IMG/path1.png" alt="yellow line for home page">
+<img class="path_svg" src="/IMG/path3.svg" alt="yellow line for home page">
+
+<div class="container_text">
+    
+    <h2 id="what-is-the-bitcoin-halving">비트코인 반감기는 무엇인가요?</h2>
+    <p>새로운 비트코인들은 비트코인 네트워크에 의해 매 10분마다 발행됩니다. 비트코인이 존재한 첫 4년간 매 10분마다 발행된 새로운 비트코인은 50개입니다. 매 4년마다 이 숫자는 반으로 줄어듭니다. 그 양이 반으로 줄어드는 날은 “반감기”라고 불립니다.</p> 
+    
+    <p>2012년에, 매 10분마다 발행된 새로운 비트코인의 양은 50 비트코인에서 25로 떨어졌습니다. 2016년에는 25에서 12.5로 떨어졌습니다. 그러면, 2020년 반감기에는 12.5에서 6.25로 떨어질 것입니다.</p> 
+    
+    <h2 id="what-is-the-significance-of-the-reward-halving">비트코인 블록 반감기의 중요성은 무엇인가요?</h2>
+    <p>반감기는 블록마다 생성되는 새 비트코인의 양을 감소시킵니다. 이것은 새 비트코인의 공급이 더 적음을 의미합니다.</p>
+    <p>일반 시장에서는 보통 더 적은 공급과 일정한 수요는 더 높은 가격으로 이어집니다. 반감기가 새 비트코인의 공급을 줄이고 수요는 보통 일정하기 때문에 반감기는 비트코인의 몇몇 가장 큰 도약에 선행하였습니다.</p>
+    
+    <p>아래 이미지에서 녹색 수직선은 지난 두 반감기(<a href="https://en.bitcoin.it/wiki/Controlled_supply">2012-11-28 과 2016-7-9</a>)를 보여줍니다. 각 반감기 이후에 가격이 얼마나 크게 올랐는지 주목하세요.</p>
+    
+    <img src="/IMG/halvingdates.png" style="width: 100%;margin: 0 auto;">
+    
+    <h2 id="bitcoin-halving-chart">비트코인 반감기 차트</h2>
+    <p>아래 이미지에서 각 시기별 비트코인의 인플레이션율을 확인할 수 있습니다.</p>
+    
+    <img src="/IMG/inflation.png" style="width: 100%;margin: 0 auto;">
+    
+    <p>반감기는 비트코인의 인플레이션율을 줄입니다. 주황색 선은 해당 기간 동안의 비트코인의 인플레이션율이며 파란색 선은 발행된 비트코인의 총 개수입니다.</p>
+    
+    <h2 id="bitcoin-halving-schedule">비트코인 반감기 일정</h2>
+    <p>비트코인 반감기는 날짜가 아닌 블록 높이로 계획됩니다.</p>
+    
+    <p>반감기는 210,000블록마다 발생합니다. 2020년 반감기는 630,000블록에서 일어날 것입니다. 2024년 반감기는 840,000블록에서 일어날 것입니다.</p>
+    
+    <h2 id="what-happens-to-miners-during-halvings">반감기 동안 채굴자에게 무슨 일이 일어나는가?</h2>
+    <p>많은 사람들은 항상 반감기 이후 채굴자들이 채굴을 그만둘 것이라고 <a href="https://techcrunch.com/2016/07/09/the-reward-for-mining-bitcoin-was-just-cut-in-half/"> 추측합니다</a> 하지만 현실은 대부분의 채굴자들은 매우 똑똑하고 반감기에서 가격이 결정되기 때문에 채굴자들은 비트코인 채굴을 그만두지 않습니다.</p>
+    
+    <h2 id="when-is-the-next-bitcoin-halving-after-the-2020-halving">2020년 반감기 이후 다음 비트코인 반감기는 언제인가요?</h2>
+    <p>2024년 3월과 2024년 6월 사이에 2024년 반감이 있을 것으로 예상됩니다.</p>
+    
+    <h2 id="bitcoin-halving-history">비트코인 반감기 역사</h2>
+    
+    <p>이 장에서는 앞의 두 번의 반감을 살펴 보겠습니다.</p>
+    
+    <h2 id="2012-halving">2012년 반감</h2>
+    
+    <p><a href="https://en.bitcoin.it/wiki/Halving_day_2012">2012 블록 반감</a>은 첫 번째 반감기 었습니다. Radeon HD 5800 채굴기를 사용하는 사람이 SlushPool에서 채굴했습니다.</p>
+    
+    <ul>
+    <li><b>이전 New BTC/블록:</b> 50 BTC/블록</li>
+    <li><b>이후 BTC/블록:</b> 25 BTC/블록</li>
+    <li><b>반감일 가격</b> $12.35</li>
+    <li><b>반감일 150일 이후 가격:</b> $127.00</li>
+    </ul>
+    
+    <h2 id="2016-halving">2016년 반감</h2>
+    
+    <p>2016년은 두 번째 반감기입니다.</p>
+    
+    <ul>
+    <li><b>이전 New BTC/블록:</b> 25 BTC/블록</li>
+    <li><b>이후 BTC/블록:</b> 12.5 BTC/블록</li>
+    <li><b>반감일 가격:</b> $650.63</li>
+    <li><b>반감일 150일 이후 가격:</b> $758.81</li>
+    </ul>
+    
+    <h2 id="current-bitcoin-block-reward">현재 비트코인 블록 보조금</h2>
+    <p>현재 비트코인 블록의 보조금은 블록당 12.5 비트코인입니다. 블록 630,000이 2020년에 생성되면 보조금은 블록당 6.25 비트코인으로 감소할 것입니다.</p>
+    
+    <h2 id="bitcoin-halving-parties">비트코인 반감 파티</h2>
+    <p>전세계의 수 천 명의 비트코인 지지자들이 2016년 반감기를 축하했습니다. 부에노스 아이레스, 멜버른, 몬트리올, 파리, 아테네, 더블린, 그리고 그외 다른 도시들 등 다수의 주요 도시에서 <a href="http://blog.thehalvening.com/bitcoin-halving-parties-2016/">파티</a>가 있었습니다.</p>
+    
+    <p>다음은 텔아비브에서 열렸던 2016년 반감기 파티 영상입니다:</p>
+    
+    <iframe style="height: auto; max-width: 100%;" src="https://www.youtube.com/embed/T0IR8X-Qnqs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+    
+    <p>파티 이벤트가 게시되면 여기에서 해당 이벤트를 추적할 것입니다!</p>
+    
+    <h2 id="21-million">2100만 비트 코킹은 언제 기각될 것인가?</h2>
+    <p>2100만 개의 비트코인은 2140년이면 모두 채굴될 것입니다. 하지만 2030년까지 98% 이상이 채굴될 것입니다.</p>
+    
+    <h2 id="is-there-a-litecoin-block-reward-halving-countdown">라이트코인 블록 보상 카운트 다운이 있습니까?</h2>
+    <p>네, <a href="http://litecoinblockhalf.com/">이 사이트</a>에서 확인하세요. 라이트코인은 현재 비트코인보다 1년 전인 2019년 8월 경에 반감기를 가질 것으로 예상됩니다. 블록당 라이트코인 보상은 블록당 25 LTC에서 12.5 LTC로 감소할 것입니다. 라이트코인의 블록 채굴 보상은 840,000 블록마다 반으로 줄어듭니다.</p>
+    
+    <h2 id="is-there-an-ethereum-block-reward-halving-countdown">이더리움 블록 보상 카운트 다운이 있습니까?</h2>
+    <p>이더리움의 블럭 리워드는 비트코인처럼 반감하지 않기 때문에 카운트다운이 없습니다.</p>
+    
+    <h2 id="what-is-the-bitcoin-clock">비트코인 시계란 무엇인가요?</h2>
+    <p>비트코인 시계은 2011년경 이후부터 존재하였습니다. 2018년에 소유자가 도메인이 만료되도록 방치하였고 저희가 이 사이트를 개정하여 오리지널 비전/버전으로 복원시켰습니다.</p>
+    
+    <h2 id="is-the-reward-halving-necessary">반감기는 꼭 필요한가요?</h2>
+    <p>반감기는 필요합니다. 이것이 바로 비트코인이 공급을 통제하는 방식입니다. 블럭 보조금이 만료되면, 거래 수수료는 네트워크를 확보하기 위해 채굴자들에게 지불합니다.</p>
+    
+    <h2 id="why-our-estimates-are-the-most-accurate">저희의 추정일이 가장 정확한 이유</h2>
+    <p>대부분의 다른 반감기 날짜 추정자들은 예상되는 반감기 날짜를 계산하기 위해 10분 블록을 이용합니다.</p>
+    
+    <p>하지만 블록들은 대부분의 비트코인 역사에서 10분보다 짧은 간격으로 채굴됩니다.</p>
+    
+    <p>우리의 계산기는 지난 6개월간 평균 블럭 시간을 얻기 위해 <a href="https://data.bitcoinity.org/bitcoin/block_time/5y?f=m10&r=month&t=l">Bitcoinity</a>를 사용합니다. 그리고 나서 반감기 날짜를 예측하기 위해 이 블럭 시간(현재 블럭간 9.69166666667분)을 사용합니다.</p>
+    
+    <p>다른 사이트의 대부분은 5월 말의 절반 정도를 예상하지만 5월 초의 보상은 절반으로 줄었을 가능성이 높습니다.</p>
+    
+    <ul id="markdown-toc">
+      <li><a href="#what-is-the-bitcoin-halving" id="markdown-toc-what-is-the-bitcoin-halving">비트코인 반감기는 무엇인가요?</a></li>
+      <li><a href="#what-is-the-significance-of-the-reward-halving" id="markdown-toc-what-is-the-significance-of-the-reward-halving">비트코인 블록 반감기의 중요성은 무엇인가요?</a></li>
+      <li><a href="#bitcoin-halving-chart" id="markdown-toc-bitcoin-halving-chart">비트코인 반감기 차트</a></li>
+      <li><a href="#bitcoin-halving-schedule" id="markdown-toc-bitcoin-halving-schedule">비트코인 반감기 일정</a></li>
+      <li><a href="#what-happens-to-miners-during-halvings" id="markdown-toc-what-happens-to-miners-during-halvings">반감기 동안 채굴자에게 무슨 일이 일어나는가?</a></li>
+      <li><a href="#when-is-the-next-bitcoin-halving-after-the-2020-halving" id="markdown-toc-when-is-the-next-bitcoin-halving-after-the-2020-halving">2020년 반감기 이후 다음 비트코인 반감기는 언제인가요?</a></li>
+      <li><a href="#bitcoin-halving-history" id="markdown-toc-bitcoin-halving-history">비트코인 반감기 역사</a>    <ul>
+          <li><a href="#2012-halving" id="markdown-toc-2012-halving">2012년 반감</a></li>
+          <li><a href="#2016-halving" id="markdown-toc-2016-halving">2016년 반감</a></li>
+        </ul>
+      </li>
+      <li><a href="#current-bitcoin-block-reward" id="markdown-toc-current-bitcoin-block-reward">현재 비트코인 블록 보조금</a></li>
+      <li><a href="#bitcoin-halving-parties" id="markdown-toc-bitcoin-halving-parties">비트코인 반감 파티</a></li>
+        <li><a href="#21-million" id="21-million">2100만 비트 코킹은 언제 기각 될 것인가?</a></li>
+      <li><a href="#is-there-a-litecoin-block-reward-halving-countdown" id="markdown-toc-is-there-a-litecoin-block-reward-halving-countdown">라이트코인 블록 보상 카운트 다운이 있습니까?</a></li>
+      <li><a href="#is-there-an-ethereum-block-reward-halving-countdown" id="markdown-toc-is-there-an-ethereum-block-reward-halving-countdown">이더리움 블록 보상 카운트 다운이 있습니까?</a></li>
+      <li><a href="#what-is-the-bitcoin-clock" id="markdown-toc-what-is-the-bitcoin-clock">비트코인 시계란 무엇인가요?</a></li>
+      <li><a href="#is-the-reward-halving-necessary" id="markdown-toc-is-the-reward-halving-necessary">반감기는 꼭 필요한가?</a></li>
+      <li><a href="#why-our-estimates-are-the-most-accurate" id="markdown-toc-why-our-estimates-are-the-most-accurate">저희의 추정일이 가장 정확한 이유</a></li>
+    </ul>
+
+</div> <!--CONTAINER-->
+
+
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="https://www.bitcoinclock.com/configBlockTime.js"></script>
 
@@ -75,132 +247,3 @@ proxima: yes
             $("#calc-content-div").append(append_html);
     });
 </script>
-
-
-<p style="text-align: center; color: black;"><b>블록 반감기까지 남은 시간:</b> <span style="font-weight: bold;" id="days_calc"></span>일, <span style="font-weight: bold;" id="hours_calc"></span><span id="hours_label"></span>, <span style="font-weight: bold;" id="minutes_calc"></span><span id="minutes_label"></span></p>
-
-<p style="text-align: center; color: black;"><b>블록 반감기 예정일:</b> <span id="date_eta"></span></p>
-
-<div class="clock simple">
-  <div class="minutes-container">
-    <div class="minutes"></div>
-  </div>
-</div>
-
-
-<div id="calc-content-div" style="text-align: center;"></div>
-
-<h2 id="what-is-the-bitcoin-halving">비트코인 반감기는 무엇인가요?</h2>
-<p>새로운 비트코인들은 비트코인 네트워크에 의해 매 10분마다 발행됩니다. 비트코인이 존재한 첫 4년간 매 10분마다 발행된 새로운 비트코인은 50개입니다. 매 4년마다 이 숫자는 반으로 줄어듭니다. 그 양이 반으로 줄어드는 날은 “반감기”라고 불립니다.</p> 
-
-<p>2012년에, 매 10분마다 발행된 새로운 비트코인의 양은 50 비트코인에서 25로 떨어졌습니다. 2016년에는 25에서 12.5로 떨어졌습니다. 그러면, 2020년 반감기에는 12.5에서 6.25로 떨어질 것입니다.</p> 
-
-<h2 id="what-is-the-significance-of-the-reward-halving">비트코인 블록 반감기의 중요성은 무엇인가요?</h2>
-<p>반감기는 블록마다 생성되는 새 비트코인의 양을 감소시킵니다. 이것은 새 비트코인의 공급이 더 적음을 의미합니다.</p>
-<p>일반 시장에서는 보통 더 적은 공급과 일정한 수요는 더 높은 가격으로 이어집니다. 반감기가 새 비트코인의 공급을 줄이고 수요는 보통 일정하기 때문에 반감기는 비트코인의 몇몇 가장 큰 도약에 선행하였습니다.</p>
-
-<p>아래 이미지에서 녹색 수직선은 지난 두 반감기(<a href="https://en.bitcoin.it/wiki/Controlled_supply">2012-11-28 과 2016-7-9</a>)를 보여줍니다. 각 반감기 이후에 가격이 얼마나 크게 올랐는지 주목하세요.</p>
-
-<img src="/halvingdates.png" style="width: 100%;margin: 0 auto;">
-
-<h2 id="bitcoin-halving-chart">비트코인 반감기 차트</h2>
-<p>아래 이미지에서 각 시기별 비트코인의 인플레이션율을 확인할 수 있습니다.</p>
-
-<img src="/inflation.png" style="width: 100%;margin: 0 auto;">
-
-<p>반감기는 비트코인의 인플레이션율을 줄입니다. 주황색 선은 해당 기간 동안의 비트코인의 인플레이션율이며 파란색 선은 발행된 비트코인의 총 개수입니다.</p>
-
-<h2 id="bitcoin-halving-schedule">비트코인 반감기 일정</h2>
-<p>비트코인 반감기는 날짜가 아닌 블록 높이로 계획됩니다.</p>
-
-<p>반감기는 210,000블록마다 발생합니다. 2020년 반감기는 630,000블록에서 일어날 것입니다. 2024년 반감기는 840,000블록에서 일어날 것입니다.</p>
-
-<h2 id="what-happens-to-miners-during-halvings">반감기 동안 채굴자에게 무슨 일이 일어나는가?</h2>
-<p>많은 사람들은 항상 반감기 이후 채굴자들이 채굴을 그만둘 것이라고 <a href="https://techcrunch.com/2016/07/09/the-reward-for-mining-bitcoin-was-just-cut-in-half/"> 추측합니다</a> 하지만 현실은 대부분의 채굴자들은 매우 똑똑하고 반감기에서 가격이 결정되기 때문에 채굴자들은 비트코인 채굴을 그만두지 않습니다.</p>
-
-<h2 id="when-is-the-next-bitcoin-halving-after-the-2020-halving">2020년 반감기 이후 다음 비트코인 반감기는 언제인가요?</h2>
-<p>2024년 3월과 2024년 6월 사이에 2024년 반감이 있을 것으로 예상됩니다.</p>
-
-<h2 id="bitcoin-halving-history">비트코인 반감기 역사</h2>
-
-<p>이 장에서는 앞의 두 번의 반감을 살펴 보겠습니다.</p>
-
-<h2 id="2012-halving">2012년 반감</h2>
-
-<p><a href="https://en.bitcoin.it/wiki/Halving_day_2012">2012 블록 반감</a>은 첫 번째 반감기 었습니다. Radeon HD 5800 채굴기를 사용하는 사람이 SlushPool에서 채굴했습니다.</p>
-
-<ul>
-<li><b>이전 New BTC/블록:</b> 50 BTC/블록</li>
-<li><b>이후 BTC/블록:</b> 25 BTC/블록</li>
-<li><b>반감일 가격</b> $12.35</li>
-<li><b>반감일 150일 이후 가격:</b> $127.00</li>
-</ul>
-
-<h2 id="2016-halving">2016년 반감</h2>
-
-<p>2016년은 두 번째 반감기입니다.</p>
-
-<ul>
-<li><b>이전 New BTC/블록:</b> 25 BTC/블록</li>
-<li><b>이후 BTC/블록:</b> 12.5 BTC/블록</li>
-<li><b>반감일 가격:</b> $650.63</li>
-<li><b>반감일 150일 이후 가격:</b> $758.81</li>
-</ul>
-
-<h2 id="current-bitcoin-block-reward">현재 비트코인 블록 보조금</h2>
-<p>현재 비트코인 블록의 보조금은 블록당 12.5 비트코인입니다. 블록 630,000이 2020년에 생성되면 보조금은 블록당 6.25 비트코인으로 감소할 것입니다.</p>
-
-<h2 id="bitcoin-halving-parties">비트코인 반감 파티</h2>
-<p>전세계의 수 천 명의 비트코인 지지자들이 2016년 반감기를 축하했습니다. 부에노스 아이레스, 멜버른, 몬트리올, 파리, 아테네, 더블린, 그리고 그외 다른 도시들 등 다수의 주요 도시에서 <a href="http://blog.thehalvening.com/bitcoin-halving-parties-2016/">파티</a>가 있었습니다.</p>
-
-<p>다음은 텔아비브에서 열렸던 2016년 반감기 파티 영상입니다:</p>
-
-<iframe style="height: auto; max-width: 100%;" src="https://www.youtube.com/embed/T0IR8X-Qnqs" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-
-<p>파티 이벤트가 게시되면 여기에서 해당 이벤트를 추적할 것입니다!</p>
-
-<h2 id="21-million">2100만 비트 코킹은 언제 기각될 것인가?</h2>
-<p>2100만 개의 비트코인은 2140년이면 모두 채굴될 것입니다. 하지만 2030년까지 98% 이상이 채굴될 것입니다.</p>
-
-<h2 id="is-there-a-litecoin-block-reward-halving-countdown">라이트코인 블록 보상 카운트 다운이 있습니까?</h2>
-<p>네, <a href="http://litecoinblockhalf.com/">이 사이트</a>에서 확인하세요. 라이트코인은 현재 비트코인보다 1년 전인 2019년 8월 경에 반감기를 가질 것으로 예상됩니다. 블록당 라이트코인 보상은 블록당 25 LTC에서 12.5 LTC로 감소할 것입니다. 라이트코인의 블록 채굴 보상은 840,000 블록마다 반으로 줄어듭니다.</p>
-
-<h2 id="is-there-an-ethereum-block-reward-halving-countdown">이더리움 블록 보상 카운트 다운이 있습니까?</h2>
-<p>이더리움의 블럭 리워드는 비트코인처럼 반감하지 않기 때문에 카운트다운이 없습니다.</p>
-
-<h2 id="what-is-the-bitcoin-clock">비트코인 시계란 무엇인가요?</h2>
-<p>비트코인 시계은 2011년경 이후부터 존재하였습니다. 2018년에 소유자가 도메인이 만료되도록 방치하였고 저희가 이 사이트를 개정하여 오리지널 비전/버전으로 복원시켰습니다.</p>
-
-<h2 id="is-the-reward-halving-necessary">반감기는 꼭 필요한가요?</h2>
-<p>반감기는 필요합니다. 이것이 바로 비트코인이 공급을 통제하는 방식입니다. 블럭 보조금이 만료되면, 거래 수수료는 네트워크를 확보하기 위해 채굴자들에게 지불합니다.</p>
-
-<h2 id="why-our-estimates-are-the-most-accurate">저희의 추정일이 가장 정확한 이유</h2>
-<p>대부분의 다른 반감기 날짜 추정자들은 예상되는 반감기 날짜를 계산하기 위해 10분 블록을 이용합니다.</p>
-
-<p>하지만 블록들은 대부분의 비트코인 역사에서 10분보다 짧은 간격으로 채굴됩니다.</p>
-
-<p>우리의 계산기는 지난 6개월간 평균 블럭 시간을 얻기 위해 <a href="https://data.bitcoinity.org/bitcoin/block_time/5y?f=m10&r=month&t=l">Bitcoinity</a>를 사용합니다. 그리고 나서 반감기 날짜를 예측하기 위해 이 블럭 시간(현재 블럭간 9.69166666667분)을 사용합니다.</p>
-
-<p>다른 사이트의 대부분은 5월 말의 절반 정도를 예상하지만 5월 초의 보상은 절반으로 줄었을 가능성이 높습니다.</p>
-
-<ul id="markdown-toc">
-  <li><a href="#what-is-the-bitcoin-halving" id="markdown-toc-what-is-the-bitcoin-halving">비트코인 반감기는 무엇인가요?</a></li>
-  <li><a href="#what-is-the-significance-of-the-reward-halving" id="markdown-toc-what-is-the-significance-of-the-reward-halving">비트코인 블록 반감기의 중요성은 무엇인가요?</a></li>
-  <li><a href="#bitcoin-halving-chart" id="markdown-toc-bitcoin-halving-chart">비트코인 반감기 차트</a></li>
-  <li><a href="#bitcoin-halving-schedule" id="markdown-toc-bitcoin-halving-schedule">비트코인 반감기 일정</a></li>
-  <li><a href="#what-happens-to-miners-during-halvings" id="markdown-toc-what-happens-to-miners-during-halvings">반감기 동안 채굴자에게 무슨 일이 일어나는가?</a></li>
-  <li><a href="#when-is-the-next-bitcoin-halving-after-the-2020-halving" id="markdown-toc-when-is-the-next-bitcoin-halving-after-the-2020-halving">2020년 반감기 이후 다음 비트코인 반감기는 언제인가요?</a></li>
-  <li><a href="#bitcoin-halving-history" id="markdown-toc-bitcoin-halving-history">비트코인 반감기 역사</a>    <ul>
-      <li><a href="#2012-halving" id="markdown-toc-2012-halving">2012년 반감</a></li>
-      <li><a href="#2016-halving" id="markdown-toc-2016-halving">2016년 반감</a></li>
-    </ul>
-  </li>
-  <li><a href="#current-bitcoin-block-reward" id="markdown-toc-current-bitcoin-block-reward">현재 비트코인 블록 보조금</a></li>
-  <li><a href="#bitcoin-halving-parties" id="markdown-toc-bitcoin-halving-parties">비트코인 반감 파티</a></li>
-    <li><a href="#21-million" id="21-million">2100만 비트 코킹은 언제 기각 될 것인가?</a></li>
-  <li><a href="#is-there-a-litecoin-block-reward-halving-countdown" id="markdown-toc-is-there-a-litecoin-block-reward-halving-countdown">라이트코인 블록 보상 카운트 다운이 있습니까?</a></li>
-  <li><a href="#is-there-an-ethereum-block-reward-halving-countdown" id="markdown-toc-is-there-an-ethereum-block-reward-halving-countdown">이더리움 블록 보상 카운트 다운이 있습니까?</a></li>
-  <li><a href="#what-is-the-bitcoin-clock" id="markdown-toc-what-is-the-bitcoin-clock">비트코인 시계란 무엇인가요?</a></li>
-  <li><a href="#is-the-reward-halving-necessary" id="markdown-toc-is-the-reward-halving-necessary">반감기는 꼭 필요한가?</a></li>
-  <li><a href="#why-our-estimates-are-the-most-accurate" id="markdown-toc-why-our-estimates-are-the-most-accurate">저희의 추정일이 가장 정확한 이유</a></li>
-</ul>
