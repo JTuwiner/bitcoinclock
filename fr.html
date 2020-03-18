@@ -288,7 +288,7 @@ pagename: clock
 
         let minutes_label = "minutes";
 
-        if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, ",")) == 1) {
+        if ((((minutes * 60)).toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g, "")) == 1) {
             minutes_label = "minute";
         }
 
