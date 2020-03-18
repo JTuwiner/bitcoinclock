@@ -79,6 +79,8 @@ display: none;
         align-self: center;
         font-size: 18px !important;
         padding: 1rem 1rem !important;
+        display: flex;
+		flex-direction: column;
     }
 
 
