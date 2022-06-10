@@ -1,7 +1,7 @@
 const height = 621716;
 const totalNumber = 12.5 * (height - 472500) + 16406250;
 const til_halving = 630000 - height;
-const blockTime = 9.69166666667;
+const blockTime = 9.8375;
 const minutes_til_halving = til_halving * 9.725;
 const days_til_halving = minutes_til_halving / (24 * 60);
 const days_remainder = days_til_halving - Math.floor(days_til_halving);
